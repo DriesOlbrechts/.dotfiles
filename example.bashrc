@@ -1,6 +1,10 @@
 #
 # ~/.bashrc
 #
+
+#Run the motd client
+/home/dries/.cargo/bin/client
+
 if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval `ssh-agent -s`
   ssh-add ~/.ssh/github
@@ -40,7 +44,6 @@ alias lS='ls -1FrSs size'    #'ls -1FSsh'
 alias lart='ls -1aFt modified -s modified'    #'ls -1Fcaert'
 alias lrt='ls -1Ft modified -s modified'    #'ls -1Fcrt'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
-alias neofetch='macchina'
 
 PROJECTS=~/Documents/projects
 alias pp='cd $PROJECTS/$(
@@ -52,3 +55,4 @@ alias pp='cd $PROJECTS/$(
     "
 )
 '  
+. "$HOME/.cargo/env"
