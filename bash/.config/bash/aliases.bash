@@ -27,7 +27,7 @@ PROJECTS=~/Documents/projects
 # )
 # '  
 alias pp='cd $(
-    find $PROJECTS -maxdepth 2 -type d -execdir test -d {}/.git \; -printf "%T+\t%p\n" | sort -r |
+    find $PROJECTS -maxdepth 2 -type d -execdir test -d {}/.git \; -printf "%T+\t%p\n" | sort -r | awk '{print $2}' |
     fzf --preview "
         onefetch {} 2>/dev/null;
         exa -al {};
