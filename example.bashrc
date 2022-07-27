@@ -46,13 +46,23 @@ alias lrt='ls -1Ft modified -s modified'    #'ls -1Fcrt'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
 
 PROJECTS=~/Documents/projects
-alias pp='cd $PROJECTS/$(
-    ls -D $PROJECTS -t modified --sort newest |
+# alias pp='cd $PROJECTS/$(
+#     ls -D $PROJECTS -t modified --sort newest |
+#     fzf --preview "
+#         onefetch $PROJECTS/{} 2>/dev/null;
+#         exa -al $PROJECTS/{};
+#         bat --color always $PROJECTS/{}/README.md 2>/dev/null
+#     "
+# )
+# '  
+alias pp='cd $(
+    find $PROJECTS -type d -execdir test -d {}/.git \; -print -prune | sort -n |
     fzf --preview "
-        onefetch $PROJECTS/{} 2>/dev/null;
-        exa -al $PROJECTS/{};
-        bat --color always $PROJECTS/{}/README.md 2>/dev/null
+        onefetch {} 2>/dev/null;
+        exa -al {};
+        bat --color always {}/README.md 2>/dev/null
     "
 )
 '  
+
 . "$HOME/.cargo/env"
