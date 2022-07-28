@@ -42,10 +42,6 @@ ppcode(){
         code .
     fi
 }
-# Live preview of what a command will do
-function fzf-eval() {
-    echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
-}
 
 # Kill a process with fzf
 fkill() {

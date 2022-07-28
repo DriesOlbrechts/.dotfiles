@@ -25,4 +25,7 @@ for rc in ~/.config/bash/*; do
     fi
 done
 
+# forgit
+. ~/.forgit/forgit.plugin.zsh
+
 . "$HOME/.cargo/env"
