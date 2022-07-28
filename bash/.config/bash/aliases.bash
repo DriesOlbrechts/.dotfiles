@@ -16,8 +16,9 @@ alias lart='ls -1aFt modified -s modified'    #'ls -1Fcaert'
 alias lrt='ls -1Ft modified -s modified'    #'ls -1Fcrt'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
 
-PROJECTS=~/Documents/projects
 
+# Shows info about git repos
+PROJECTS=~/Documents/projects
 pp() {
     local FOLDERS=$(
     find $PROJECTS -maxdepth 2 -type d,l -execdir test -d {}/.git \; \
@@ -33,4 +34,20 @@ pp() {
 if [ $? -eq 0 ]; then
     cd "${PROJECTS}/${FOLDER}"
 fi
+}
+
+
+# Live preview of what a command will do
+function fzf-eval() {
+    echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
+}
+
+# Kill a process with fzf
+fkill() {
+    local pid
+    pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+    if [ "x$pid" != "x" ]; then
+        echo $pid | xargs kill -${1:-9}
+    fi
 }
