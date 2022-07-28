@@ -36,7 +36,12 @@ if [ $? -eq 0 ]; then
 fi
 }
 
-
+ppcode(){
+    pp
+    if [ "$(pwd)" != "$PROJECTS" ]; then
+        code .
+    fi
+}
 # Live preview of what a command will do
 function fzf-eval() {
     echo | fzf -q "$*" --preview-window=up:99% --preview="eval {q}"
