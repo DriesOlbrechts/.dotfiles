@@ -6,4 +6,8 @@ vim.g.maplocalleader = " "
 -- jk to Escape 
 vim.keymap.set({'!'}, 'jk', [[<c-\><c-n>]], {})
 
--- vim.keymap.set({'v'}, '<C-c>', [["+y]], {})
+-- CTRL + SHIFT + C copy
+vim.keymap.set({'v'}, '<C-C>', [["+y]], {
+    desc = 'Copy to system clipboard',
+    noremap = true, silent = true
+})
