@@ -39,18 +39,8 @@ return require('packer').startup(function(use)
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
-    -- dashboard footer
-    use 'wbthomason/packer.nvim'
-    use {
-        'goolord/alpha-nvim', branch = 'feature/startify-fortune',
-        requires = { 'BlakeJC94/alpha-nvim-fortune' },
-        config = function() require("config.alpha") end
-    }
-    use 'wbthomason/packer.nvim'
-    -- Terminal
-    use {
-        's1n7ax/nvim-terminal',
-    }
+
+
     -- Themes
     use 'gruvbox-community/gruvbox'
 
@@ -113,6 +103,17 @@ return require('packer').startup(function(use)
         config = function()
             require('Comment').setup()
         end
+    }
+
+    --file tree [neotree]
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim"
+        }
     }
 
     -- Autopairs
