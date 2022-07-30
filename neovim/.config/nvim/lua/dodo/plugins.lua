@@ -32,9 +32,25 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
-    use 'glepnir/dashboard-nvim'
+    -- dashboard
+    use {
+        'goolord/alpha-nvim',
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+        end
+    }
+    -- dashboard footer
     use 'wbthomason/packer.nvim'
-
+    use {
+        'goolord/alpha-nvim', branch = 'feature/startify-fortune',
+        requires = { 'BlakeJC94/alpha-nvim-fortune' },
+        config = function() require("config.alpha") end
+    }
+    use 'wbthomason/packer.nvim'
+    -- Terminal
+    use {
+        's1n7ax/nvim-terminal',
+    }
     -- Themes
     use 'gruvbox-community/gruvbox'
 
@@ -43,8 +59,8 @@ return require('packer').startup(function(use)
 
     -- Status line
     use {
-      'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
 
     -- Discord
@@ -64,10 +80,10 @@ return require('packer').startup(function(use)
     use "hrsh7th/cmp-nvim-lsp-signature-help"
 
     use({
-      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      config = function()
-        require("lsp_lines").setup()
-      end,
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
     })
 
     -- Snippets
@@ -81,8 +97,8 @@ return require('packer').startup(function(use)
 
     --use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use {
-      'nvim-telescope/telescope.nvim',
-      requires = { {'nvim-lua/plenary.nvim'} }
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- Treesitter
@@ -103,18 +119,19 @@ return require('packer').startup(function(use)
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {
-            check_ts = true,
-        } end
+                check_ts = true,
+            }
+        end
     }
     --use "windwp/nvim-autopairs"
 
     -- git
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
     use {
-      'lewis6991/gitsigns.nvim',
-      config = function()
-        require('gitsigns').setup()
-      end
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
     }
     use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
