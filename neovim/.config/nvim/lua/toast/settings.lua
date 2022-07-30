@@ -1,12 +1,10 @@
-local opt = vim.opt
-
 -- Theme
 opt.termguicolors = true
 vim.cmd("colorscheme gruvbox") --Move after plugins
 
 -- General
 opt.compatible = false
-opt.colorcolumn = "80"
+opt.colorcolumn = "120"
 opt.signcolumn = 'yes' -- Figure out to make line number colored for W/E...
 opt.hlsearch = false
 opt.ignorecase = true

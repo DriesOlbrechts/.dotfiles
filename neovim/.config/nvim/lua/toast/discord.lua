@@ -1,7 +1,7 @@
 require("presence"):setup({
     -- General options
     auto_update         = true,                       -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
-    neovim_image_text   = "Wasted more time on the editor itself", -- Text displayed when hovered over the Neovim image
+    neovim_image_text   = "Copied the config", -- Text displayed when hovered over the Neovim image
     main_image          = "neovim",                   -- Main image display (either "neovim" or "file")
     client_id           = "793271441293967371",       -- Use your own Discord application client id (not recommended)
     log_level           = nil,                        -- Log messages at or above this level (one of the following: "debug", "info", "warn", "error")
@@ -12,7 +12,7 @@ require("presence"):setup({
     file_assets         = {},                         -- Custom file asset definitions keyed by file names and extensions (see default config at `lua/presence/file_assets.lua` for reference)
 
     -- Rich Presence text options
-    editing_text        = "Editing madness",               -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
+    editing_text        = "Pretending to be a developer",               -- Format string rendered when an editable file is loaded in the buffer (either string or function(filename: string): string)
     file_explorer_text  = "Browsing %s",              -- Format string rendered when browsing a file explorer (either string or function(file_explorer_name: string): string)
     git_commit_text     = "Committing changes",       -- Format string rendered when committing changes in git (either string or function(filename: string): string)
     plugin_manager_text = "Managing plugins",         -- Format string rendered when managing plugins (either string or function(plugin_manager_name: string): string)

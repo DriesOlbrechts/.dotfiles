@@ -1,6 +1,6 @@
 #ALIAS
 alias ls='ls --color=auto'
-alias pacinstall='pacman -Slq | fzf --multi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
+alias pacinstall='yay -Slq | fzf --multi --preview "yay -Si {1}" | xargs -ro yay -S'
 alias cat='bat -p'
 alias exa='exa --color=auto --color-scale --group-directories-first'    #'ls --color=auto --group-directories-first'    # Add --icons once it is supported
 alias ls='exa'
