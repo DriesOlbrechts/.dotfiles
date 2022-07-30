@@ -32,6 +32,7 @@ packer.init {
 }
 
 return require('packer').startup(function(use)
+    use 'glepnir/dashboard-nvim'
     use 'wbthomason/packer.nvim'
 
     -- Themes
