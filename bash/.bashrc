@@ -7,8 +7,8 @@
 
 PS1='[\u@\h \W]\$ '
 
-eval "$(starship init bash)"
-
+# eval "$(starship init bash)"
+eval "$(oh-my-posh init bash --config ~/.poshthemes/custom/gruvbox.omp.json)"
 #fzf
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
