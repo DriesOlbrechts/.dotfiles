@@ -14,13 +14,23 @@ vim.fn.sign_define("DiagnosticSignHint",
 -- in the form "LspDiagnosticsSignWarning"
 require("neo-tree").setup({
     default_component_configs = {
-        close_if_last_window = false,
-        popup_bordeR_style = "rounded",
+        close_if_last_window = true,
+        popup_border_style = "rounded",
         enable_git_status = true,
         enable_diagnostics = true,
         modified = {
             symbol = "*",
             highlight = "NeoTreeModified",
+        },
+        indent = {
+            padding = 0,
+            with_expanders = false
+        },
+        icon = {
+            folder_closed = "",
+            folder_open = "",
+            folder_empty = "",
+            default = "",
         },
         git_status = {
             symbols = {
@@ -38,15 +48,34 @@ require("neo-tree").setup({
             }
         }
     },
+    window = {
+        width = 40,
+    },
     filesystem = {
         filtered_items = {
             visible = false,
             hide_dotfiles = false,
             hide_by_name = {
-                "node_modules"
-            }
-        }
-    }
+                "node_modules",
+                ".DS_Store",
+                "thumbs.db",
+                "__pycache"
+            },
+        },
+        follow_current_file = true,
+        hijack_netrw_behavior = "open_current",
+        use_libuv_file_watcher = true,
+    },
+    git_status = {
+        window = {
+            position = "float"
+        },
+    },
+    event_handlers = {
+        { event = "neo_tree_buffer_enter", handler = function(_) vim.opt_local.signcolumn = "auto" end },
+    },
 })
 
-vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle reveal<cr>', { desc = "Opens neotree", noremap = true, silent = true })
+
+vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle reveal<cr>',
+    { desc = "Opens neotree", noremap = true, silent = true })

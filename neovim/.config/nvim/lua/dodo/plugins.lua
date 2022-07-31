@@ -39,6 +39,8 @@ return require('packer').startup(function(use)
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     }
+    -- packer itself. https://github.com/wbthomason/packer.nvim/issues/718#issuecomment-1001631163
+    use {"wbthomason/packer.nvim"}
 
 
     -- Themes
@@ -51,6 +53,9 @@ return require('packer').startup(function(use)
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+    use {
+        'yamatsum/nvim-cursorline'
     }
 
     -- Discord
@@ -65,9 +70,10 @@ return require('packer').startup(function(use)
 
     -- LSP
     use 'neovim/nvim-lspconfig'
-    use 'williamboman/nvim-lsp-installer'
     use "onsails/lspkind-nvim"
     use "hrsh7th/cmp-nvim-lsp-signature-help"
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
 
     use({
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -137,6 +143,4 @@ return require('packer').startup(function(use)
     use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
     --use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
-    --
-
 end)

@@ -1,14 +1,14 @@
 -- Setup nvim-cmp.
 local cmp = require 'cmp'
 local lspkind = require("lspkind")
-
+local luasnip = require("luasnip")
 cmp.setup({
     -- lspkind setup
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol',
             maxwidth = 50,
-            before = function (entry, vim_item)
+            before = function(entry, vim_item)
                 -- ...
                 return vim_item
             end
@@ -33,6 +33,10 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<TAB>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
@@ -73,7 +77,7 @@ cmp.setup.cmdline(':', {
 })
 
 require("luasnip.loaders.from_vscode").lazy_load({
-  --paths = snippets_paths(),
-  include = nil, -- Load all languages
-  exclude = {},
+    --paths = snippets_paths(),
+    include = nil, -- Load all languages
+    exclude = {},
 })
