@@ -17,31 +17,6 @@ alias lrt='ls -1Ft modified -s modified'    #'ls -1Fcrt'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
 
 
-# Shows info about git repos
-PROJECTS=~/Documents/projects
-pp() {
-    local FOLDERS=$(
-    find $PROJECTS -maxdepth 2 -type d,l -execdir test -d {}/.git \; \
-        -printf "%T+\t%p\n" | sort -r  | awk '{gsub("'"$PROJECTS"'", ""); print $2}'
-    )
-    local FOLDER=$(
-    echo "${FOLDERS}" | fzf --preview "
-        onefetch '${PROJECTS}{}' 2>/dev/null;
-        exa -l '${PROJECTS}{}';
-        bat --color always '${PROJECTS}{}/README.md' 2>/dev/null
-    "
-)
-if [ $? -eq 0 ]; then
-    cd "${PROJECTS}/${FOLDER}"
-fi
-}
-
-ppcode(){
-    pp
-    if [ "$(pwd)" != "$PROJECTS" ]; then
-        code .
-    fi
-}
 
 # Kill a process with fzf
 fkill() {
