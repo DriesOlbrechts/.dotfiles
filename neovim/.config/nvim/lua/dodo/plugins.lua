@@ -40,7 +40,7 @@ return require('packer').startup(function(use)
         end
     }
     -- packer itself. https://github.com/wbthomason/packer.nvim/issues/718#issuecomment-1001631163
-    use {"wbthomason/packer.nvim"}
+    use { "wbthomason/packer.nvim" }
 
 
     -- Themes
@@ -98,6 +98,9 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    --sniprun
+    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+
     -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
@@ -141,6 +144,20 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
+    use { 'akinsho/git-conflict.nvim'}
+
+    --surround
+    use({
+        "kylechui/nvim-surround",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+
+
+
     use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
     --use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
