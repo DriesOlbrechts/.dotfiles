@@ -10,7 +10,7 @@ opt.ignorecase = true
 opt.errorbells = false
 opt.wrap = false
 
-opt.laststatus = 3
+opt.laststatus = 1
 
 opt.relativenumber = true
 opt.number = true
