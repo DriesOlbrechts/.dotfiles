@@ -9,6 +9,8 @@ font:
   bold_italic:
     style: Bold Italic
   size: 13.0
+  use_thin_strokes: false
+  builtin_box_drawing: true
 colors:
   # Default colors
   primary:
@@ -43,6 +45,8 @@ cursor:
   style: Block
   unfocused_hollow: true
 
-#window:
-  #opacity: 0.96
-
+window:
+  opacity: 0.98
+  dynamic_title: true
+  class: alacritty
+  instance: alacritty
