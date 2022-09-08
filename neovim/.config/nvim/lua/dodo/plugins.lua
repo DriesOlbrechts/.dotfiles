@@ -107,6 +107,7 @@ return require('packer').startup(function(use)
         run = ':TSUpdate'
     }
     use "p00f/nvim-ts-rainbow"
+    use 'nvim-treesitter/nvim-treesitter-context'
 
     use {
         'numToStr/Comment.nvim',
@@ -134,7 +135,7 @@ return require('packer').startup(function(use)
             }
         end
     }
-    --use "windwp/nvim-autopairs"
+
 
     -- git
     use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }

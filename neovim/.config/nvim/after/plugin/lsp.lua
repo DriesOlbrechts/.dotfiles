@@ -114,3 +114,4 @@ require 'lspconfig'.sumneko_lua.setup(config({
 require('lspconfig').bashls.setup(config())
 require('lspconfig').jsonls.setup(config())
 require('lspconfig').angularls.setup(config())
+require('lspconfig').volar.setup(config())
