@@ -45,4 +45,8 @@ git restore .
 Hence git restore is used to restore the contents.
 
 Another solution is to just remove the conflicting files and then stowing.
-
+## packages
+- hyprland
+- libnotify
+- dunst
+- batsignal
