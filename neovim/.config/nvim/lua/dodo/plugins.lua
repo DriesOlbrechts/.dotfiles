@@ -145,7 +145,7 @@ return require('packer').startup(function(use)
             require('gitsigns').setup()
         end
     }
-    use { 'akinsho/git-conflict.nvim'}
+    use { 'akinsho/git-conflict.nvim' }
 
     --surround
     use({
@@ -156,6 +156,12 @@ return require('packer').startup(function(use)
             })
         end
     })
+    --markdown
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    }) 
 
 
 
