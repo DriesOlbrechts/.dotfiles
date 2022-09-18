@@ -1,0 +1,44 @@
+:root {
+    --background: #282828;
+    --foreground: #ebdbb2;
+    --green: #98971a;
+}
+window {
+margin: 0px;
+border: 1px solid var(--green);
+background-color: var(--background);
+}
+
+#input {
+margin: 5px;
+border: none;
+color: var(--foreground);
+background-color: var(--background);
+}
+
+#inner-box {
+margin: 5px;
+border: none;
+background-color: var(--background);
+}
+
+#outer-box {
+margin: 5px;
+border: none;
+background-color: var(--background);
+}
+
+#scroll {
+margin: 0px;
+border: none;
+}
+
+#text {
+margin: 5px;
+border: none;
+color: var(--foreground);
+} 
+
+#entry:selected {
+background-color: var(--background);
+}
