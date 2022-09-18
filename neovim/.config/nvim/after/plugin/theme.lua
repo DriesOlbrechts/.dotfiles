@@ -1,2 +1,2 @@
 vim.cmd("colorscheme gruvbox")
-vim.cmd("hi Normal guibg=None")
+--vim.cmd("hi Normal guibg=None")
