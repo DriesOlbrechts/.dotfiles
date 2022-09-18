@@ -6,7 +6,7 @@
     "margin-left": 10,
     "margin-right": 10,
     "spacing": 0, 
-    "modules-left": ["custom/logo", "wlr/workspaces", "hyprland/window"],
+    "modules-left": ["custom/logo", "wlr/workspaces"],
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["tray","network","bluetooth", "pulseaudio", "backlight", "cpu", "memory", "custom/space", "battery" ],
     "river/tags": {
@@ -14,9 +14,6 @@
 	"format": "{name}",
 	"disable-click": false,
 	"tag-labels": ["1: ", "2: ", "3: ", "4: ", "5: "]
-    },
-    "hyprland/window": {
-
     },
     "tray": {
         "icon-size": 21,
@@ -64,9 +61,12 @@
         "format-charging": "{capacity}% ",
         "format-discharging": "{capacity}% {icon}",
         "format-plugged": "{capacity}% ",
-        "tooltip-format": "{timeTo}",
+        "tooltip-format": "{timeTo} | ",
         "format-icons": ["", "", "", "", ""],
-	"interval": 60
+        "on-click": "powerprofilesctl set performance && notify-send \"Power profile changed to: Performance\"",
+        "on-click-middle": "powerprofilesctl set balanced && notify-send \"Power profile changed to: Balanced\"",
+        "on-click-right": "powerprofilesctl set power-saver && notify-send \"Power profile changed to: Power-Saver\"",
+	    "interval": 60
     },
     "pulseaudio": {
         "scroll-step": 5,
@@ -111,6 +111,6 @@
 
     "custom/logo": {
 	"format": "[~]",
-	"on-click": "wofi --show drun -o DP-3",
+	"on-click": "wofi --show drun",
     },
 }

@@ -1,31 +1,30 @@
-:root {
-    --background: #282828;
-    --foreground: #ebdbb2;
-    --green: #98971a;
-}
+@define-color background #282828;
+@define-color foreground #ebdbb2;
+@define-color green #98971a;
+
 window {
 margin: 0px;
-border: 1px solid var(--green);
-background-color: var(--background);
+border: 1px solid @green;
+background-color: @background;
 }
 
 #input {
 margin: 5px;
 border: none;
-color: var(--foreground);
-background-color: var(--background);
+color: @foreground;
+background-color: @background;
 }
 
 #inner-box {
 margin: 5px;
 border: none;
-background-color: var(--background);
+background-color: @background;
 }
 
 #outer-box {
 margin: 5px;
 border: none;
-background-color: var(--background);
+background-color: @background;
 }
 
 #scroll {
@@ -36,9 +35,9 @@ border: none;
 #text {
 margin: 5px;
 border: none;
-color: var(--foreground);
+color: @foreground;
 } 
 
 #entry:selected {
-background-color: var(--background);
+background-color: @green;
 }
