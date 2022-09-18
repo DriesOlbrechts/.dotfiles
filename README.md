@@ -50,3 +50,9 @@ Another solution is to just remove the conflicting files and then stowing.
 - libnotify
 - dunst
 - batsignal
+- wl-clipboard
+- grim
+- slurp
+- wlogout
+- swaylock-effects
+- wpaperd
