@@ -1,154 +1,97 @@
+/* Global settings */
+@define-color gruvboxgreen #98971a;
+@define-color gruvboxbg #282828; 
+@define-color gruvboxfg #ebdbb2;
+@define-color gruvboxgray #3c3836;
 * {
     border: none;
-    font-family: "JetbrainsMono Nerd Font" ;
-    font-size: 15px;
-    color: #eeeeee;
-    border-radius: 20px; /* Controls Rounding */
-    padding: 2px 2px;
+    border-radius: 10px;
+    font-family: Sans, Awesome, sans-serif;
+    font-size: 16px;
+    background-color: @gruvboxbg;
+    color: @gruvboxfg;
 }
 
-#window {
-    /*font-weight: bold;*/
-    margin-top: 6px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 0px;
-    border-radius: 8px;
-    transition: none;
-    color: transparent;
-    background: transparent;
-
-  }
-
+/* Bar and stuff */
 window#waybar {
-    background: rgba(0, 0, 0, 0.85);
-    /* background: transparent; */
-}
-
-/*-----module groups----*/
-.modules-right {
-	/* background-color: rgba(8,8,8,0.85); */
     background: transparent;
-    /* margin: 0 -12px 0 0; */
-    border-radius: 20px;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
-.mnodules-center {
-	background-color: rgba(8,8,8,0.85);
-    /* background: transparent; */
-    margin: 0 0 0 0;
-    border-radius: 20px;
+#window{
+    margin-right: 5px;
+    padding:5px;
+    border-radius: 10px;
+    border: 2px solid @gruvboxgreen;
 }
 
-.modules-left {
-	/* background-color: rgba(8,8,8,0.85); */
-    background: transparent;
-    margin: 0 0 0 -12px;
-    border-radius: 20px;
+
+/* Color scheme 1: yellow on somewhat lighter background */
+#cpu, #memory, #disk, #backlight, #temperature, #battery, 
+#battery.charging, #battery.plugged, #pulseaudio, 
+#network, #custom-nmclicheck, #custom-space , #bluetooth, #tray{
+    /*background-color: @gruvboxgreen;*/
+    margin: 2px; 
+    padding: 5px;
+    border: 2px solid @gruvboxgreen;
+    border-radius: 10px;
+}
+#custom-nmclicheck{
+    margin-left: 0px;
+    border-radius: 10px 0px 0px 10px;    
+}
+#battery {
+    margin-right: 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
-tooltip {
-  background: #323437;
-  color: #ffffff;
-  border-radius: 10;
-}
 
-#workspaces {
-	padding: 0px 7px 0px 7px ;
-  padding-right: 0px;
-}
 
-/*-----modules indv----*/
-#workspaces button {
-    padding-left: 7px; 
-    background-color: transparent;
-    font-weight: bold;
-}
-#workspaces button:hover {
-    box-shadow: inherit;
-	/* background-color: #74b2ff; */
-	color: #000000;
-}
 
-#workspaces button.focused {
-	/* background-color: rgba(0,43,51,0.85); */
-}
-
-#workspaces button.active {
-	/* background-color: #40a0ff; */
-	color: #000000;
-}
-
-#custom-sep_l {
-	color: #ffffff;
-}
-
-#custom-sep_r {
-        color: #ffffff;
-}
-
-#custom-sep {
-        color: #ffffff;
-}
-
-#custom-empty {
-        color: #ffffff;
-}
-
-#clock {
-	font-weight: bold;
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#custom-media,
-#tray {
-  padding-left: 2px;
-  padding-right: 2px;
-}
-#mode,
-#custom-power,
-#custom-launcher {
-    font-weight: bold;
-    /* padding-right: 7px */
-}
-#custom-menu,
-#idle_inhibitor {
-    padding: 0 5px;
-}
-
-#mode {
-    color: #cc3436;
-    font-weight: bold;
-}
-
-/*-----Indicators----*/
-#network.disconnected {
-	color: #ff5454;
-}
-#network.disabled {
-	color: #e3c78a;
-}
-#idle_inhibitor.activated {
-    color: #2dcc36;
-}
-#pulseaudio.muted {
-    color: #aaaaaa; /* #e3c78a; */
-}
-#battery.charging {
-    color: #8cc85f;
-}
-#battery.warning:not(.charging) {
-	color: #e3c78a;
+/* Color scheme 1 alt: critical cases for 1 */
+#pulseaudio.muted, #battery.critical:not(.charging) {
+    background-color: #e78284;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 5px;
 }
 #battery.critical:not(.charging) {
-    color: #ff5454;
+    margin-right: 0px;
 }
-#temperature.critical {
-    color: #ff5454;
+
+/* Color scheme 2: stuff in life */
+#clock  {
+    padding: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    border-radius:10px;
+    border: 2px solid @gruvboxgreen;
 }
+
+#workspaces{
+    padding: 5px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 2px solid @gruvboxgreen;
+}
+#workspaces button{
+
+    color: @gruvboxgray;
+}
+
+
+
+
+/* Last color scheme for the logo */
+#custom-logo {
+    padding: 0 15px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 2px solid @gruvboxgreen;
+}
+
+
