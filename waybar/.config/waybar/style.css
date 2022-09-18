@@ -44,13 +44,18 @@ window#waybar.hidden {
     margin-left: 0px;
     border-radius: 10px 0px 0px 10px;    
 }
-#battery {
+
+
+#cpu {
+    border-radius: 10px 0px 0px 10px;
+    border-right: none;
     margin-right: 0px;
-    border-radius: 0px 10px 10px 0px;
 }
-
-
-
+#memory {
+    border-radius: 0px 10px 10px 0px;
+    border-left: none;
+    margin-left: 0px;
+}
 
 /* Color scheme 1 alt: critical cases for 1 */
 #pulseaudio.muted, #battery.critical:not(.charging) {
