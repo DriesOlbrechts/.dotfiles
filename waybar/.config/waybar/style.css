@@ -23,8 +23,8 @@ window#waybar.hidden {
 }
 
 #window{
-    margin-right: 5px;
-    padding:5px;
+    padding-left:5px;
+    padding-right:5px;
     border-radius: 10px;
     border: 2px solid @gruvboxgreen;
 }
@@ -33,17 +33,16 @@ window#waybar.hidden {
 /* Color scheme 1: yellow on somewhat lighter background */
 #cpu, #memory, #disk, #backlight, #temperature, #battery, 
 #battery.charging, #battery.plugged, #pulseaudio, 
-#network, #custom-nmclicheck, #custom-space , #bluetooth, #tray{
+#network, #custom-nmclicheck,  #bluetooth, #tray{
     /*background-color: @gruvboxgreen;*/
-    margin: 2px; 
-    padding: 5px;
+    margin: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
     border: 2px solid @gruvboxgreen;
     border-radius: 10px;
 }
-#custom-nmclicheck{
-    margin-left: 0px;
-    border-radius: 10px 0px 0px 10px;    
-}
+
+
 
 
 #cpu {
@@ -62,7 +61,8 @@ window#waybar.hidden {
     background-color: #e78284;
     margin-left: 0px;
     margin-right: 0px;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 #battery.critical:not(.charging) {
     margin-right: 0px;
@@ -70,7 +70,8 @@ window#waybar.hidden {
 
 /* Color scheme 2: stuff in life */
 #clock  {
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-left: 0px;
     margin-right: 0px;
     border-radius:10px;
@@ -78,25 +79,30 @@ window#waybar.hidden {
 }
 
 #workspaces{
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-right: 10px;
     border-radius: 10px;
     border: 2px solid @gruvboxgreen;
 }
-#workspaces button{
 
-    color: @gruvboxgray;
-}
 
 
 
 
 /* Last color scheme for the logo */
-#custom-logo {
-    padding: 0 15px;
-    margin-right: 10px;
+#custom-power {
     border-radius: 10px;
     border: 2px solid @gruvboxgreen;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 24px;
 }
 
+#custom-spotify{
+    border: 2px solid @gruvboxgreen;
+    margin-left:5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
