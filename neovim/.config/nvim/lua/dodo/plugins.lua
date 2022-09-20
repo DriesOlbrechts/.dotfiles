@@ -82,6 +82,10 @@ return require('packer').startup(function(use)
             require("lsp_lines").setup()
         end,
     })
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+    })
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
@@ -161,8 +165,9 @@ return require('packer').startup(function(use)
     use({
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
-    }) 
+    })
 
+    use 'ekickx/clipboard-image.nvim'
 
 
     use "tpope/vim-fugitive"

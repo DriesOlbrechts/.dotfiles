@@ -1,0 +1,10 @@
+local keymap= vim.keymap.set
+local saga = require('lspsaga')
+
+saga.init_lsp_saga()
+
+keymap({"n","v"}, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "pd", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
+keymap("n","<leader>o", "<cmd>LSoutlineToggle<CR>",{ silent = true })
+
