@@ -12,6 +12,11 @@ vim.diagnostic.config({
     virtual_lines = false,
 })
 
+-- code actions
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>CodeActionMenu<cr>', {
+    desc = 'Code action menu',
+    noremap = true, silent = true
+})
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -65,6 +70,12 @@ local function config(_config)
     }, _config or {})
 end
 
+require('lspconfig').bashls.setup(config())
+require('lspconfig').jsonls.setup(config())
+require('lspconfig').angularls.setup(config())
+require('lspconfig').volar.setup(config())
+require('lspconfig').csharp_ls.setup(config())
+require('lspconfig').clangd.setup(config())
 require('lspconfig')['pyright'].setup(config())
 require('lspconfig')['tsserver'].setup(config())
 require('lspconfig')['rust_analyzer'].setup(config())
@@ -111,9 +122,22 @@ require 'lspconfig'.sumneko_lua.setup(config({
         },
     },
 }))
-require('lspconfig').bashls.setup(config())
-require('lspconfig').jsonls.setup(config())
-require('lspconfig').angularls.setup(config())
-require('lspconfig').volar.setup(config())
-require('lspconfig').csharp_ls.setup(config())
-require('lspconfig').clangd.setup(config())
+
+
+
+local rustopts = {
+    tools = {
+        autoSetHints = true,
+        hover_with_actions = false,
+        inlay_hints = {
+            only_current_line = false,
+        }
+    },
+    server = {
+        standalone = false;
+        capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+        on_attach = on_attach,
+        flags = lsp_flags
+    }
+}
+require('rust-tools').setup(rustopts)

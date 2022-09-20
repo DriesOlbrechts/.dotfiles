@@ -86,6 +86,11 @@ return require('packer').startup(function(use)
         "glepnir/lspsaga.nvim",
         branch = "main",
     })
+    use 'simrat39/rust-tools.nvim'
+    require('packer').use({
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+    })
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
