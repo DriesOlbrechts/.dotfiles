@@ -91,6 +91,14 @@ return require('packer').startup(function(use)
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu',
     })
+    use {
+        'saecki/crates.nvim',
+        tag = 'v0.2.1',
+        requires = { 'nvim-lua/plenary.nvim' },
+        config = function()
+            require('crates').setup()
+        end,
+    }
 
     -- Snippets
     use "L3MON4D3/LuaSnip"
