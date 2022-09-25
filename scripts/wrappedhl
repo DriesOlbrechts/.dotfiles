@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd ~
+
+export QT_QPA_PLATFORMTHEME=qt5ct
+
+exec Hyprland

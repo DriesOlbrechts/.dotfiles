@@ -10,6 +10,9 @@ opt.ignorecase = true
 opt.errorbells = false
 opt.wrap = false
 
+opt.title = true
+opt.titlestring="NVIM"
+
 opt.laststatus = 1
 
 opt.relativenumber = true
