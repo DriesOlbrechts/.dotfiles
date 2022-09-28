@@ -70,6 +70,7 @@ local function config(_config)
     }, _config or {})
 end
 
+require('lspconfig').opencl_ls.setup(config())
 require('lspconfig').bashls.setup(config())
 require('lspconfig').jsonls.setup(config())
 require('lspconfig').angularls.setup(config())

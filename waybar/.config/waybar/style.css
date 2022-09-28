@@ -6,10 +6,9 @@
 * {
     border: none;
     border-radius: 10px;
-    font-family: Sans, Awesome, sans-serif;
+    font-family: Material Design Icons, FiraCode Nerd Font Mono;
     font-size: 16px;
     background-color: @gruvboxbg;
-    color: @gruvboxfg;
 }
 
 /* Bar and stuff */
@@ -42,6 +41,10 @@ window#waybar.hidden {
     border-radius: 10px;
 }
 
+
+#workspaces button.active {
+    color: @gruvboxgreen;
+}
 
 
 

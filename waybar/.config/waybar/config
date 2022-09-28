@@ -24,20 +24,16 @@
         "format": "{usage}% ",
         "tooltip": false
     },
-        "wlr/workspaces": {
-            "format": "{name}",
-            "on-click": "activate",
-            "format-icons": {
-              "1": "ﭮ",
-              "2": "",
-              "3": "",
-              "4": "",
-              "5": "",
-              "urgent": "",
-              "active": "",
-              "default": ""
+    "wlr/workspaces": {
+            "on-click" : "activate",
+            "format" : "{icon}",
+            "active-only" : false,
+            "format-icons" : {
+              "default" : "",
+              "focused" : "⬤"
             }
     },
+
     "memory": {
         "format": "{}% "
     },
