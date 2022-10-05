@@ -1,0 +1,23 @@
+#!/bin/bash
+reply_action () {
+
+}
+if [ $1 = "rectangle" ]
+then
+    OPTION="-g \"$(slurp)\" -"
+elif [ $1 = "screen" ]
+then
+    OPTION='-'
+fi
+
+grim $OPTION | wl-copy -t image/png
+
+
+
+ACTION=$(dunstify --action="default,Edit"  "Screenshot copied to clipboard!")
+
+case "$ACTION" in
+"default")
+    reply_action
+    ;;
+esac
