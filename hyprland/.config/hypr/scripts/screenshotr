@@ -1,16 +1,16 @@
-#!/bin/bash
-reply_action () {
-
+#!/bin/bash -x
+edit_action () {
+    wl-paste | swappy -f -
 }
+COPY=(wl-copy -t image/png)
 if [ $1 = "rectangle" ]
 then
-    OPTION="-g \"$(slurp)\" -"
+    grim -g "$(slurp)" - | "${COPY}"
 elif [ $1 = "screen" ]
 then
-    OPTION='-'
+    grim - | "${COPY}"
 fi
 
-grim $OPTION | wl-copy -t image/png
 
 
 
@@ -18,6 +18,6 @@ ACTION=$(dunstify --action="default,Edit"  "Screenshot copied to clipboard!")
 
 case "$ACTION" in
 "default")
-    reply_action
+    edit_action
     ;;
 esac
