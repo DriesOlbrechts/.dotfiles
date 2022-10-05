@@ -15,6 +15,8 @@ alias lS='ls -1FrSs size'    #'ls -1FSsh'
 alias lart='ls -1aFt modified -s modified'    #'ls -1Fcaert'
 alias lrt='ls -1Ft modified -s modified'    #'ls -1Fcrt'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
+alias school='cd ~/Documents/Application-development/jaar3'
+alias dotfiles='cd ~/.dotfiles'
 
 
 

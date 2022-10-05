@@ -15,7 +15,7 @@
         "spacing": 10
     },
     "clock": {
-        "format": "{:%D  %a  %T}",
+        "format": "{:%d/%m/%Y  %a  %T}",
 	"tooltip": true,
 	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
 	"interval": 1
@@ -88,7 +88,8 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
         "tooltip-format-ethernet": "{ifname} ",
         "tooltip-format-disconnected": "Disconnected",
-        "max-length": 20
+        "max-length": 20,
+        "on-click": "nm-connection-editor"
     },
     "bluetooth": {
 	    "format": " {status}",

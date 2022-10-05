@@ -25,6 +25,8 @@ opt.softtabstop = 4
 opt.expandtab = true
 opt.smartindent = true
 
+
+
 opt.mouse = 'a'
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

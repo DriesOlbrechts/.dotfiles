@@ -9,10 +9,3 @@ vim.api.nvim_create_user_command("MarkdownToPdf",
     end,
     { nargs = 0 }
 )
-
-
-vim.api.nvim_set_keymap('n', '<leader>pdf', '<cmd>MarkdownToPdf<CR>', { 
-    desc = 'Convert current markdown file to pdf',
-    noremap = true, silent = true}
-)
-
