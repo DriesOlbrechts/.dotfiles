@@ -1,0 +1,3 @@
+#!/bin/bash
+yay -Syu --noconfirm hyprland-git
+sudo cp $HOME/.config/hypr/hyprland.desktop /usr/share/wayland-sessions
