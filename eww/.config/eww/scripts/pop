@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+window() {
+NAME=$1
+  eww open --toggle "${NAME}_win"
+  echo "opened $NAME"
+}
+
+window "$1"
