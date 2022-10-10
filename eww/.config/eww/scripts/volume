@@ -3,23 +3,20 @@
 volicons=("󰕿" "󰖀" "󰕾")
 
 vol() {
-  wpctl get-volume @DEFAULT_AUDIO_"$1"@ | awk '{print int($2*100)}'
+  wpctl get-volume @DEFAULT_SINK@ | awk '{print int($2*100)}'
 }
 ismuted() {
   wpctl get-volume @DEFAULT_SINK@ | rg -i muted
   echo $?
 }
 setvol() {
-  wpctl set-volume @DEFAULT_AUDIO_"$1"@ "$(awk -v n="$2" 'BEGIN{print (n / 100)}')"
+  wpctl set-volume @DEFAULT_SINK@ "$(awk -v n="$2" 'BEGIN{print (n / 100)}')"
 }
 setmute() {
-  wpctl set-mute @DEFAULT_AUDIO_"$1"@ toggle
+  wpctl set-mute @DEFAULT_SINK@ toggle
 }
 
 if [ "$1" = "mute" ]; then
-  if [ "$2" != "SOURCE" ] && [ "$2" != "SINK" ]; then
-    echo "Can only mute SINK or SOURCE"; exit 1
-  fi
   setmute "$2"
 elif [ "$1" = "setvol" ]; then
   if [ "$2" != "SOURCE" ] && [ "$2" != "SINK" ]; then
@@ -43,6 +40,9 @@ else
   # event loop
   pactl subscribe | rg --line-buffered "change" | while read -r _; do
     lvl=$(awk -v n="$(vol "SINK")" 'BEGIN{print int(n/34)}')
+    if  [ $lvl -gt 2 ]; then
+        lvl=2
+    fi
     ismuted=$(ismuted)
 
     if [ "$ismuted" = 1 ]; then
