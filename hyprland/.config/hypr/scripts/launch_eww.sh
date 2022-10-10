@@ -8,7 +8,7 @@ FOC_MON_ID=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .id')
 # if daemon's not running do so
 if [[ ! $(pidof eww) ]]; then
     ${EWW} daemon
-    sleep 1
+    sleep 3
 fi
 
 # run bars on each monitor
