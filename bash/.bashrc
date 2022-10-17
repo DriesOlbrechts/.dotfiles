@@ -2,13 +2,15 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 #Run the motd client
 ~/.cargo/bin/client
 
 PS1='[\u@\h \W]\$ '
 
-# eval "$(starship init bash)"
-eval "$(oh-my-posh init bash --config ~/.poshthemes/custom/gruvbox.omp.json)"
+# eval "$(oh-my-posh init bash --config ~/.poshthemes/custom/gruvbox.omp.json)"
 #fzf
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
@@ -29,3 +31,5 @@ done
 . ~/.forgit/forgit.plugin.zsh
 
 . "$HOME/.cargo/env"
+
+eval "$(starship init bash)"

@@ -182,6 +182,18 @@ return require('packer').startup(function(use)
 
     use 'ekickx/clipboard-image.nvim'
 
+    -- noice
+    use({
+        "folke/noice.nvim",
+        event = "VimEnter",
+        module = "noice",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    })
+
 
     use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions

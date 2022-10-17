@@ -48,7 +48,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    vim.keymap.set('n', '<space>f', function()
+        vim.lsp.buf.format { async = true }
+    end, bufopts)
 
     vim.keymap.set('n', '<space>tl', function()
         require('lsp_lines').toggle()
@@ -64,7 +66,7 @@ local lsp_flags = {
 
 local function config(_config)
     return vim.tbl_deep_extend("force", {
-        capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
         on_attach = on_attach,
         flags = lsp_flags,
     }, _config or {})
@@ -74,6 +76,7 @@ require('lspconfig').opencl_ls.setup(config())
 require('lspconfig').bashls.setup(config())
 require('lspconfig').jsonls.setup(config())
 require('lspconfig').angularls.setup(config())
+require('lspconfig').vetur.setup(config())
 require('lspconfig').volar.setup(config())
 require('lspconfig').csharp_ls.setup(config())
 require('lspconfig').clangd.setup(config())
@@ -138,7 +141,7 @@ local rustopts = {
     },
     server = {
         standalone = false;
-        capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities),
+        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
         on_attach = on_attach,
         flags = lsp_flags
     }

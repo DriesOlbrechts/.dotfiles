@@ -41,7 +41,7 @@ cmp.setup({
             if luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
             elseif cmp.visible() then
-                cmp.confirm({ 
+                cmp.confirm({
                     behavior = cmp.ConfirmBehavior.Replace,
                     select = true,
                 })
