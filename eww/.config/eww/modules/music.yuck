@@ -18,6 +18,6 @@
         :duration "350ms"
         (box
         :valign "end"
-          (button  :timeout "5s" :onclick "playerctl previous --player=spotifyd" :class "song-button" "⏮" )
-          (button  :timeout "5s" :onclick "playerctl play-pause --player=spotifyd" :class "song-button" {music.status})
-          (button  :timeout "5s" :onclick "playerctl next --player=spotifyd" :class "song-button" "⏭"))))))
+          (button  :timeout "5s" :onclick "playerctl previous --player=spotify" :class "song-button" "⏮" )
+          (button  :timeout "5s" :onclick "playerctl play-pause --player=spotify" :class "song-button" {music.status})
+          (button  :timeout "5s" :onclick "playerctl next --player=spotify" :class "song-button" "⏭"))))))

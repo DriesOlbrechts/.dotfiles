@@ -4,9 +4,16 @@ if status is-interactive
     # Set variables
     set fish_greeting
     set EDITOR nvim
+
+    theme_gruvbox dark medium
+
+    ~/.cargo/bin/client
+
+    ##nvm
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && bass source "$NVM_DIR/nvm.sh"  # This loads nvm
+
     
-    # Terminal welcome
-    neofetch
 
 
 

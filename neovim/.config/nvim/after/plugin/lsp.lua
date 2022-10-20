@@ -72,17 +72,27 @@ local function config(_config)
     }, _config or {})
 end
 
-require('lspconfig').opencl_ls.setup(config())
 require('lspconfig').bashls.setup(config())
+
+require('lspconfig').marksman.setup(config())
+
 require('lspconfig').jsonls.setup(config())
+
 require('lspconfig').angularls.setup(config())
 require('lspconfig').volar.setup(config())
+
+require('lspconfig').opencl_ls.setup(config())
 require('lspconfig').csharp_ls.setup(config())
 require('lspconfig').clangd.setup(config())
+
 require('lspconfig')['pyright'].setup(config())
+
 require('lspconfig')['tsserver'].setup(config())
+
 require('lspconfig')['rust_analyzer'].setup(config())
+
 require('lspconfig').gopls.setup(config())
+
 require('lspconfig').html.setup(config())
 require('lspconfig').cssls.setup(config())
 require('lspconfig').emmet_ls.setup(config({
@@ -103,6 +113,7 @@ require('lspconfig').tailwindcss.setup(config({
         end
     end
 }))
+
 require 'lspconfig'.sumneko_lua.setup(config({
     settings = {
         Lua = {

@@ -20,9 +20,9 @@
         :halign "center"
         :valign "center"
         :class "music-button-box"
-        (button :timeout "5s" :class "music-button" :onclick "playerctl previous --player=spotifyd" "")
-        (button :timeout "5s" :class "music-button" :onclick "playerctl play-pause --player=spotifyd" {music.status})
-        (button :timeout "5s" :class "music-button" :onclick "playerctl next --player=spotifyd" ""))
+        (button :timeout "5s" :class "music-button" :onclick "playerctl previous --player=spotify" "")
+        (button :timeout "5s" :class "music-button" :onclick "playerctl play-pause --player=spotify" {music.status})
+        (button :timeout "5s" :class "music-button" :onclick "playerctl next --player=spotify" ""))
       (box
         :orientation "v"
         (centerbox
