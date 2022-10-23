@@ -79,7 +79,6 @@ require('lspconfig').marksman.setup(config())
 require('lspconfig').jsonls.setup(config())
 
 require('lspconfig').angularls.setup(config())
-require('lspconfig').volar.setup(config())
 
 require('lspconfig').opencl_ls.setup(config())
 require('lspconfig').csharp_ls.setup(config())
@@ -95,6 +94,15 @@ require('lspconfig').gopls.setup(config())
 
 require('lspconfig').html.setup(config())
 require('lspconfig').cssls.setup(config())
+
+require('lspconfig').volar.setup(config({
+    on_attach = function(client)
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.document_range_formatting = false
+    end,
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+}))
+
 require('lspconfig').emmet_ls.setup(config({
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
     init_options = {

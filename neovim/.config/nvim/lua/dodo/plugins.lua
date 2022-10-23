@@ -55,9 +55,9 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     -- cursorline
-    use {
-        'yamatsum/nvim-cursorline'
-    }
+    -- use {
+    --     'yamatsum/nvim-cursorline'
+    -- }
 
     -- Discord
     use 'andweeb/presence.nvim'
