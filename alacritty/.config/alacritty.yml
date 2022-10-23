@@ -42,12 +42,14 @@ colors:
     cyan:    '#8ec07c'
     white:   '#ebdbb2'
 
+  transparent_background_colors: true
+
 cursor:
   style: Block
   unfocused_hollow: true
 
 window:
-  opacity: 0.85
+  opacity: 0.90
   dynamic_title: true
   class: alacritty
   instance: alacritty

@@ -100,7 +100,6 @@ require('lspconfig').volar.setup(config({
         client.server_capabilities.document_formatting = false
         client.server_capabilities.document_range_formatting = false
     end,
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 }))
 
 require('lspconfig').emmet_ls.setup(config({
