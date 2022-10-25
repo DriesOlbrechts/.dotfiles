@@ -115,6 +115,13 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    use {
+        'ThePrimeagen/harpoon',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        }
+    }
+
     --sniprun
     use { 'michaelb/sniprun', run = 'bash ./install.sh' }
 

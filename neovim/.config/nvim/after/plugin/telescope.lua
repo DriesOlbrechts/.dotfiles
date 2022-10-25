@@ -36,14 +36,19 @@ require('telescope').setup {
     }
 }
 
+-- harpoon telescope
+require("telescope").load_extension('harpoon')
+
 --require('telescope').load_extension('fzf')
 
 -- Search
 vim.api.nvim_set_keymap('n', '<leader><leader>', '<CMD>lua require("dodo.telescope-config").project_files()<CR>',
     { desc = 'Fuzzy search through the output of `git ls-files` command, respects .gitignore', noremap = true,
         silent = true })
-vim.api.nvim_set_keymap('n', '<leader>F', '<cmd>lua require("telescope.builtin").find_files()<cr>',
+vim.api.nvim_set_keymap('n', '<leader>F', '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>',
     { desc = 'Find files in the current working directory', noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>Fg', '<cmd>lua require("telescope.builtin").find_files({no_ignore = true})<cr>',
+    { desc = 'Find files in the current working directory including files in .gitignore', noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sp', '<cmd>lua require("dodo.telescope-config").project_live_grep()<cr>',
     { desc = 'Live grep in the current working directory', noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bb', '<cmd>lua require("telescope.builtin").buffers()<cr>',
