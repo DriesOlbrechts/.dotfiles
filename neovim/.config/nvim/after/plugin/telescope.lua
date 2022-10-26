@@ -47,7 +47,7 @@ vim.api.nvim_set_keymap('n', '<leader><leader>', '<CMD>lua require("dodo.telesco
         silent = true })
 vim.api.nvim_set_keymap('n', '<leader>F', '<cmd>lua require("telescope.builtin").find_files({hidden = true})<cr>',
     { desc = 'Find files in the current working directory', noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>Fg', '<cmd>lua require("telescope.builtin").find_files({no_ignore = true})<cr>',
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>lua require("telescope.builtin").find_files({no_ignore = true})<cr>',
     { desc = 'Find files in the current working directory including files in .gitignore', noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sp', '<cmd>lua require("dodo.telescope-config").project_live_grep()<cr>',
     { desc = 'Live grep in the current working directory', noremap = true, silent = true })

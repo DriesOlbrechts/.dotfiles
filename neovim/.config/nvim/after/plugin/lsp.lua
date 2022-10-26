@@ -113,13 +113,7 @@ require('lspconfig').emmet_ls.setup(config({
         },
     }
 }))
-require('lspconfig').tailwindcss.setup(config({
-    on_attach = function(client, bufnr)
-        if client.server_capabilities.colorProvider then
-            require "lsp.utils.documentcolors".buf_attach(bufnr)
-        end
-    end
-}))
+require('lspconfig').tailwindcss.setup({})
 
 require 'lspconfig'.sumneko_lua.setup(config({
     settings = {

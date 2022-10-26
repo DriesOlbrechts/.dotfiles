@@ -123,7 +123,7 @@ return require('packer').startup(function(use)
     }
 
     --sniprun
-    use { 'michaelb/sniprun', run = 'bash ./install.sh' }
+    -- use { 'michaelb/sniprun', run = 'bash ./install.sh' }
 
     -- Treesitter
     use {
@@ -202,7 +202,7 @@ return require('packer').startup(function(use)
     })
 
 
-    use "tpope/vim-fugitive"
+    -- use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
     --use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 end)
