@@ -461,3 +461,7 @@
 [discord]
     appname = discord
     format = "<b>%s</b>\n\n%b" 
+[batsignal]
+    appname = batsignal
+    frame_color="#fe8019"
+    fullscreen = "show"
