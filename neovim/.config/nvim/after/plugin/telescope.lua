@@ -2,6 +2,12 @@ require('telescope').setup {
     defaults = {
         -- Default configuration for telescope goes here:
         -- config_key = value,
+
+        layout_strategy = "vertical",
+        preview = {
+            height = 0.95,
+            prompt_position = "bottom"
+        },
         mappings = {
             i = {
                 -- map actions.which_key to <C-h> (default: <C-/>)
@@ -36,8 +42,6 @@ require('telescope').setup {
     }
 }
 
--- harpoon telescope
-require("telescope").load_extension('harpoon')
 
 --require('telescope').load_extension('fzf')
 

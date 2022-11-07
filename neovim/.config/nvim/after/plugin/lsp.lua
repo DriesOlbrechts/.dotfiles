@@ -45,7 +45,6 @@ local on_attach = function(client, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function()
@@ -95,12 +94,7 @@ require('lspconfig').gopls.setup(config())
 require('lspconfig').html.setup(config())
 require('lspconfig').cssls.setup(config())
 
-require('lspconfig').volar.setup(config({
-    on_attach = function(client)
-        client.server_capabilities.document_formatting = false
-        client.server_capabilities.document_range_formatting = false
-    end,
-}))
+require('lspconfig').volar.setup(config())
 
 require('lspconfig').emmet_ls.setup(config({
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
@@ -158,3 +152,6 @@ local rustopts = {
     }
 }
 require('rust-tools').setup(rustopts)
+
+
+

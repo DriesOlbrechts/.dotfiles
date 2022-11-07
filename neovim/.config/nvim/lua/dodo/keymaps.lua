@@ -3,8 +3,6 @@ vim.keymap.set("", "<Space>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- jk to Escape 
-vim.keymap.set({'!'}, 'jk', [[<c-\><c-n>]], {})
 
 
 -- no arrow keys - do it the right way you monster

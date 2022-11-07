@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
     -- Status line
     use {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+        requires = { 'kyazdani42/nvim-web-devicons' }
     }
     -- cursorline
     use {
@@ -87,7 +87,7 @@ return require('packer').startup(function(use)
         branch = "main",
     })
     use 'simrat39/rust-tools.nvim'
-    require('packer').use({
+    use({
         'weilbith/nvim-code-action-menu',
         cmd = 'CodeActionMenu',
     })
@@ -99,7 +99,6 @@ return require('packer').startup(function(use)
             require('crates').setup()
         end,
     }
-
     -- Snippets
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"

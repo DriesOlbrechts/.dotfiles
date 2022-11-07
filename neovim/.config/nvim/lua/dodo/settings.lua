@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 -- General
 opt.compatible = false
-opt.colorcolumn = "120"
+opt.colorcolumn = "80"
 opt.signcolumn = 'yes' -- Figure out to make line number colored for W/E...
 opt.hlsearch = false
 opt.ignorecase = true
@@ -13,7 +13,7 @@ opt.wrap = false
 opt.title = true
 opt.titlestring="NVIM"
 
-opt.laststatus = 1
+opt.laststatus = 3
 
 opt.relativenumber = true
 opt.number = true
@@ -28,6 +28,8 @@ opt.smartindent = true
 
 
 opt.mouse = 'a'
+
+opt.foldlevel = 99
 
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
