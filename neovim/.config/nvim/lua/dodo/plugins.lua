@@ -200,6 +200,9 @@ return require('packer').startup(function(use)
         }
     })
 
+    -- debugging
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
 
     -- use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
