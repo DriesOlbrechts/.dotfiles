@@ -3,6 +3,7 @@ require("mason-lspconfig").setup()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.offsetEncoding = { "utf-16" }
 
 -- update when in insert
 vim.diagnostic.config({
@@ -152,6 +153,3 @@ local rustopts = {
     }
 }
 require('rust-tools').setup(rustopts)
-
-
-

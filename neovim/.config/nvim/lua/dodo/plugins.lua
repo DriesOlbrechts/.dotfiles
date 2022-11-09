@@ -189,19 +189,23 @@ return require('packer').startup(function(use)
     use 'ekickx/clipboard-image.nvim'
 
     -- noice
+    -- use({
+    --     "folke/noice.nvim",
+    --     event = "VimEnter",
+    --     module = "noice",
+    --     requires = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         "rcarriga/nvim-notify",
+    --     }
+    -- })
+
+    -- null-ls
     use({
-        "folke/noice.nvim",
-        event = "VimEnter",
-        module = "noice",
-        requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        }
+        "jose-elias-alvarez/null-ls.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
     })
 
-    -- debugging
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
 
 
     -- use "tpope/vim-fugitive"
