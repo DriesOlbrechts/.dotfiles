@@ -1,9 +1,9 @@
 GAPS=$(hyprctl getoption general:gaps_out -j | jq -r ".int")
 
 if [ $GAPS -eq 0 ]; then
-    ROUNDING=10
-    GAPSOUT=10
-    GAPSIN=5
+    ROUNDING=7
+    GAPSOUT=4
+    GAPSIN=2
 else
 
     ROUNDING=0

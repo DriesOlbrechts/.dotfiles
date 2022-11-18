@@ -189,22 +189,30 @@ return require('packer').startup(function(use)
     use 'ekickx/clipboard-image.nvim'
 
     -- noice
-    -- use({
-    --     "folke/noice.nvim",
-    --     event = "VimEnter",
-    --     module = "noice",
-    --     requires = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         "rcarriga/nvim-notify",
-    --     }
-    -- })
+    use({
+        "folke/noice.nvim",
+        event = "VimEnter",
+        module = "noice",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    })
 
     -- null-ls
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
     })
+
+    -- fold preview
+    use { 'anuvyklack/fold-preview.nvim',
+        requires = 'anuvyklack/keymap-amend.nvim',
+        config = function()
+            require('fold-preview').setup()
+        end
+    }
 
 
 
