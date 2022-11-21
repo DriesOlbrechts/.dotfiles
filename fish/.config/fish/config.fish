@@ -7,7 +7,8 @@ if status is-interactive
 
     theme_gruvbox dark medium
 
-    ~/.cargo/bin/client
+    # ~/.cargo/bin/client
+    fortune | cowsay | lolcat
 
     ##nvm
     export NVM_DIR="$HOME/.nvm"
