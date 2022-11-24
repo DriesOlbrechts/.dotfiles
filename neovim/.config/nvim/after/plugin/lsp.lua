@@ -24,7 +24,24 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+-- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+--
+-- Trouble keybinds
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+    { silent = true, noremap = true, desc = "Toggle trouble diagnostics" }
+)
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+    { silent = true, noremap = true, desc = "Toggle trouble workspace diagnostics" }
+)
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+    { silent = true, noremap = true, desc = "Toggle trouble document diagnostics" }
+)
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+    { silent = true, noremap = true, desc = "Toggle trouble quickfix list" }
+)
+vim.keymap.set("n", "<leader>gr", "<cmd>TroubleToggle lsp_references<cr>",
+    { silent = true, noremap = true, desc="Toggle trouble lsp references" }
+)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -47,7 +64,7 @@ local on_attach = function(client, bufnr)
     end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, bufopts)
+    -- vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', '<space>f', function()
         vim.lsp.buf.format { async = true }
     end, bufopts)

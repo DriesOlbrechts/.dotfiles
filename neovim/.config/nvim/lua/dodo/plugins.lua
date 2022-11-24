@@ -99,6 +99,13 @@ return require('packer').startup(function(use)
             require('crates').setup()
         end,
     }
+
+
+    --trouble
+    use {
+        "folke/trouble.nvim",
+        requires = "kyazdani42/nvim-web-devicons"
+    }
     -- Snippets
     use "L3MON4D3/LuaSnip"
     use "saadparwaiz1/cmp_luasnip"
@@ -215,7 +222,11 @@ return require('packer').startup(function(use)
     }
 
 
-
+    --twilight
+    --
+    use {
+        "folke/twilight.nvim",
+    }
     -- use "tpope/vim-fugitive"
     --use "saadparwaiz1/cmp_luasnip" -- snippet completions
     --use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }

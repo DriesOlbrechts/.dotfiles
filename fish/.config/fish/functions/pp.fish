@@ -5,17 +5,15 @@ function pp
 
         set FOLDERS (
         find $PROJECTS -maxdepth 2 -type d,l -execdir test -d {}/.git \; \
-            -printf "%T+\t%p\n" | sort -r | awk '{gsub("'"$PROJECTS"'", ""); print $2}'
+        -printf "%T+\t%p\n" | sort -r | awk '{gsub("'"$PROJECTS"'", ""); print $2}'
         )
     end
     set FOLDER (
     echo $FOLDERS | fzf --preview "
-        onefetch '$PROJECTS{}' 2>/dev/null;
-        exa -l '$PROJECTS{}' 2>/dev/null;
-        bat --color always '$PROJECTS{}/README.md' 2>/dev/null
+    onefetch '$PROJECTS{}' 2>/dev/null;
+    exa -l '$PROJECTS{}' 2>/dev/null;
+    bat --color always '$PROJECTS{}/README.md' 2>/dev/null
     " 
     )
-    if test $status -eq 0
-        cd "$PROJECTS/$FOLDER"
-    end
+    cd "$PROJECTS/$FOLDER"
 end
