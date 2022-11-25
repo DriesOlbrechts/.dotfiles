@@ -1,15 +1,52 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-BAT=`ls /sys/class/power_supply | grep BAT | head -n 1`
+status() {
+	if [ "$STATE" = "Charging" ]; then
+		echo -n "charging"
 
-battery() {
-	cat /sys/class/power_supply/${BAT}/capacity
+		if [ "$RATE" -gt 0 ]; then
+			echo ", $(gettime) left"
+		else
+			echo ""
+		fi
+	elif [ "$STATE" = "Discharging" ]; then
+		echo "$(gettime)h left"
+	else
+		echo "fully charged"
+	fi
 }
-battery_stat() {
-	cat /sys/class/power_supply/${BAT}/status
+
+color() {
+	if [ "$CAPACITY" -le 20 ]; then
+		echo '#fb4934'
+	else
+		echo '#b8bb26'
+	fi
 }
 
-case "$1" in
-	--bat) battery;;
-	--bat-st) battery_stat;;
-esac
+wattage() {
+	echo "$(bc -l <<< "scale=1; $RATE / 1000000") W"
+}
+
+gettime() {
+	FULL=$(cat /sys/class/power_supply/BAT0/energy_full)
+	NOW=$(cat /sys/class/power_supply/BAT0/energy_now)
+
+	if [ "$RATE" -gt 0 ]; then
+		if [ "$STATE" = "Discharging" ]; then
+			EX="$NOW / $RATE"
+		else
+			EX="($FULL - $NOW) / $RATE"
+		fi
+		date -u -d@"$(bc -l <<< "$EX * 3600")" +%H:%M
+	fi
+}
+
+while true; do
+	RATE=$(cat /sys/class/power_supply/BAT0/power_now)
+	CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
+	STATE=$(cat /sys/class/power_supply/BAT0/status)
+
+	echo '{ "percentage": '"$CAPACITY"', "wattage": "'"$(wattage)"'", "status": "'"$(status)"'", "color": "'"$(color)"'" }'
+	sleep 3
+done

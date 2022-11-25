@@ -1,0 +1,6 @@
+(defwidget power []
+  (button
+    :tooltip "power"
+    :class "power"
+    :onclick "wlogout&"
+    "⏻"))
