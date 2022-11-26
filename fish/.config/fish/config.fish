@@ -16,6 +16,7 @@ if status is-interactive
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && bass source "$NVM_DIR/nvm.sh"  # This loads nvm
 
+    . ~/.config/fish/fish/aliases.fish
     
 
 
