@@ -12,5 +12,5 @@ function cowgreet
         set MSG "Good morning, $USER"
     end
 
-    cowsay -f tux $MSG | lolcat
+    cowsay -f $argv[1] $MSG | lolcat
 end

@@ -9,8 +9,6 @@ if status is-interactive
 
     # ~/.cargo/bin/client
 
-    ## Tux greets you
-    cowgreet
 
     ##nvm
     export NVM_DIR="$HOME/.nvm"
@@ -20,6 +18,8 @@ if status is-interactive
     
 
 
+    ## Tux greets you
+    cowgreet tux
 
     
     starship init fish | source
