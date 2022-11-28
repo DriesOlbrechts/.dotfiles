@@ -1,0 +1,31 @@
+* {
+    all: unset;
+    font-family: FiraCode Nerd Font Mono;
+    font-size: 20px;
+}
+
+.bar {
+    background-color: transparent;
+    color: #ebdbb2;
+}
+
+.main-container {
+    padding: 8px 12px;
+    background-color: #282828;
+}
+
+.workspaces {
+    margin-left: 0;
+    padding-left: 0px;
+}
+.ws {
+    padding: 0px 3px 0px 3px;
+}
+
+.time {
+    background: transparent;
+}
+
+.systray {
+    padding-right: 8px;
+}

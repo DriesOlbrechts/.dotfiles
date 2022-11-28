@@ -3,12 +3,16 @@
 
 ## Get Brightness
 get_blight() {
-  echo "$(brightnessctl get)"	
+    MAX=15360
+    echo "($(brightnessctl get) /$MAX)*100" | bc -l	
 }
 
 ## Set Brightness
 set_blight() {
-  brightnessctl set $1
+    MAX=15360
+    VAL=$(echo "$1/100 * $MAX" | bc -l)
+    echo $VAL
+    brightnessctl set $VAL
 }
 ## Get Battery 
 get_battery() {
@@ -122,7 +126,7 @@ toggle_net() {
 ## System Tray
 sys_tray() {
   network=$(get_net)
-  echo ${network::1} "" $(get_baticon) $(get_volicon)
+  echo ${network::1} $(get_baticon) $(get_volicon)
 }
 
 

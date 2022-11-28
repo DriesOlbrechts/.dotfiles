@@ -43,7 +43,7 @@ swaylock_args=(
     --text-ver-color ebdbb2
     --text-wrong-color ebdbb2
       
-    --grace 3 
+    --grace 1 
     --daemonize
 )
 

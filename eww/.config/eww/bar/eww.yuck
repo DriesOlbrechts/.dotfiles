@@ -1,0 +1,66 @@
+(defpoll time :interval "20s"
+	`date +" %a %d %b %R"`)
+
+
+(deflisten workspace "bash ../scripts/workspaces")
+	
+(defpoll systray :interval "1s" `bash ../scripts/sys_info --sys-tray`)
+
+
+(defwidget workspaces []
+  (literal :content workspace))
+
+(defwindow bar0
+	:monitor 0
+	:windowtype "dock"
+	:geometry (geometry :width "100%" :anchor "top center")
+	:exclusive true	
+	(box :class "main-container" :space-evenly "true"
+		(box :halign "start"
+			(button :class "time" :onclick "bash ../scripts/launch_calendar --0"
+				(label :text "${time}"))
+		)
+		
+		
+        (box
+            :space-evenly "false"
+            :halign "center"
+            :valign "center"
+		    (workspaces)		
+        )
+
+		(box :halign "end"
+			(button :class "systray" :onclick "bash ../scripts/launch_dashboard --0" 
+					:onmiddleclick "bash ../scripts/sys_info --toggle-vol"
+				(label :text "${systray}"))
+		)
+		
+	)
+)
+(defwindow bar1
+	:monitor 1
+	:windowtype "dock"
+	:geometry (geometry :width "100%" :anchor "top center")
+	:exclusive true	
+	(box :class "main-container" :space-evenly "true"
+		(box :halign "start"
+			(button :class "time" :onclick "bash ../scripts/launch_calendar --1"
+				(label :text "${time}"))
+		)
+		
+		
+        (box
+            :space-evenly "false"
+            :halign "center"
+            :valign "center"
+		    (workspaces)		
+        )
+
+		(box :halign "end"
+			(button :class "systray" :onclick "bash ../scripts/launch_dashboard --1" 
+					:onmiddleclick "bash ../scripts/sys_info --toggle-vol"
+				(label :text "${systray}"))
+		)
+		
+	)
+)

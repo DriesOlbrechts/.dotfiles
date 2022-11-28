@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # config dir
-EWW="eww -c $HOME/.config/eww/"
+EWW="eww -c $HOME/.config/eww/bar"
 # monitor to focus back onto after done
 FOC_MON_ID=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .id')
 

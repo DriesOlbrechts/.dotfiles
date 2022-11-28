@@ -1,0 +1,11 @@
+#!/bin/bash
+
+FILE="$HOME/.cache/eww_launch.calendar"
+CFG="$HOME/.config/eww/calendar"
+
+run_eww() {
+	eww --config "$CFG" open --toggle calendar --screen 0
+}
+
+run_eww
+

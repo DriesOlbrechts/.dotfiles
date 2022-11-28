@@ -38,7 +38,7 @@
       (box :class "bright_bar" :orientation "h" :spacing 20 :space-evenly "false" :vexpand "false" :hexpand "false"
 		(button :width 30 :onclick "" 
 		  (label :width 30 :class "iconbright" :text ""))
-        (scale :min 0 :max 255 :value BLIGHT :active "true" :onchange "bash ../scripts/sys_info --set-blight {}")))))
+        (scale :min 0 :max 100 :value BLIGHT :active "true" :onchange "bash ../scripts/sys_info --set-blight {}")))))
 
 
 
@@ -60,7 +60,7 @@
 ;; bluetooth
 (defwidget bluetooth []
   (box :class "genwin" :vexpand "false" :hexpand "true" :orientation "h"
-	(button :class "btn_bluet" :onclick ""
+	(button :class "btn_bluet" :onclick "blueman-manager&"
       (label :text ""))))
 
 
@@ -137,11 +137,20 @@
 
 ;; ** Windows *************************************************************************
 
-(defwindow system :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 8)
+(defwindow system0 :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 8)
   (system))
 
-(defwindow music :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 243)
+(defwindow music0 :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 243)
   (music))
 
-(defwindow powerbuttons :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 516)
+(defwindow powerbuttons0 :stacking "fg" :focusable "false" :monitor 0 :geometry (geometry :anchor "top right" :x 10 :y 516)
+  (powerbuttons))
+
+(defwindow system1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 8)
+  (system))
+
+(defwindow music1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 243)
+  (music))
+
+(defwindow powerbuttons1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 516)
   (powerbuttons))
