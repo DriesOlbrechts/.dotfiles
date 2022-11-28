@@ -1,6 +1,6 @@
 function cowgreet 
-    set TIME (date +"%H")
-    set USER (whoami | sed 's/./\U&/')
+    set -l TIME (date +"%H")
+    set -l USER (whoami | sed 's/./\U&/')
 
     if test $TIME -ge 12 && test $TIME -lt 18;
         set MSG "Good afternoon, $USER"
