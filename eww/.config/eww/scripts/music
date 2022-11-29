@@ -36,7 +36,11 @@ get_artist() {
 ## Get cover
 get_cover() {
   if [ "$STATUS" = "Playing" ] || [ "$STATUS" == "Paused" ];then
-    echo "$(playerctl metadata mpris:artUrl)"
+    if [ -z "$(nmcli connection show --active)" ];then
+        echo "img/music"
+    else
+        echo "$(playerctl metadata mpris:artUrl)"
+    fi
   else
     echo "img/music"
   fi

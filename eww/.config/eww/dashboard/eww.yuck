@@ -53,9 +53,8 @@
 ;; network
 (defwidget network []
   (box :class "genwin" :vexpand "false" :hexpand "false" :orientation "h" :width 200
-	(button :class "btn_net" :onclick "bash ../scripts/sys_info --toggle-net" :onmiddleclick "bash $HOME/.config/wofi/network/network.sh"
+	(button :class "btn_net"  :onclick "bash $HOME/.config/wofi/network/network.sh" :onmiddleclick "bash ../scripts/sys_info --toggle-net" 
       (label :class "network" :text NET))))
-
 
 ;; bluetooth
 (defwidget bluetooth []
@@ -149,8 +148,8 @@
 (defwindow system1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 8)
   (system))
 
-(defwindow music1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 243)
+(defwindow music1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 255)
   (music))
 
-(defwindow powerbuttons1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 516)
+(defwindow powerbuttons1 :stacking "fg" :focusable "false" :monitor 1 :geometry (geometry :anchor "top right" :x 10 :y 525)
   (powerbuttons))
