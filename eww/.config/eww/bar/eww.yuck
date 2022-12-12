@@ -61,6 +61,7 @@
 					:onmiddleclick "bash ../scripts/sys_info --toggle-vol"
 				(label :text "${systray}"))
 		)
+
 		
 	)
 )
