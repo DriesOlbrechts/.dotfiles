@@ -1,172 +1,72 @@
-require("mason").setup()
-require("mason-lspconfig").setup()
+local lsp = require('lsp-zero')
+lsp.preset('recommended')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.offsetEncoding = { "utf-16" }
-
--- update when in insert
-vim.diagnostic.config({
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
-    virtual_lines = false,
+lsp.ensure_installed({
+    'tsserver',
+    'sumneko_lua',
+    'rust_analyzer',
+    'html',
+    'bashls',
+    'marksman',
+    'volar',
+    'emmet_ls'
 })
+local rust_lsp = lsp.build_options('rust_analyzer', {})
 
--- code actions
-vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>CodeActionMenu<cr>', {
-    desc = 'Code action menu',
-    noremap = true, silent = true
-})
--- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap = true, silent = true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
---
--- Trouble keybinds
-vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
-    { silent = true, noremap = true, desc = "Toggle trouble diagnostics" }
-)
-vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
-    { silent = true, noremap = true, desc = "Toggle trouble workspace diagnostics" }
-)
-vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
-    { silent = true, noremap = true, desc = "Toggle trouble document diagnostics" }
-)
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-    { silent = true, noremap = true, desc = "Toggle trouble quickfix list" }
-)
-vim.keymap.set("n", "<leader>gr", "<cmd>TroubleToggle lsp_references<cr>",
-    { silent = true, noremap = true, desc="Toggle trouble lsp references" }
-)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+lsp.on_attach(function(client, bufnr)
+    local opts = { buffer = bufnr, remap = false }
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>CodeActionMenu<cr>', {
+        desc = 'Code action menu',
+        noremap = true, silent = true
+    })
+
+    vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
+
+    -- Trouble keybinds
+    vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+        { silent = true, noremap = true, desc = "Toggle trouble diagnostics" }
+    )
+    vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        { silent = true, noremap = true, desc = "Toggle trouble workspace diagnostics" }
+    )
+    vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+        { silent = true, noremap = true, desc = "Toggle trouble document diagnostics" }
+    )
+    vim.keymap.set("n", "<leader>gr", "<cmd>TroubleToggle lsp_references<cr>",
+        { silent = true, noremap = true, desc = "Toggle trouble lsp references" }
+    )
+
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts,
+        { silent = true, noremap = true, desc = "Go to declaration"})
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts,
+        {silent = true, noremap = true, desc = "Go to definition"})
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts, 
+        { silent = true, noremap = true, desc = "Show docs"})
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    -- vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    -- vim.keymap.set('n', '<space>gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', function()
-        vim.lsp.buf.format { async = true }
-    end, bufopts)
 
-    vim.keymap.set('n', '<space>tl', function()
+    vim.keymap.set('n', '<leader>f', "<cmd>LspZeroFormat<cr>",
+        { silent = true, noremap = true, desc = "Format document" })
+
+    vim.keymap.set('n', '<leader>tl', function()
         require('lsp_lines').toggle()
         vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
     end,
         bufopts)
-end
+end)
 
-local lsp_flags = {
-    -- This is the default in Nvim 0.7+
-    debounce_text_changes = 150,
-}
+lsp.nvim_workspace()
 
-local function config(_config)
-    return vim.tbl_deep_extend("force", {
-        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
-        on_attach = on_attach,
-        flags = lsp_flags,
-    }, _config or {})
-end
+lsp.setup()
 
-require('lspconfig').bashls.setup(config())
+require('rust-tools').setup({ server = rust_lsp })
 
-require('lspconfig').marksman.setup(config())
-
-require('lspconfig').jsonls.setup(config())
-
-require('lspconfig').angularls.setup(config())
-
-require('lspconfig').opencl_ls.setup(config())
-require('lspconfig').csharp_ls.setup(config())
-require('lspconfig').clangd.setup(config())
-
-require('lspconfig')['pyright'].setup(config())
-
-require('lspconfig')['tsserver'].setup(config())
-
-require('lspconfig')['rust_analyzer'].setup(config())
-
-require('lspconfig').gopls.setup(config())
-
-require('lspconfig').html.setup(config())
-require('lspconfig').cssls.setup(config())
-
-require('lspconfig').volar.setup(config())
-
-require('lspconfig').emmet_ls.setup(config({
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
-    init_options = {
-        html = {
-            options = {
-                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-                ["bem.enabled"] = true,
-            },
-        },
-    }
-}))
-require('lspconfig').tailwindcss.setup({})
-
-require 'lspconfig'.sumneko_lua.setup(config({
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = { 'vim' },
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-        },
-    },
-}))
-
-
-
-
-
-local rustopts = {
-    tools = {
-        autoSetHints = true,
-        hover_with_actions = false,
-        inlay_hints = {
-            only_current_line = false,
-        }
-    },
-    server = {
-        standalone = false;
-        capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities),
-        on_attach = on_attach,
-        flags = lsp_flags
-    }
-}
-require('rust-tools').setup(rustopts)
+vim.diagnostic.config({
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+    virtual_text = true,
+    virtual_lines = false,
+})
