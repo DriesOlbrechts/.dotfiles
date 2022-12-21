@@ -2,14 +2,9 @@
 
 ## Files and cmd
 CFG="$HOME/.config/eww/dashboard"
-
 if [[ "$1" == "--0" ]]; then
-    eww --config "$CFG" open --toggle system0
-    eww --config "$CFG" open --toggle music0 
-    eww --config "$CFG" open --toggle powerbuttons0
+    eww open-many --config "$CFG" --toggle system0 music0 powerbuttons0
 elif [[ "$1" == "--1" ]]; then
-    eww --config "$CFG" open --toggle system1
-    eww --config "$CFG" open --toggle music1 
-    eww --config "$CFG" open --toggle powerbuttons1
+    eww open-many --config "$CFG" --toggle system1 music1 powerbuttons1
 fi
 

@@ -30,7 +30,7 @@
         )
 
 		(box :halign "end"
-			(button :class "systray" :onclick "bash ../scripts/launch_dashboard --0" 
+			(button :class "systray"  :onclick "bash ../scripts/launch_dashboard --0" 
 					:onmiddleclick "bash ../scripts/sys_info --toggle-vol"
 				(label :text "${systray}"))
 		)
@@ -57,7 +57,7 @@
         )
 
 		(box :halign "end"
-			(button :class "systray" :onclick "bash ../scripts/launch_dashboard --1" 
+			(button :class "systray"  :onclick "bash ../scripts/launch_dashboard --1" 
 					:onmiddleclick "bash ../scripts/sys_info --toggle-vol"
 				(label :text "${systray}"))
 		)
