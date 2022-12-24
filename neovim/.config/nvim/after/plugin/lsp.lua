@@ -1,4 +1,8 @@
 local lsp = require('lsp-zero')
+local lspkind = require('lspkind')
+local cmp = require("cmp");
+
+
 lsp.preset('recommended')
 
 lsp.ensure_installed({
@@ -17,11 +21,6 @@ lsp.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>CodeActionMenu<cr>', {
-        desc = 'Code action menu',
-        noremap = true, silent = true
-    })
-
     vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, opts)
 
     -- Trouble keybinds
@@ -39,11 +38,9 @@ lsp.on_attach(function(client, bufnr)
     )
 
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts,
-        { silent = true, noremap = true, desc = "Go to declaration"})
+        { silent = true, noremap = true, desc = "Go to declaration" })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts,
-        {silent = true, noremap = true, desc = "Go to definition"})
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts, 
-        { silent = true, noremap = true, desc = "Show docs"})
+        { silent = true, noremap = true, desc = "Go to definition" })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 
@@ -60,6 +57,41 @@ end)
 lsp.nvim_workspace()
 
 lsp.setup()
+
+local cmp_config = lsp.defaults.cmp_config({
+    window = {
+        completion = cmp.config.window.bordered()
+    },
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = 'symbol',
+            maxwidth = 50,
+            before = function(entry, vim_item)
+                -- ...
+                return vim_item
+            end
+        })
+    },
+})
+
+cmp.setup(cmp_config)
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
 
 require('rust-tools').setup({ server = rust_lsp })
 
