@@ -1,5 +1,5 @@
 vim.cmd("colorscheme gruvbox")
-vim.cmd("hi Normal guibg=None ctermbg=None")
+vim.cmd("hi Normal guibg=None  ctermbg=None")
 
 
 -- notify theme

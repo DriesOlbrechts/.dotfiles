@@ -2,7 +2,6 @@ local lsp = require('lsp-zero')
 local lspkind = require('lspkind')
 local cmp = require("cmp");
 
-
 lsp.preset('recommended')
 
 lsp.ensure_installed({
@@ -60,7 +59,9 @@ lsp.setup()
 
 local cmp_config = lsp.defaults.cmp_config({
     window = {
-        completion = cmp.config.window.bordered()
+        completion = cmp.config.window.bordered({
+            winhighlight = "Normal:Normal,FloatBorder:Border,Search:None",
+        }),
     },
     formatting = {
         format = lspkind.cmp_format({
@@ -73,6 +74,7 @@ local cmp_config = lsp.defaults.cmp_config({
         })
     },
 })
+
 
 cmp.setup(cmp_config)
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
