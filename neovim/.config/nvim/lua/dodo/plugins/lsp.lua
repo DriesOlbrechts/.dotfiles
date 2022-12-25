@@ -29,7 +29,6 @@ return {
             require("lsp_lines").setup()
         end,
     },
-
     "saadparwaiz1/cmp_luasnip", -- snippet completions
     {
         'tzachar/cmp-tabnine',
