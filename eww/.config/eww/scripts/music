@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Get data
-STATUS="$(playerctl status)"
+STATUS="$(playerctl -p spotify status)"
 
 ## Get status
 get_status() {
@@ -14,7 +14,7 @@ get_status() {
 
 ## Get song
 get_song() {
-  song="$(playerctl metadata xesam:title)"
+  song="$(playerctl -p spotify metadata xesam:title)"
 	if [[ -z "$song" ]]; then
 		echo "Offline"
 	else
@@ -24,7 +24,7 @@ get_song() {
 
 ## Get artist
 get_artist() {
-	artist="$(playerctl metadata xesam:artist)"
+	artist="$(playerctl -p spotify metadata xesam:artist)"
 	if [[ -z "$artist" ]]; then
 		echo ""
 	else
@@ -39,7 +39,7 @@ get_cover() {
     if [ -z "$(nmcli connection show --active)" ];then
         echo "img/music"
     else
-        echo "$(playerctl metadata mpris:artUrl)"
+        echo "$(playerctl -p spotify metadata mpris:artUrl)"
     fi
   else
     echo "img/music"
@@ -48,17 +48,17 @@ get_cover() {
 
 ## Toggle status
 toggle() {
-  playerctl play-pause
+  playerctl -p spotify play-pause
 }
 
 ## Next
 next() {
-  playerctl next
+  playerctl -p spotify next
 }
 
 ## Previous
 previous() {
-  playerctl previous
+  playerctl -p spotify previous
 }
 
 ## Execute accordingly

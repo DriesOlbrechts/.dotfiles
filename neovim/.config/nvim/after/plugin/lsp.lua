@@ -14,6 +14,7 @@ lsp.ensure_installed({
     'volar',
     'emmet_ls'
 })
+
 local rust_lsp = lsp.build_options('rust_analyzer', {})
 
 lsp.on_attach(function(client, bufnr)
@@ -61,16 +62,21 @@ local cmp_config = lsp.defaults.cmp_config({
     window = {
         completion = cmp.config.window.bordered({
             winhighlight = "Normal:Normal,FloatBorder:Border,Search:None",
+            -- zindex = 10,
         }),
+        documentation = {
+            -- zindex = 1,
+        }
+
     },
     formatting = {
         format = lspkind.cmp_format({
             mode = 'symbol',
-            maxwidth = 50,
+            maxwidth = 30,
             before = function(entry, vim_item)
                 -- ...
                 return vim_item
-            end
+            end,
         })
     },
 })

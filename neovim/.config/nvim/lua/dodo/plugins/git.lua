@@ -7,6 +7,4 @@ return {
         end
     },
     { 'akinsho/git-conflict.nvim' },
-
-    "tpope/vim-fugitive",
 }
