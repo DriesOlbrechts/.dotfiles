@@ -59,6 +59,8 @@ lsp.nvim_workspace()
 lsp.setup()
 
 local cmp_config = lsp.defaults.cmp_config({
+    -- preselect = 'none',
+
     window = {
         completion = cmp.config.window.bordered({
             winhighlight = "Normal:Normal,FloatBorder:Border,Search:None",
@@ -82,7 +84,7 @@ local cmp_config = lsp.defaults.cmp_config({
 })
 
 
-cmp.setup(cmp_config)
+
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
     mapping = cmp.mapping.preset.cmdline(),
@@ -91,8 +93,12 @@ cmp.setup.cmdline('/', {
     }
 })
 
+
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
+    completion = {
+        completeopt = 'menu,menuone,noinsert,noselect'
+    },
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' }
@@ -101,6 +107,8 @@ cmp.setup.cmdline(':', {
     })
 })
 
+
+cmp.setup(cmp_config)
 require('rust-tools').setup({ server = rust_lsp })
 
 vim.diagnostic.config({
