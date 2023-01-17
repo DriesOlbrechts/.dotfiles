@@ -1,5 +1,5 @@
 
-require('lspsaga').init_lsp_saga()
+require('lspsaga').setup({})
 
 vim.keymap.set({'n', 'v'}, '<leader>ca', '<cmd>Lspsaga code_action<CR>', {
     desc = 'Code action menu',
