@@ -1,5 +1,6 @@
 env:
   TERM: xterm-256color
+  WINIT_X11_SCALE_FACTOR: "1"
 font:
   normal:
     family: Firacode Nerd Font Mono
@@ -49,7 +50,7 @@ cursor:
   unfocused_hollow: true
 
 window:
-  opacity: 0.90
+  opacity: 0.98
   dynamic_title: true
   class: alacritty
   instance: alacritty
