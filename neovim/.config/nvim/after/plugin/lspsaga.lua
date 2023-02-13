@@ -1,5 +1,8 @@
-
-require('lspsaga').setup({})
+require('lspsaga').setup({
+    symbol_in_winbar = {
+        enable = false
+    }
+})
 
 vim.keymap.set({'n', 'v'}, '<leader>ca', '<cmd>Lspsaga code_action<CR>', {
     desc = 'Code action menu',

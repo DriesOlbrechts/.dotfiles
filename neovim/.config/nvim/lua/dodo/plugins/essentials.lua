@@ -5,8 +5,6 @@ return {
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
     },
-    'gruvbox-community/gruvbox',
-    'norcalli/nvim-colorizer.lua',
 
     {
         'nvim-lualine/lualine.nvim',

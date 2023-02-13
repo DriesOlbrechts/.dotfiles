@@ -16,7 +16,7 @@ if status is-interactive
 
     . ~/.config/fish/fish/aliases.fish
     
-
+    set -gx GPG_TTY (tty)
 
     ## Tux greets you
     cowgreet tux

@@ -27,7 +27,7 @@ dashboard.section.header.val = {
     '                                  ██▒▒▒▒██                                ',
     '                                    ████                                  ',
     '                                                                          ',
-    '       the trait bound `&mut Dodo: Programmer::Skill` is not satisfied       ',
+    '                             I type my functions                          ',
 }
 
 -- Set menu

@@ -6,9 +6,10 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
     'tsserver',
-    'sumneko_lua',
+    'lua_ls',
     'rust_analyzer',
     'html',
+    'cssls',
     'bashls',
     'marksman',
     'volar',
@@ -82,7 +83,6 @@ local cmp_config = lsp.defaults.cmp_config({
         })
     },
 })
-
 
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

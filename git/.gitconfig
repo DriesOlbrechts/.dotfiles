@@ -1,7 +1,7 @@
 [user]
 	name = Dries1234
 	email = driesolbrechts@gmail.com
-	signingkey = 444444FE7E0429AC
+	signingkey = 200C0C416CB4FCF9
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
