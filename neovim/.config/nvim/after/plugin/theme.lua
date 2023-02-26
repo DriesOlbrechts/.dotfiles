@@ -7,6 +7,7 @@ vim.cmd("colorscheme gruvbox-material")
 vim.cmd("hi Normal guibg=None  ctermbg=None")
 
 
+vim.cmd[[highlight TabNine guifg=#6785f0]]
 
 vim.cmd[[highlight CodeBlock guibg=#45403d]]
 vim.cmd[[highlight markdownH1 guibg=#4c3432]]

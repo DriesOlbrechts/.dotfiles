@@ -59,30 +59,78 @@ lsp.nvim_workspace()
 
 lsp.setup()
 
-local cmp_config = lsp.defaults.cmp_config({
-    -- preselect = 'none',
 
-    window = {
-        completion = cmp.config.window.bordered({
-            winhighlight = "Normal:Normal,FloatBorder:Border,Search:None",
-            -- zindex = 10,
-        }),
-        documentation = {
-            -- zindex = 1,
-        }
+local tabnine = require('cmp_tabnine.config')
 
+tabnine:setup({
+    max_lines = 1000,
+    max_num_results = 20,
+    sort = true,
+    run_on_every_keystroke = true,
+    snippet_placeholder = '..',
+    ignored_file_types = {
+        -- default is not to ignore
+        -- uncomment to ignore in lua:
+        -- lua = true
     },
-    formatting = {
-        format = lspkind.cmp_format({
-            mode = 'symbol',
-            maxwidth = 30,
-            before = function(entry, vim_item)
-                -- ...
+    show_prediction_strength = false
+})
+
+local source_mapping = {
+    buffer = "[Buffer]",
+    nvim_lsp = "[LSP]",
+    nvim_lua = "[Lua]",
+    cmp_tabnine = "[TN]",
+    path = "[Path]",
+}
+
+
+
+local cmp_config = lsp.defaults.cmp_config({
+        -- preselect = 'none',
+        sources = {
+            { name = 'cmp_tabnine' },
+
+            --- These are the default sources for lsp-zero
+            { name = 'path' },
+            { name = 'nvim_lsp',   keyword_length = 3 },
+            { name = 'buffer',     keyword_length = 3 },
+            { name = 'luasnip',    keyword_length = 2 },
+        },
+        window = {
+            completion = cmp.config.window.bordered({
+                winhighlight = "Normal:Normal,FloatBorder:Border,Search:None",
+                -- zindex = 10,
+            }),
+            documentation = {
+                -- zindex = 1,
+            }
+
+        },
+        formatting = {
+            -- format = lspkind.cmp_format({
+            --     mode = 'symbol',
+            --     maxwidth = 30,
+            --     before = function(entry, vim_item)
+            --         if entry.source.name == "cmp_tabnine" then
+            --             vim_item.kind = ""
+            --         end
+            --         -- ...
+            --         return vim_item
+            --     nd,
+            -- })
+            format = function(entry, vim_item)
+                -- if you have lspkind installed, you can use it like
+                -- in the following line:
+                vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
+                if entry.source.name == "cmp_tabnine" then
+                    vim_item.kind = ""
+                    vim_item.kind_hl_group = "TabNine"
+                end
                 return vim_item
             end,
-        })
-    },
-})
+        },
+    })
 
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

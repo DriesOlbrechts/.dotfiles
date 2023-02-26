@@ -30,11 +30,6 @@ return {
         end,
     },
     "saadparwaiz1/cmp_luasnip", -- snippet completions
-    {
-        'tzachar/cmp-tabnine',
-        build = './install.sh',
-        dependencies = 'hrsh7th/nvim-cmp'
-    },
 
     {
         "folke/trouble.nvim",
@@ -43,5 +38,15 @@ return {
     {
         "glepnir/lspsaga.nvim",
         branch = "main",
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {
+        'tzachar/cmp-tabnine',
+        build = './install.sh',
+        dependencies = 'hrsh7th/nvim-cmp',
     }
+
 }
