@@ -43,10 +43,4 @@ return {
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-    {
-        'tzachar/cmp-tabnine',
-        build = './install.sh',
-        dependencies = 'hrsh7th/nvim-cmp',
-    }
-
 }

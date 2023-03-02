@@ -19,4 +19,10 @@ return {
             require('fold-preview').setup()
         end
     },
+    {
+        'zbirenbaum/copilot.lua',
+        cmd = "Copilot",
+        event = "InsertEnter"
+    }
 }
+
