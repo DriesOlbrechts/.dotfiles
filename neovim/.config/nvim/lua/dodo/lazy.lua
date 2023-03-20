@@ -10,12 +10,18 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.runtimepath:prepend(lazypath)
-require("lazy").setup("dodo.plugins",{
- install = { colorscheme = { "gruvbox"} },
- performance = {
-   rtp = {
-     disabled_plugins = {
-     },
-   },
- },
+require("lazy").setup("dodo.plugins", {
+    defaults = {
+        lazy = true,
+    },
+    install = { colorscheme = { "gruvbox" } },
+    performance = {
+        cache = {
+            enabled = true,
+        },
+        rtp = {
+            disabled_plugins = {
+            },
+        },
+    },
 })

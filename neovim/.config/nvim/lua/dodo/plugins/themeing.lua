@@ -1,8 +1,19 @@
 return {
 
-    'sainnhe/gruvbox-material',
-    'norcalli/nvim-colorizer.lua',
-    'lukas-reineke/headlines.nvim',
-    'lukas-reineke/indent-blankline.nvim'
-
+    {
+        'sainnhe/gruvbox-material',
+        event = 'VimEnter',
+    },
+    {
+        'norcalli/nvim-colorizer.lua',
+        event = 'BufEnter',
+    },
+    {
+        'lukas-reineke/headlines.nvim',
+        event = 'BufEnter *.md',
+    },
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        event= 'BufEnter',
+    },
 }

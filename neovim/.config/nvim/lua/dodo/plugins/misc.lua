@@ -1,7 +1,11 @@
 return {
-    'andweeb/presence.nvim',
+    {
+        'andweeb/presence.nvim',
+        event = 'VimEnter',
+    },
     {
         "kylechui/nvim-surround",
+        event = "BufEnter",
         config = function()
             require("nvim-surround").setup({
                 -- Configuration here, or leave empty to use defaults
@@ -10,14 +14,12 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
+        ft="md",
         build = function() vim.fn["mkdp#util#install"]() end,
     },
-    "ekickx/clipboard-image.nvim",
-    { 'anuvyklack/fold-preview.nvim',
-        dependencies = 'anuvyklack/keymap-amend.nvim',
-        config = function()
-            require('fold-preview').setup()
-        end
+    {
+        "ekickx/clipboard-image.nvim",
+        ft="md",
     },
     {
         'zbirenbaum/copilot.lua',

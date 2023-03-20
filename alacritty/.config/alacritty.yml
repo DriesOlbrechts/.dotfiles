@@ -11,7 +11,7 @@ font:
     style: Italic
   bold_italic:
     style: Bold Italic
-  size: 13.0
+  size: 12
   builtin_box_drawing: true
 
 cursor:

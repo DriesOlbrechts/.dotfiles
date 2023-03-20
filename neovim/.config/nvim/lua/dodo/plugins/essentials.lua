@@ -1,6 +1,7 @@
 return {
     {
         'goolord/alpha-nvim',
+        event = 'VimEnter',
         config = function()
             require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
         end
@@ -8,33 +9,50 @@ return {
 
     {
         'nvim-lualine/lualine.nvim',
+        event = 'VimEnter',
         dependencies = { 'kyazdani42/nvim-web-devicons' }
     },
     {
-        'yamatsum/nvim-cursorline'
+        'yamatsum/nvim-cursorline',
+        event = 'BufEnter',
     },
 
-    "nvim-lua/plenary.nvim",
-    "nvim-lua/popup.nvim",
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim' }
+        event = 'VimEnter',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        }
+    },
+
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        event = 'VimEnter',
+        build = 'make'
     },
     {
         'nvim-treesitter/nvim-treesitter',
+        event = 'BufRead',
         build = ':TSUpdate'
     },
-    "p00f/nvim-ts-rainbow",
-    "nvim-treesitter/nvim-treesitter-context",
+    {
+        "p00f/nvim-ts-rainbow",
+        event = "BufEnter",
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = "BufEnter",
+    },
     {
         'numToStr/Comment.nvim',
+        event = 'BufEnter',
         config = function()
             require('Comment').setup()
         end
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
+        event = "VimEnter",
         branch = "v2.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -44,7 +62,9 @@ return {
     },
     {
         "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {
+        event = "InsertEnter",
+        config = function()
+            require("nvim-autopairs").setup {
                 check_ts = true,
             }
         end
