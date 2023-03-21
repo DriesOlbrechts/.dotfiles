@@ -12,7 +12,7 @@ return {
     },
     {
         'yamatsum/nvim-cursorline',
-        event = 'BufEnter ^(?!alpha)',
+        event = 'BufEnter',
         config = function()
             require("nvim-cursorline").setup {
                 cursorline = {
@@ -31,7 +31,7 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter',
-        event = 'BufRead ^(?!alpha)',
+        event = 'BufRead',
         config = function()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = "all",
@@ -60,15 +60,15 @@ return {
     },
     {
         "p00f/nvim-ts-rainbow",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
     },
     {
         'numToStr/Comment.nvim',
-        event = 'BufEnter ^(?!alpha)',
+        event = 'BufEnter',
         config = function()
             require('Comment').setup()
         end

@@ -50,7 +50,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
         config = function()
             local lsp = require('lsp-zero')
             local lspkind = require('lspkind')
@@ -202,11 +202,11 @@ return {
     },
     {
         "onsails/lspkind-nvim",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
     },
     {
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
     },
     {
         url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -220,7 +220,7 @@ return {
     },
     {
         "glepnir/lspsaga.nvim",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
         config = function()
             require('lspsaga').setup({
                 symbol_in_winbar = {
@@ -250,7 +250,7 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({

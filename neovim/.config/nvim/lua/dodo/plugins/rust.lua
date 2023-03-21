@@ -1,7 +1,7 @@
 return {
     {
         "simrat39/rust-tools.nvim",
-        event = "BufEnter ^(?!alpha)",
+        event = "BufEnter",
     },
     {
         'saecki/crates.nvim',

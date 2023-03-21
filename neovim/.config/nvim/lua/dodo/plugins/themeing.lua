@@ -3,7 +3,7 @@ return {
     {
         'sainnhe/gruvbox-material',
         lazy = false,
-        priority = 49,
+        priority = 1000,
         config = function()
             vim.g.gruvbox_material_background = 'medium'
             vim.g.gruvbox_material_foreground = 'material'
@@ -24,7 +24,7 @@ return {
     },
     {
         'norcalli/nvim-colorizer.lua',
-        event = 'BufEnter ^(?!alpha)',
+        event = 'BufEnter',
         config = function()
             require 'colorizer'.setup({
                 '*', -- Highlight all files, but customize some others.
@@ -53,7 +53,7 @@ return {
 
     {
         'lukas-reineke/indent-blankline.nvim',
-        event = 'BufEnter ^(?!alpha)',
+        event = 'BufEnter',
         config = function()
             require("indent_blankline").setup({
                 space_char_blankline = " ",

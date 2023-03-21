@@ -6,7 +6,7 @@ return {
     },
     {
         'lewis6991/gitsigns.nvim',
-        event = 'BufRead ^(?!alpha)',
+        event = 'BufRead',
         config = function()
             require('gitsigns').setup()
         end
@@ -23,6 +23,6 @@ return {
                 }
             })
         end,
-        event = 'BufRead ^(?!alpha)',
+        event = 'BufRead',
     },
 }
