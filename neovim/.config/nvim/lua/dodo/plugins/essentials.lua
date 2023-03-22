@@ -4,8 +4,15 @@ return {
         'nvim-lualine/lualine.nvim',
         event = "VeryLazy",
         config = function()
+            local git_blame = require('gitblame')
             require('lualine').setup {
-                options = { theme = 'gruvbox-material' }
+
+                options = { theme = 'gruvbox-material' },
+                sections = {
+                    lualine_c = {
+                        { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+                    }
+                }
             }
         end,
         dependencies = { 'kyazdani42/nvim-web-devicons' }
@@ -31,7 +38,7 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter',
-        event = {'BufReadPost', 'BufNewFile'},
+        event = { 'BufReadPost', 'BufNewFile' },
         config = function()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = "all",
@@ -60,15 +67,15 @@ return {
     },
     {
         "p00f/nvim-ts-rainbow",
-        event = {"BufReadPost", "BufNewFile"},
+        event = { "BufReadPost", "BufNewFile" },
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = {"BufReadPost", "BufNewFile"},
+        event = { "BufReadPost", "BufNewFile" },
     },
     {
         'numToStr/Comment.nvim',
-        event = {'BufReadPost', 'BufNewFile'},
+        event = { 'BufReadPost', 'BufNewFile' },
         config = function()
             require('Comment').setup()
         end

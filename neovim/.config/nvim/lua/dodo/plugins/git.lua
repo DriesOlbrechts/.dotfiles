@@ -25,4 +25,12 @@ return {
         end,
         event = 'BufRead',
     },
+    {
+        'f-person/git-blame.nvim',
+        event = {'BufReadPost', 'BufNewFile'},
+        init = function()
+            vim.g.gitblame_enabled = 1
+            vim.g.gitblame_display_virtual_text = 0
+        end
+    }
 }

@@ -27,6 +27,7 @@ opt.smartindent = true
 
 
 
+
 opt.mouse = 'a'
 
 opt.foldlevel = 99
