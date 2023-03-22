@@ -5,7 +5,6 @@ if status is-interactive
     set fish_greeting
     set EDITOR nvim
 
-    theme_gruvbox dark medium
 
     # ~/.cargo/bin/client
 
