@@ -19,7 +19,7 @@ cursor:
   unfocused_hollow: true
 
 window:
-  opacity: 0.89
+  # opacity: 0.89
   dynamic_title: true
   class: alacritty
   instance: alacritty
@@ -32,7 +32,7 @@ import:
 
 
   # The definition of color schemes.
-schemes:
+# schemes:
 #   gruvbox_material_hard_dark: &gruvbox_material_hard_dark
 #     primary:
 #       background: '0x1d2021'
