@@ -19,7 +19,7 @@ cursor:
   unfocused_hollow: true
 
 window:
-  # opacity: 0.98
+  opacity: 0.89
   dynamic_title: true
   class: alacritty
   instance: alacritty
