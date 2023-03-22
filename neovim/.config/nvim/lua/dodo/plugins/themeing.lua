@@ -24,7 +24,7 @@ return {
     },
     {
         'norcalli/nvim-colorizer.lua',
-        event = 'BufEnter',
+        event = {'BufReadPre', 'BufNewFile'},
         config = function()
             require 'colorizer'.setup({
                 '*', -- Highlight all files, but customize some others.
@@ -35,7 +35,7 @@ return {
     },
     {
         'lukas-reineke/headlines.nvim',
-        event = 'BufEnter *.md',
+        ft = {'markdown', 'org'},
         config = function()
 
             require('headlines').setup({
@@ -53,7 +53,7 @@ return {
 
     {
         'lukas-reineke/indent-blankline.nvim',
-        event = 'BufEnter',
+        event = {'BufReadPost', 'BufNewFile'},
         config = function()
             require("indent_blankline").setup({
                 space_char_blankline = " ",

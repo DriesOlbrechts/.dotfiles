@@ -1,7 +1,7 @@
 return {
     {
         'andweeb/presence.nvim',
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("presence"):setup({
                 -- General options
@@ -27,7 +27,7 @@ return {
     },
     {
         "kylechui/nvim-surround",
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
         config = function()
             require("nvim-surround").setup({
                 -- Configuration here, or leave empty to use defaults
@@ -36,12 +36,12 @@ return {
     },
     {
         "iamcco/markdown-preview.nvim",
-        ft = "md",
+        ft = "markdown",
         build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
         "ekickx/clipboard-image.nvim",
-        ft = "md",
+        ft = "markdown",
     },
     {
         'zbirenbaum/copilot.lua',

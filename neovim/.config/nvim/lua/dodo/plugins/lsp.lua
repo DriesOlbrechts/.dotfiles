@@ -50,7 +50,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
         config = function()
             local lsp = require('lsp-zero')
             local lspkind = require('lspkind')
@@ -62,15 +62,9 @@ return {
                 'tsserver',
                 'lua_ls',
                 'rust_analyzer',
-                'html',
-                'cssls',
-                'bashls',
                 'marksman',
-                'volar',
-                'emmet_ls'
             })
 
-            local rust_lsp = lsp.build_options('rust_analyzer', {})
 
 
 
@@ -141,7 +135,6 @@ return {
                         }
 
                     },
-                    -- experimental = { ghost_text = true },
                     formatting = {
                         format = lspkind.cmp_format({
                             mode = 'symbol',
@@ -151,16 +144,6 @@ return {
                                 return vim_item
                             end,
                         })
-                        -- format = function(entry, vim_item)
-                        --     -- if you have lspkind installed, you can use it like
-                        --     -- in the following line:
-                        --     vim_item.kind = lspkind.symbolic(vim_item.kind, { mode = "symbol" })
-                        --     if entry.source.name == "cmp_tabnine" then
-                        --         vim_item.kind = ""
-                        --         vim_item.kind_hl_group = "TabNine"
-                        --     end
-                        --     return vim_item
-                        -- end,
                     },
                 })
 
@@ -168,7 +151,6 @@ return {
 
 
             cmp.setup(cmp_config)
-            require('rust-tools').setup({ server = rust_lsp })
 
             vim.diagnostic.config({
                 update_in_insert = false,
@@ -202,11 +184,11 @@ return {
     },
     {
         "onsails/lspkind-nvim",
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
     },
     {
         "hrsh7th/cmp-nvim-lsp-signature-help",
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
     },
     {
         url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -220,7 +202,7 @@ return {
     },
     {
         "glepnir/lspsaga.nvim",
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
         config = function()
             require('lspsaga').setup({
                 symbol_in_winbar = {
@@ -250,7 +232,7 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        event = "BufEnter",
+        event = {"BufReadPre", "BufNewFile"},
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({

@@ -2,7 +2,7 @@ return {
 
     {
         'nvim-lualine/lualine.nvim',
-        lazy = false,
+        event = "VeryLazy",
         config = function()
             require('lualine').setup {
                 options = { theme = 'gruvbox-material' }
@@ -12,7 +12,7 @@ return {
     },
     {
         'yamatsum/nvim-cursorline',
-        event = 'BufEnter',
+        event = { 'BufReadPost', 'BufNewFile' },
         config = function()
             require("nvim-cursorline").setup {
                 cursorline = {
@@ -31,7 +31,7 @@ return {
 
     {
         'nvim-treesitter/nvim-treesitter',
-        event = 'BufRead',
+        event = {'BufReadPost', 'BufNewFile'},
         config = function()
             require("nvim-treesitter.configs").setup {
                 ensure_installed = "all",
@@ -60,15 +60,15 @@ return {
     },
     {
         "p00f/nvim-ts-rainbow",
-        event = "BufEnter",
+        event = {"BufReadPost", "BufNewFile"},
     },
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = "BufEnter",
+        event = {"BufReadPost", "BufNewFile"},
     },
     {
         'numToStr/Comment.nvim',
-        event = 'BufEnter',
+        event = {'BufReadPost', 'BufNewFile'},
         config = function()
             require('Comment').setup()
         end
