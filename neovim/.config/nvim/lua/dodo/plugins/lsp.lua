@@ -210,7 +210,10 @@ return {
                 },
                 diagnostic = {
                     on_insert = false
-                }
+                },
+                ui = {
+                    kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+                },
             })
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', {
                 desc = 'Code action menu',

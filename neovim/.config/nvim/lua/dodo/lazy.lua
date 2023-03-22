@@ -14,7 +14,7 @@ require("lazy").setup("dodo.plugins", {
     defaults = {
         lazy = true,
     },
-    install = { colorscheme = { "gruvbox" } },
+    install = { colorscheme = { "catppuccin" } },
     performance = {
         cache = {
             enabled = true,
