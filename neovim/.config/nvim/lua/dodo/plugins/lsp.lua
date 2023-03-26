@@ -64,10 +64,6 @@ return {
                 'rust_analyzer',
                 'marksman',
             })
-
-
-
-
             lsp.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }

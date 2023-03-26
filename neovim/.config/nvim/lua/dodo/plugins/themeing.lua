@@ -24,12 +24,12 @@ return {
     -- },
     {
         'catppuccin/nvim',
-        name='catppuccin',
+        name = 'catppuccin',
         lazy = false,
         priority = 1000,
         config = function()
             require('catppuccin').setup({
-                flavour= "mocha",
+                flavour = "mocha",
                 background = {
                     light = "latte",
                     dark = "mocha",
@@ -37,8 +37,8 @@ return {
                 transparent_background = false,
                 term_colors = false,
                 styles = {
-                    comments = {"italic"},
-                    conditionals = {"italic"},
+                    comments = { "italic" },
+                    conditionals = { "italic" },
                 },
                 integrations = {
                     cmp = true,
@@ -63,10 +63,10 @@ return {
     },
     {
         'norcalli/nvim-colorizer.lua',
-        event = {'BufReadPre', 'BufNewFile'},
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             require 'colorizer'.setup({
-                '*', -- Highlight all files, but customize some others.
+                '*',                   -- Highlight all files, but customize some others.
                 css = { css = true, }, -- Enable parsing rgb(...) functions in css.
                 --html = { names = false; } -- Disable parsing "names" like Blue or Gray
             }, { RRGGBBAA = true })
@@ -74,15 +74,29 @@ return {
     },
     {
         'lukas-reineke/headlines.nvim',
-        ft = {'markdown', 'org'},
+        ft = { 'markdown', 'org' },
         config = function()
-            require('headlines').setup({})
-        end
+            require('headlines').setup({
+                markdown = {
+                    headline_highlights = {
+                        "Headline1",
+                        "Headline2",
+                        "Headline3",
+                        "Headline4",
+                        "Headline5",
+                        "Headline6",
+                    },
+                    code_block_highlight = "CodeBlock",
+                    dash_highlight = "Dash",
+                    quote_highlight = "Quote",
+                }
+            })
+        end,
     },
 
     {
         'lukas-reineke/indent-blankline.nvim',
-        event = {'BufReadPost', 'BufNewFile'},
+        event = { 'BufReadPost', 'BufNewFile' },
         config = function()
             require("indent_blankline").setup({
                 space_char_blankline = " ",

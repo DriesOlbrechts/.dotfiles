@@ -10,6 +10,7 @@ return {
                 options = { theme = 'catppuccin' },
                 sections = {
                     lualine_c = {
+                        'filename',
                         { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
                     }
                 }
@@ -82,7 +83,9 @@ return {
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
-        lazy = false,
+        keys = {
+            { '<leader>nt' , "<cmd>Neotree toggle<cr>", desc = "open neotree"}
+        },
         config = function()
             -- Unless you are still migrating, remove the deprecated commands from v1.x
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
@@ -163,8 +166,7 @@ return {
                 },
             })
 
-            vim.keymap.set('n', '<leader>nt', '<cmd>Neotree toggle reveal<cr>',
-                { desc = "Opens neotree", noremap = true, silent = true })
+            
         end,
         branch = "v2.x",
         dependencies = {
