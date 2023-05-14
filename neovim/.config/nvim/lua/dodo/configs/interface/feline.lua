@@ -1,4 +1,3 @@
-
 ---depends om https://github.com/feline-nvim/feline.nvim
 local present, feline = pcall(require, "feline")
 
@@ -6,30 +5,58 @@ if not present then
   return
 end
 
+-- pink #F5C2E7
+-- surface1 #45475A
+-- subtext1 #BAC2DE
+-- red #F38BA8
+-- surface0 #313244
+-- base #1E1E2E
+-- crust #11111B
+-- lavender #B4BEFE
+-- peach #FAB387
+-- sapphire #74C7EC
+-- sky #89DCEB
+-- teal #94E2D5
+-- mauve #CBA6F7
+-- blue #89B4FA
+-- overlay2 #9399B2
+-- overlay1 #7F849C
+-- maroon #EBA0AC
+-- flamingo #F2CDCD
+-- text #CDD6F4
+-- overlay0 #6C7086
+-- green #A6E3A1
+-- rosewater #F5E0DC
+-- mantle #181825
+-- surface2 #585B70
+-- yellow #F9E2AF
+-- subtext0 #A6ADC8
+local catppuccin = require("catppuccin.palettes").get_palette "mocha"
+
 local theme = {
-  aqua = "#7AB0DF",
-  bg = "#1C212A",
-  blue = "#5FB0FC",
-  cyan = "#70C0BA",
-  darkred = "#FB7373",
-  fg = "#C7C7CA",
-  gray = "#222730",
-  green = "#79DCAA",
-  lime = "#54CED6",
-  orange = "#FFD064",
-  pink = "#D997C8",
-  purple = "#C397D8",
-  red = "#F87070",
-  yellow = "#FFE59E"
+  aqua = catppuccin.sapphire,
+  bg = catppuccin.base,
+  blue = catppuccin.blue,
+  cyan = catppuccin.teal,
+  darkred = catppuccin.red,
+  fg = catppuccin.text,
+  gray = catppuccin.surface0,
+  green = catppuccin.green,
+  lime = catppuccin.sky,
+  orange = catppuccin.peach,
+  pink = catppuccin.pink,
+  purple = catppuccin.mauve,
+  red = catppuccin.maroon,
+  yellow = catppuccin.yellow
 }
 
 local mode_theme = {
-  ["NORMAL"] = theme.green,
+  ["NORMAL"] = theme.blue,
   ["OP"] = theme.cyan,
-  ["INSERT"] = theme.aqua,
+  ["INSERT"] = theme.orange,
   ["VISUAL"] = theme.yellow,
   ["LINES"] = theme.darkred,
-  ["BLOCK"] = theme.orange,
+  ["BLOCK"] = theme.aqua,
   ["REPLACE"] = theme.purple,
   ["V-REPLACE"] = theme.pink,
   ["ENTER"] = theme.pink,
@@ -38,7 +65,7 @@ local mode_theme = {
   ["SHELL"] = theme.cyan,
   ["TERM"] = theme.lime,
   ["NONE"] = theme.gray,
-  ["COMMAND"] = theme.blue,
+  ["COMMAND"] = theme.green,
 }
 
 local component = {}
@@ -192,6 +219,21 @@ component.file_type = {
   right_sep = "block",
 }
 
+component.file_name = {
+	provider = {
+		name = 'file_info',
+		opts = {
+			type = 'relative'
+		}
+	},
+	hl = {
+		fg = "fg",
+		bg = "bg"
+	},
+	left_sep = "block",
+	right_sep = "block",
+}
+
 component.scroll_bar = {
   provider = function()
     local chars = {
@@ -261,13 +303,14 @@ component.scroll_bar = {
   right_sep = "block",
 }
 
-local left = {}
-local middle = {}
-local right = {
+local left = {
   component.vim_mode,
   component.file_type,
   component.lsp,
   component.git_branch,
+}
+local middle = {component.file_name}
+local right = {
   component.git_add,
   component.git_delete,
   component.git_change,
