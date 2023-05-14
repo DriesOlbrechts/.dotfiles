@@ -17,7 +17,7 @@ set smartcase
 set termguicolors
 set cursorline
 set guicursor=a:block,i:ver20,v-r:hor20
-set hlsearch
+set nohlsearch
 set laststatus=3
 set list
 set listchars=tab:│\ ,trail:· 
@@ -52,6 +52,8 @@ let g:mapleader=" "
 
 
 nn <Leader>ff :find 
+vn <C-C> "+y
+inoremap {<cr> {<cr>}<esc>O
 
 if !has("nvim")
     colorscheme catppuccin
