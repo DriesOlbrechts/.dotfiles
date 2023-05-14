@@ -1,0 +1,2 @@
+require('dodo.plugins.lazy')
+

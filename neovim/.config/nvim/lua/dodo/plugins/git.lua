@@ -1,8 +1,8 @@
 return {
     {
         'TimUntersberger/neogit',
+        event = {'BufReadPost', 'BufNewFile'},
         dependencies = 'nvim-lua/plenary.nvim',
-        lazy = false,
     },
     {
         'lewis6991/gitsigns.nvim',
