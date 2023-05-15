@@ -15,15 +15,15 @@ require('catppuccin').setup({
 		treesitter = true,
 		treesitter_context = true,
 		mason = true,
-		ts_rainbow = true,
+		ts_rainbow = false,
 		gitsigns = true,
 		telescope = true,
-		neotree = true,
-		headlines = true,
-		markdown = true,
-		lsp_trouble = true,
+		neotree = false,
+		headlines = false,
+		markdown = false,
+		lsp_trouble = false,
 		indent_blankline = {
-			enabled = true,
+			enabled = false,
 			colored_indent_levels = false,
 		}
 	}

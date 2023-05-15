@@ -64,7 +64,7 @@
             local v = vim.version()
             local datetime = os.date " %d-%m-%Y   %H:%M:%S"
             local platform = vim.fn.has "win32" == 1 and "" or ""
-            dashboard.section.footer.val = string.format("⚡ %d  %d/%d   v%d.%d.%d %s  %s", startup,
+            dashboard.section.footer.val = string.format("⚡ %d 󰂕 %d/%d   v%d.%d.%d %s  %s", startup,
                 loaded, plugins, v.major, v.minor, v.patch, platform,
                 datetime)
             pcall(vim.cmd.AlphaRedraw)
