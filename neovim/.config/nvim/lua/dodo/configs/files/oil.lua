@@ -14,7 +14,6 @@ require("oil").setup({
 	columns = {
 		"icon",
 		"size",
-		"mtime",
 	},
 	win_options = {
 		wrap = false,
@@ -41,5 +40,6 @@ require("oil").setup({
 			return hide_file(name, bufnr)
 		end,
 	}
+	
 })
 
