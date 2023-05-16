@@ -34,7 +34,6 @@ return {
 			{ "<leader>gb", ":Telescope git_branches<CR>", desc = "show git branches" },
 			{ "<leader>gc", ":Telescope git_commits<CR>",  desc = "show commits" },
 			{ "<leader>fk", ":Telescope keymaps<CR>",      desc = "show keymaps" },
-			{ "<leader>lf", ":Telescope file_browser<CR>", desc="Browser files with telescope"}
 
 		},
 		config= function() 
@@ -46,11 +45,6 @@ return {
 				'nvim-telescope/telescope-fzf-native.nvim',
 				build = 'make'
 			},
-			"nvim-telescope/telescope-file-browser.nvim",
 		}
-	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 	},
 }

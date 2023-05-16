@@ -14,8 +14,6 @@ require('telescope').setup {
 	pickers = {
 	},
 	extensions = {
-		file_browser = {
-		},
 		fzf = {
 			fuzzy = true,
 			override_generic_sorter = true,
@@ -24,5 +22,3 @@ require('telescope').setup {
 		},
 	}
 }
-
-require("telescope").load_extension "file_browser"
