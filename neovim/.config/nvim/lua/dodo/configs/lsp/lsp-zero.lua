@@ -32,17 +32,27 @@ lsp.on_attach(function(client, bufnr)
 			vim.diagnostic.config({ virtual_text = not vim.diagnostic.config().virtual_text })
 		end,
 		bufopts)
+
 	vim.keymap.set('n', '<leader>fb', "<cmd>LspZeroFormat<cr>",
 		{ silent = true, noremap = true, desc = "Format document" })
+
+	-- diagnostics
+	vim.keymap.set('n', '<leader>bd', function()
+			vim.diagnostic.setloclist({ open = true })
+		end,
+		{ silent = true, noremap = true, desc = "show buffer diagnostics in loclist" })
+	vim.keymap.set('n', '<leader>wd', function()
+		vim.diagnostic.setqflist({open = true})
+	end, { silent = true, noremap = true, desc = "show workspace diagnostics in qflist" })
 end)
 
 lsp.nvim_workspace()
 
 lsp.set_sign_icons({
-  error = '✘',
-  warn = '▲',
-  hint = '⚑',
-  info = '»'
+	error = '✘',
+	warn = '▲',
+	hint = '⚑',
+	info = '»'
 })
 
 lsp.setup()

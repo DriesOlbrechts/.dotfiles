@@ -29,3 +29,20 @@ fkill() {
         echo $pid | xargs kill -${1:-9}
     fi
 }
+
+cowgreet() {
+    TIME=$(date +"%H")
+    USER=$(whoami | sed 's/./\U&/')
+
+    if ((TIME >= 12 && TIME < 18)); then
+        MSG="Good afternoon, $USER"
+    elif ((TIME >= 18)); then
+        MSG="Good evening, $USER"
+    elif ((TIME < 6)); then
+        MSG="Go to sleep, $USER"
+    else
+        MSG="Good morning, $USER"
+    fi
+
+    cowsay -f "$1" "$MSG" | lolcat
+}

@@ -3,7 +3,7 @@ env:
   WINIT_X11_SCALE_FACTOR: "1"
 font:
   normal:
-    family: Firacode Nerd Font Mono
+    family: CaskaydiaCove Nerd Font Mono
     style: Regular
   bold:
     style: Bold
@@ -25,7 +25,7 @@ window:
   instance: alacritty
 
 shell:
-  program: /bin/fish
+  program: /bin/bash
 
 import:
   - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml

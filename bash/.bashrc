@@ -7,6 +7,7 @@
 
 PS1='[\u@\h \W]\$ '
 
+
 #fzf
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
@@ -19,9 +20,7 @@ for rc in ~/.config/bash/*; do
     fi
 done
 
-# forgit
-. ~/.forgit/forgit.plugin.zsh
+cowgreet tux
 
-. "$HOME/.cargo/env"
 
 eval "$(starship init bash)"

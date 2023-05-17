@@ -3,19 +3,18 @@
 PROJECTS=~/Documents/projects
 pp() {
     local FOLDERS=$(
-    find $PROJECT -maxdepth 2 -type d,l -execdir test -d {}/.git \; \
-        -printf "%T+\t%p\n" | sort -r  | awk '{gsub("'"$PROJECTS"'", ""); print $2}'
+        fd -H -L -t d -d 1 -E .git . "$PROJECTS" | awk '{gsub("'"$PROJECTS"'", ""); print}'
     )
     local FOLDER=$(
-    echo "${FOLDERS}" | fzf --preview "
-        onefetch '${PROJECTS}{}' 2>/dev/null;
-        exa -l '${PROJECTS}{}';
-        bat --color always '${PROJECTS}{}/README.md' 2>/dev/null
-    "
-)
-if [ $? -eq 0 ]; then
-    cd "${PROJECTS}/${FOLDER}"
-fi
+        echo "${FOLDERS}" | fzf --preview "
+            onefetch '${PROJECTS}{}' 2>/dev/null;
+            exa -l '${PROJECTS}{}';
+            bat --color always '${PROJECTS}{}/README.md' 2>/dev/null
+        "
+    )
+    if [ $? -eq 0 ]; then
+        cd "${PROJECTS}/${FOLDER}"
+    fi
 }
 
 ppcode(){
