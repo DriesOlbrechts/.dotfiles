@@ -53,7 +53,6 @@ let g:mapleader=" "
 
 nn <Leader>ff :find 
 vn <C-C> "+y
-inoremap {<cr> {<cr>}<esc>O
 
 if !has("nvim")
     colorscheme catppuccin
