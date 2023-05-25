@@ -39,7 +39,7 @@ return {
 	},
 	{
 		"glepnir/lspsaga.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "LspAttach" },
 		config = function()
 			require('lspsaga').setup({
 				symbol_in_winbar = {
