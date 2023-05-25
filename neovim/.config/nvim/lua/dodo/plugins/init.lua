@@ -29,6 +29,17 @@ require("lazy").setup("dodo.plugins.tables", {
 		},
 		rtp = {
 			disabled_plugins = {
+				"gzip",
+				"tar",
+				"tarPlugin",
+				"zip",
+				"zipPlugin",
+				"tutor_mode_plugin",
+				"tutor",
+				"vimball",
+				"vimballPlugin",
+				"bugreport",
+				"fzf",
 			},
 		},
 	},
