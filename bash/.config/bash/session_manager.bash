@@ -1,10 +1,17 @@
 
 # Shows info about git repos
 PROJECTS=~/Documents/projects
+
 pp() {
 	echo "pp"
-    local FOLDERS=$(
-        fd -H -L -t d -d 1 -E .git . "$PROJECTS" | awk '{gsub("'"$PROJECTS"'", ""); print}'
+	local FOLDERS=$(
+		fd -H -L -t d -d 1 . "$PROJECTS" |
+		while read -r dir; do
+			if [[ -d "$dir/.git" ]]; then
+				echo "${dir//$PROJECTS/}"
+			fi
+		done |
+		awk '{gsub("'"$PROJECTS"'", ""); print}'
     )
     local FOLDER=$(
         echo "${FOLDERS}" | fzf --preview "
@@ -17,6 +24,7 @@ pp() {
         cd "${PROJECTS}/${FOLDER}"
     fi
 }
+
 pps() {
     pp
     local SESSION_NAME=$(basename $PWD)
