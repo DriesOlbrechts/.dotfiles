@@ -31,7 +31,7 @@ fkill() {
 }
 
 cowgreet() {
-    TIME=$(date +"%H")
+    TIME=$(date +"%k")
     USER=$(whoami | sed 's/./\U&/')
 
     if ((TIME >= 12 && TIME < 18)); then

@@ -2,6 +2,7 @@
 # Shows info about git repos
 PROJECTS=~/Documents/projects
 pp() {
+	echo "pp"
     local FOLDERS=$(
         fd -H -L -t d -d 1 -E .git . "$PROJECTS" | awk '{gsub("'"$PROJECTS"'", ""); print}'
     )
@@ -16,13 +17,6 @@ pp() {
         cd "${PROJECTS}/${FOLDER}"
     fi
 }
-
-ppcode(){
-    pp
-    if [ "$(pwd)" != "$PROJECTS" ]; then
-        code .
-    fi
-} 
 pps() {
     pp
     local SESSION_NAME=$(basename $PWD)
