@@ -2,7 +2,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-NODE_GLOBALS+=(node nvm yarn)
+NODE_GLOBALS+=(node nvm yarn npx)
 
 _load_nvm() {
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
