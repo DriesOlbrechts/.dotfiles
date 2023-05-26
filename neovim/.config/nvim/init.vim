@@ -1,3 +1,5 @@
+lua vim.loader.enable()
+
 source ~/.vimrc
 set undodir=~/.config/nvim/undo
 
