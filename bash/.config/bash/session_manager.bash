@@ -1,11 +1,10 @@
-
 # Shows info about git repos
 PROJECTS=~/Documents/projects
 
 pp() {
 	echo "pp"
 	local FOLDERS=$(
-		fd -H -L -t d -d 1 . "$PROJECTS" |
+		fd -H -L -t d . "$PROJECTS" |
 		while read -r dir; do
 			if [[ -d "$dir/.git" ]]; then
 				echo "${dir//$PROJECTS/}"
