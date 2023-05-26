@@ -17,7 +17,6 @@ PS1='[\u@\h \W]\$ '
 BASH_CFG=~/.config/bash/*
 for rc in $BASH_CFG; do
     if [ -f "$rc" ]; then
-		echo "$rc"
         . "$rc"
     fi
 done
