@@ -4,7 +4,7 @@ PROJECTS=~/Documents/projects
 pp() {
 	echo "pp"
 	local FOLDERS=$(
-		fd -H -L -t d . "$PROJECTS" |
+		fd -H -L -t d -d 2 . "$PROJECTS" |
 		while read -r dir; do
 			if [[ -d "$dir/.git" ]]; then
 				echo "${dir//$PROJECTS/}"
