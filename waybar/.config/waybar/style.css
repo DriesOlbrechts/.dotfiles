@@ -1,111 +1,93 @@
-/* Global settings */
-@define-color gruvboxgreen #98971a;
-@define-color gruvboxbg #282828; 
-@define-color gruvboxfg #ebdbb2;
-@define-color gruvboxgray #3c3836;
+@import "mocha.css";
+
 * {
     border: none;
-    border-radius: 10px;
-    font-family: Material Design Icons, FiraCode Nerd Font Mono;
-    font-size: 16px;
-    background-color: @gruvboxbg;
+    border-radius: 0;
+    font-family: 'FantasqueSansMono Nerd Font', monospace;
+    font-size: 15px;
+    min-height: 0;
 }
 
-/* Bar and stuff */
-window#waybar {
+
+#waybar {
     background: transparent;
-    transition-property: background-color;
-    transition-duration: .3s;
-}
-window#waybar.hidden {
-    opacity: 0.2;
+    color: @text;
+    margin: 5px 0;
 }
 
-#window{
-    padding-left:5px;
-    padding-right:5px;
-    border-radius: 10px;
-    border: 2px solid @gruvboxgreen;
+#workspaces {
+	border-radius: 1rem;
+        margin: 5px;
+	background-color: @surface0;
+	margin-left: 1rem;
 }
 
+#workspaces button {
+    color: @lavender;
+    border-radius: 1rem;
 
-/* Color scheme 1: yellow on somewhat lighter background */
-#cpu, #memory, #disk, #backlight, #temperature, #battery, 
-#battery.charging, #battery.plugged, #pulseaudio, 
-#network, #custom-nmclicheck,  #bluetooth, #tray{
-    /*background-color: @gruvboxgreen;*/
-    margin: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 2px solid @gruvboxgreen;
-    border-radius: 10px;
 }
-
 
 #workspaces button.active {
-    color: @gruvboxgreen;
+    color: @blue;
+    border-radius: 1rem;
 }
 
-
-
-#cpu {
-    border-radius: 10px 0px 0px 10px;
-    border-right: none;
-    margin-right: 0px;
-}
-#memory {
-    border-radius: 0px 10px 10px 0px;
-    border-left: none;
-    margin-left: 0px;
+#workspaces button:hover {
+	color: @sapphire;
+	border-radius: 1rem;
 }
 
-/* Color scheme 1 alt: critical cases for 1 */
-#pulseaudio.muted, #battery.critical:not(.charging) {
-    background-color: #e78284;
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-#battery.critical:not(.charging) {
-    margin-right: 0px;
+#custom-music,#custom-shutdown, #tray, #backlight, #clock, #battery, #pulseaudio, #network {
+        background-color: @surface0;
+	padding: 0.5rem 1rem;
+	margin: 5px 0;
 }
 
-/* Color scheme 2: stuff in life */
-#clock  {
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-left: 0px;
-    margin-right: 0px;
-    border-radius:10px;
-    border: 2px solid @gruvboxgreen;
+#clock {
+    color: @lavender;
+    border-radius: 0px 1rem 1rem 0px;
+    margin-right: 1rem;
 }
 
-#workspaces{
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-right: 10px;
-    border-radius: 10px;
-    border: 2px solid @gruvboxgreen;
+#battery {
+    color: @green;
 }
 
-
-
-
-
-/* Last color scheme for the logo */
-#custom-power {
-    border-radius: 10px;
-    border: 2px solid @gruvboxgreen;
-    padding-left: 10px;
-    padding-right: 10px;
-    font-size: 24px;
+#battery.charging {
+    color: @green;
 }
 
-#custom-spotify{
-    border: 2px solid @gruvboxgreen;
-    margin-left:5px;
-    padding-left: 10px;
-    padding-right: 10px;
+#battery.warning:not(.charging) {
+    color: @red;
 }
 
+#backlight {
+    color: @yellow;
+}
+
+#network {
+	color: @peach;
+}
+
+#pulseaudio {
+	color: @red;
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 1rem;
+}
+
+#custom-music {
+    color: @mauve;
+    border-radius: 1rem;
+}
+
+#tray {
+    margin-right: 1rem;
+    border-radius: 1rem;
+}
+
+#custom-shutdown {
+	color: @red; 
+	border-radius: 1rem;
+	margin-right: 1rem;
+}

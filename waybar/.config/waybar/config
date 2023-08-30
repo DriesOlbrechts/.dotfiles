@@ -1,121 +1,77 @@
 {
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
-    "margin-top": 10,
-    "margin-left": 10,
-    "margin-right": 10,
-    "spacing": 0, 
-    "modules-left": ["wlr/workspaces", "custom/spotify"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray","network","bluetooth", "pulseaudio", "backlight", "cpu", "memory", "custom/space", "battery", "custom/power" ],
-
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["custom/music"],
+    "modules-right": ["pulseaudio", "network", "backlight", "battery", "clock", "tray", "custom/shutdown"],
+    // Modules configuration
+    "wlr/workspaces": {
+         "disable-scroll": true,
+         "sort-by-name": true,
+         "format": " {icon} ",
+         "format-icons": {
+             "default": "",
+         },
+     },
     "tray": {
         "icon-size": 21,
         "spacing": 10
     },
+	"custom/shutdown": {
+		"format": " {icon} ",
+		"format-icons": {
+			"default": ""
+		},
+		"on-click": "wlogout"
+	},
+    "custom/music": {
+        "format": "  {}",
+        "escape": true,
+        "interval": 5,
+        "tooltip": false,
+        "exec": "playerctl metadata -p spotify --format='{{ title }} - {{ artist }}'",
+        "on-click": "playerctl -p spotify play-pause",
+        "max-length": 50
+    },
     "clock": {
-        "format": "{:%d/%m/%Y  %a  %T}",
-	"tooltip": true,
-	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-	"interval": 1
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "wlr/workspaces": {
-            "on-click" : "activate",
-            "format" : "{icon}",
-            "active-only" : false,
-            "format-icons" : {
-              "default" : "",
-              "focused" : "⬤"
-            }
-    },
-
-    "memory": {
-        "format": "{}% "
+        "timezone": "Europe/Brussels",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "format-alt": "󰃭  {:%d-%m-%Y}",
+        "format": "  {:%H:%M}"
     },
     "backlight": {
-        "scroll-step": 5,
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
+        "device": "intel_backlight",
+        "format": "{icon}  {percent}%",
+        "format-icons": ["", ""]
     },
     "battery": {
         "states": {
-            "good": 90,
+            // "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-discharging": "{capacity}% {icon}",
-        "format-plugged": "{capacity}% ",
-        "tooltip-format": "{timeTo} | ",
-        "format-icons": ["", "", "", "", ""],
-        "on-click": "powerprofilesctl set performance && notify-send \"Power profile changed to: Performance\"",
-        "on-click-middle": "powerprofilesctl set balanced && notify-send \"Power profile changed to: Balanced\"",
-        "on-click-right": "powerprofilesctl set power-saver && notify-send \"Power profile changed to: Power-Saver\"",
-	    "interval": 60
+        "format": "{icon}  {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon}  {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+        "format-alt": "{ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{volume}% {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-muted": "",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", " "]
         },
-	"on-click": "pavucontrol"    
-    },
-
-
-    "network": {
-        "format": "{ifname}",
-        "format-wifi": "{essid} ",
-        "format-ethernet": "{ifname} ",
-        "format-disconnected": "⚠",
-        "tooltip": true,
-        "tooltip-format": "{ifname}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
-        "tooltip-format-ethernet": "{ifname} ",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 20,
-        "on-click": "nm-connection-editor"
-    },
-    "bluetooth": {
-	    "format": " {status}",
-	    "format-disabled": "", // an empty format will hide the module
-	    "format-connected": " {num_connections} connected",
-	    "tooltip-format": "{controller_alias}\t{controller_address}",
-	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueman-manager"
-    },
-
-    "custom/power": {
-	"format": "⏻",
-	"on-click": "wlogout",
-    },
-"custom/spotify": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "default": "",
-                    },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotifyd 2> /dev/null",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous",
+        "on-click": "pavucontrol"
     }
 }

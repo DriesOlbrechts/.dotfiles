@@ -19,13 +19,13 @@ cursor:
   unfocused_hollow: true
 
 window:
-  # opacity: 0.89
+  opacity: 0.95
   dynamic_title: true
   class: alacritty
   instance: alacritty
 
 shell:
-  program: /bin/bash
+  program: /usr/bin/fish
 
 import:
   - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml

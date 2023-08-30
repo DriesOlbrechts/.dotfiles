@@ -34,3 +34,4 @@ for f in $AFTER_CFG; do
 		. "$f"
 	fi
 done
+export PATH=$PATH:/home/dries/.spicetify
