@@ -1,7 +1,7 @@
 alias ls 'ls --color=auto'
-alias exa 'exa --color=auto --color-scale --group-directories-first'
+alias eza 'eza --color=auto --color-scale --group-directories-first'
 alias cat 'bat -p'
-alias ls 'exa'
+alias ls 'eza'
 alias l 'ls -Fl'    #'ls -lFh'                    #size,show type,human readable
 alias la 'ls -Fla'    #'ls -lAFh'                #long list,show almost all,show type,human readable
 alias lr 'ls -RFrs modified'    #'ls -tRFh'        #sorted by date,recursive,show type,human readable
