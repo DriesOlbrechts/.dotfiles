@@ -56,3 +56,4 @@ Another solution is to just remove the conflicting files and then stowing.
 - wlogout
 - swaylock-effects
 - wpaperd
+- waybar
