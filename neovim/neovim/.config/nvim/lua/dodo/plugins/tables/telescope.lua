@@ -36,11 +36,18 @@ return {
 			{ "<leader>fk", ":Telescope keymaps<CR>",      desc = "show keymaps" },
 
 		},
-		config= function() 
+		config = function()
+			-- Workaround for telescope folding
+			-- https://github.com/nvim-telescope/telescope.nvim/issues/699
+			vim.api.nvim_create_autocmd({ "BufEnter" }, {
+				pattern = { "*" },
+				command = "normal zx zR",
+			})
+
 			req("telescope")
 		end,
 		dependencies = {
-			{'nvim-lua/plenary.nvim'},
+			{ 'nvim-lua/plenary.nvim' },
 			{
 				'nvim-telescope/telescope-fzf-native.nvim',
 				build = 'make'
