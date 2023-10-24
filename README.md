@@ -20,6 +20,7 @@ cd ~
 git clone https://github.com/Dries1234/.dotfiles.git
 ```
 
+
 ### Stowing
 
 - `stow */` all packages

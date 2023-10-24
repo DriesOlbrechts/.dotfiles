@@ -12,6 +12,12 @@ require('catppuccin').setup({
 	},
 	integrations = {
 		cmp = true,
+		barbecue = {
+			dim_dirname = true, -- directory name is dimmed by default
+			bold_basename = true,
+			dim_context = false,
+			alt_background = false,
+		},
 		treesitter = true,
 		treesitter_context = true,
 		mason = true,

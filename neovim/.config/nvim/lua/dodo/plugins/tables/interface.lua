@@ -11,12 +11,29 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		config = true,
 	},
-
 	{
-		'freddiehaddad/feline.nvim',
+		'nvim-lualine/lualine.nvim',
 		event = 'VimEnter',
+		dependencies = {
+			{ 'nvim-tree/nvim-web-devicons' },
+			{ 'catppuccin' },
+		},
 		config = function()
-			req("feline")
+			req("lualine")
+		end
+	},
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		event = { 'BufReadPre', 'BufNewFile' },
+		version = "*",
+		dependencies = {
+			{ "SmiteshP/nvim-navic" },
+			{ "nvim-tree/nvim-web-devicons" }, -- optional dependency
+			{ "catppuccin" },
+		},
+		config =function()
+			req("barbecue")
 		end
 	},
 	{
@@ -26,11 +43,11 @@ return {
 			req("nvim-colorizer")
 		end
 	},
-    {
-        'goolord/alpha-nvim',
-        event = "VimEnter",
-        init = function()
+	{
+		'goolord/alpha-nvim',
+		event = "VimEnter",
+		init = function()
 			req("alpha")
-        end
-    },
+		end
+	},
 }
