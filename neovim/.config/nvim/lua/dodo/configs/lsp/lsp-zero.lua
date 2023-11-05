@@ -6,6 +6,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
 	'tsserver',
 	'lua_ls',
+	'clangd',
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -42,7 +43,7 @@ lsp.on_attach(function(client, bufnr)
 		end,
 		{ silent = true, noremap = true, desc = "show buffer diagnostics in loclist" })
 	vim.keymap.set('n', '<leader>wd', function()
-		vim.diagnostic.setqflist({open = true})
+		vim.diagnostic.setqflist({ open = true })
 	end, { silent = true, noremap = true, desc = "show workspace diagnostics in qflist" })
 end)
 
@@ -50,9 +51,9 @@ lsp.nvim_workspace()
 
 lsp.set_sign_icons({
 	error = '✘',
-	warn = '▲',
-	hint = '⚑',
-	info = '»'
+	warn = ' ▲',
+	hint = ' ⚑',
+	info = ' »'
 })
 
 lsp.setup()
