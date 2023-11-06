@@ -1,0 +1,5 @@
+profiles:
+  home:
+    shell: /usr/bin/fish
+    status_line:
+      display: none
