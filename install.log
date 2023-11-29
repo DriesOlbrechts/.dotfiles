@@ -1,12 +1,12 @@
-[11:30:14 2023-08-29] FETCHING Version 2.22.2
-[11:30:14 2023-08-29] CREATING /home/dries/.spicetify
-[11:30:14 2023-08-29] DOWNLOADING https://github.com/spicetify/spicetify-cli/releases/download/v2.22.2/spicetify-2.22.2-linux-amd64.tar.gz
-[11:30:16 2023-08-29] EXTRACTING /home/dries/.spicetify/spicetify.tar.gz
-[11:30:16 2023-08-29] SETTING EXECUTABLE PERMISSIONS TO /home/dries/.spicetify/spicetify
-[11:30:16 2023-08-29] REMOVING /home/dries/.spicetify/spicetify.tar.gz
-[11:30:16 2023-08-29] APPENDING /home/dries/.spicetify to PATH in /home/dries/.bashrc
-[11:30:16 2023-08-29] Restart your shell to have spicetify in your PATH.
-[11:30:16 2023-08-29] APPENDING /home/dries/.spicetify to PATH in /home/dries/.bash_profile
-[11:30:16 2023-08-29] Restart your shell to have spicetify in your PATH.
-[11:30:16 2023-08-29] spicetify v2.22.2 was installed successfully to /home/dries/.spicetify
-[11:30:16 2023-08-29] Run 'spicetify --help' to get started
+[13:25:38 2023-11-14] FETCHING Version 2.27.1
+[13:25:38 2023-11-14] CREATING /home/dries/.spicetify
+[13:25:38 2023-11-14] DOWNLOADING https://github.com/spicetify/spicetify-cli/releases/download/v2.27.1/spicetify-2.27.1-linux-amd64.tar.gz
+[13:25:39 2023-11-14] EXTRACTING /home/dries/.spicetify/spicetify.tar.gz
+[13:25:39 2023-11-14] SETTING EXECUTABLE PERMISSIONS TO /home/dries/.spicetify/spicetify
+[13:25:39 2023-11-14] REMOVING /home/dries/.spicetify/spicetify.tar.gz
+[13:25:39 2023-11-14] APPENDING /home/dries/.spicetify to PATH in /home/dries/.bashrc
+[13:25:39 2023-11-14] Restart your shell to have spicetify in your PATH.
+[13:25:39 2023-11-14] APPENDING /home/dries/.spicetify to PATH in /home/dries/.bash_profile
+[13:25:39 2023-11-14] Restart your shell to have spicetify in your PATH.
+[13:25:39 2023-11-14] spicetify v2.27.1 was installed successfully to /home/dries/.spicetify
+[13:25:39 2023-11-14] Run 'spicetify --help' to get started

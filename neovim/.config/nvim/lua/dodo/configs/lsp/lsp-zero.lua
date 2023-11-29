@@ -7,6 +7,7 @@ lsp.ensure_installed({
 	'tsserver',
 	'lua_ls',
 	'clangd',
+	'volar'
 })
 
 lsp.on_attach(function(client, bufnr)
