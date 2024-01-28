@@ -1,0 +1,34 @@
+import = ["/home/dries/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[env]
+TERM = "xterm-256color"
+WINIT_X11_SCALE_FACTOR = "1"
+
+[font]
+builtin_box_drawing = true
+size = 12
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "Regular"
+
+[shell]
+program = "/usr/bin/fish"
+
+[window]
+class = "alacritty"
+dynamic_title = true
+opacity = 0.95

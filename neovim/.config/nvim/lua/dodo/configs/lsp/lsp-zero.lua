@@ -7,6 +7,7 @@ lsp.ensure_installed({
 	'tsserver',
 	'lua_ls',
 	'clangd',
+	'gopls',
 })
 
 lsp.on_attach(function(client, bufnr)
