@@ -468,3 +468,7 @@
 [spotify]
 	appname = Spotify
     frame_color = "#7F849C"
+[slack]
+	appname = Slack
+	frame_color="#DDB200"
+    format = "<b>%s</b>\n\n%b" 

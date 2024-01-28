@@ -8,6 +8,7 @@ lsp.ensure_installed({
 	'lua_ls',
 	'clangd',
 	'gopls',
+	'volar'
 })
 
 lsp.on_attach(function(client, bufnr)
