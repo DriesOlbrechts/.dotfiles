@@ -1,6 +1,11 @@
 #!/bin/bash
 
-STATE="$(cat /proc/acpi/button/lid/LID/state)"
+HOSTNAME = "$(hostname)"
+if [[ "$HOSTNAME" == "fedora" ]]; then
+	STATE="$(cat /proc/acpi/button/lid/LID0/state)"
+else	
+	STATE="$(cat /proc/acpi/button/lid/LID/state)"
+fi
 
 COUNT="$(xrandr -q| grep -c "connected")"
 if [[ "$COUNT" != 1 ]]; then

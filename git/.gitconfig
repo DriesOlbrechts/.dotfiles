@@ -15,3 +15,5 @@
     good = !tldr git
 [commit]
 	gpgsign = true
+[includeIf "gitdir:~/Documents/projects/yellow-jersey/"]
+	path = ~/.gitconfig-work

@@ -22,6 +22,8 @@ if status is-interactive
 
     
     starship init fish | source
+
+	fish_ssh_agent
 end
 
 # Created by `pipx` on 2024-02-07 15:32:06
