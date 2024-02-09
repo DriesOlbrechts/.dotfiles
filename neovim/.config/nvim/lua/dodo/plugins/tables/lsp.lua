@@ -45,5 +45,26 @@ return {
 			vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions,
 				{ desc = "code action menu", noremap = true, silent = true })
 		end,
+	},
+	{
+		'stevearc/conform.nvim',
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>fb",
+				function()
+					require("conform").format({ async = true, lsp_fallback = true })
+				end,
+				mode = "",
+				desc = "Format buffer",
+			},
+		},
+		opts = {
+			formatters_by_ft = {
+				typescript = { "prettier" },
+				vue = { "prettier" },
+			},
+		},
 	}
 }

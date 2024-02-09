@@ -7,8 +7,10 @@ lsp.ensure_installed({
 	'tsserver',
 	'lua_ls',
 	'clangd',
-	'volar'
+	'volar',
+	'eslint'
 })
+
 
 lsp.on_attach(function(client, bufnr)
 	local opts = { buffer = bufnr, remap = false }
@@ -35,8 +37,6 @@ lsp.on_attach(function(client, bufnr)
 		end,
 		bufopts)
 
-	vim.keymap.set('n', '<leader>fb', "<cmd>LspZeroFormat<cr>",
-		{ silent = true, noremap = true, desc = "Format document" })
 
 	-- diagnostics
 	vim.keymap.set('n', '<leader>bd', function()
