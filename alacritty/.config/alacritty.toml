@@ -1,4 +1,4 @@
-import = ["/home/dries/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+import = ["/home/dries/.config/alacritty/catppuccin-mocha.toml"]
 
 [cursor]
 style = "Block"
