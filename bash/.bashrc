@@ -35,3 +35,7 @@ for f in $AFTER_CFG; do
 	fi
 done
 export PATH=$PATH:/home/dries/.spicetify
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH

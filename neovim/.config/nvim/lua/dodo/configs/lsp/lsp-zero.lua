@@ -8,7 +8,8 @@ lsp.ensure_installed({
 	'lua_ls',
 	'clangd',
 	'volar',
-	'eslint'
+	'eslint',
+	'cssls'
 })
 
 
