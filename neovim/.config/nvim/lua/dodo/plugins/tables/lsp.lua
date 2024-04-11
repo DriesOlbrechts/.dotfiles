@@ -64,7 +64,12 @@ return {
 			formatters_by_ft = {
 				typescript = { "prettier" },
 				vue = { "prettier" },
+				typescriptreact = { "prettier" },
+				css = { "prettier" },
+				scss = { "prettier" },
+				html = { "prettier" },
+
 			},
 		},
-	}
+	},
 }
