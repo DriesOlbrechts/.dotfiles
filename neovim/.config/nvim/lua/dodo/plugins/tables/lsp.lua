@@ -66,10 +66,10 @@ return {
 				vue = { "prettier" },
 				typescriptreact = { "prettier" },
 				css = { "prettier" },
-				scss = {"prettier"},
-				html = {"prettier"},
-				
+				scss = { "prettier" },
+				html = { "prettier" },
+
 			},
 		},
-	}
+	},
 }
