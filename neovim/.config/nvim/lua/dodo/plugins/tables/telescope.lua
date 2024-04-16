@@ -31,7 +31,7 @@ return {
 				end,
 				desc = "ripgrep over project"
 			},
-			{ "<leader>gb", ":Telescope git_branches<CR>", desc = "show git branches" },
+			{ "<leader>gbr", ":Telescope git_branches<CR>", desc = "show git branches" },
 			{ "<leader>gc", ":Telescope git_commits<CR>",  desc = "show commits" },
 			{ "<leader>fk", ":Telescope keymaps<CR>",      desc = "show keymaps" },
 

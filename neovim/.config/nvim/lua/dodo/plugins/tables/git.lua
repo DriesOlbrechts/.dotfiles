@@ -32,7 +32,7 @@ return {
 	{
 		'f-person/git-blame.nvim',
 		keys = {
-			{ "<leader>gb","<cmd>GitBlameToggle<CR>", desc = "git blame" }
+			{ "<leader>gbt", "<cmd>GitBlameToggle<CR>", desc = "git blame" }
 		},
 	},
 }
