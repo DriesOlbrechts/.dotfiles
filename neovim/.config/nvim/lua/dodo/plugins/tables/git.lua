@@ -29,4 +29,10 @@ return {
 			require('diffview').setup()
 		end
 	},
+	{
+		'f-person/git-blame.nvim',
+		keys = {
+			{ "<leader>gb","<cmd>GitBlameToggle<CR>", desc = "git blame" }
+		},
+	},
 }
