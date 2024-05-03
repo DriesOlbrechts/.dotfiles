@@ -22,14 +22,17 @@ else
 
 	  # Update highest resolution and monitor if current one is greater
 	  if [[ $pixels -gt $highest_resolution ]]; then
+		lower_res_monitor="$highest_res_monitor"
 		highest_resolution=$pixels
 		highest_res_monitor="$name"
-
 	  else
 		lower_res_monitor="$name"
 	  fi
 		monitors["$name"]="${width}x${height}"
 	done < <(xrandr | grep connected | awk '{print $1, $3}')
+
+	echo $highest_res_monitor
+	echo $lower_res_monitor
 
 	hyprctl keyword monitor $highest_res_monitor,preferred,auto,1
 	hyprctl keyword monitor $lower_res_monitor,preferred,auto,1,mirror,$highest_res_monitor
