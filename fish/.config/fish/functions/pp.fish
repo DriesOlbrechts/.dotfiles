@@ -4,7 +4,7 @@ function pp
         set -l IFS
 
         set FOLDERS (
-        find $PROJECTS -maxdepth 3 -type d,l -execdir test -d {}/.git \; \
+        find $PROJECTS -maxdepth 2 -type d,l -execdir test -d {}/.git \; \
         -printf "%T+\t%p\n" | sort -r | awk '{gsub("'"$PROJECTS"'", ""); print $2}'
         )
     end
