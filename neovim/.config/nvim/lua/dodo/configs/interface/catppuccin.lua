@@ -31,7 +31,11 @@ require('catppuccin').setup({
 		indent_blankline = {
 			enabled = false,
 			colored_indent_levels = false,
-		}
+		},
+		mini = {
+			enabled = true,
+			indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+		},
 	}
 })
 vim.cmd.colorscheme "catppuccin"

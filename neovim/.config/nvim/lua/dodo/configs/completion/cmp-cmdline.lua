@@ -1,5 +1,5 @@
 local cmp = require 'cmp'
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline({'/' , '?'}, {
 	completion = {
 		completeopt = 'menu,menuone,noinsert,noselect'
 	},

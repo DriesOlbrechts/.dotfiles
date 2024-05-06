@@ -3,33 +3,47 @@ local function req(file) require("dodo.configs.lsp." .. file) end
 return {
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			req("lsp-zero")
-		end,
-		dependencies = {
-			-- LSP Support
-			{ 'neovim/nvim-lspconfig' },
-			{
-				'williamboman/mason.nvim',
-				build = function()
-					pcall(vim.cmd, 'MasonUpdate')
-				end,
-			},
-			{ 'williamboman/mason-lspconfig.nvim' },
-
-			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp' },
-			{ 'hrsh7th/cmp-nvim-lsp' },
-			{ 'L3MON4D3/LuaSnip' },
-			{ 'saadparwaiz1/cmp_luasnip' },
-
-			-- icons
-			{ "onsails/lspkind.nvim" },
-
-		}
+		branch = 'v3.x',
+		lazy = true,
+		config = false,
+		init = function()
+			vim.g.lsp_zero_extend_cmp = 0
+			vim.g.lsp_zero_extend_lspconfig = 0
+		end
 	},
+	{
+		'williamboman/mason.nvim',
+		lazy = false,
+		config = true,
+	},
+	{
+		'hrsh7th/nvim-cmp',
+		event = 'InsertEnter',
+		dependencies = {
+			{
+				'L3MON4D3/LuaSnip',
+				"hrsh7th/cmp-cmdline",
+				"onsails/lspkind.nvim",
+			},
+		},
+		config = function()
+			req('cmp')
+		end
+	},
+	{
+		'neovim/nvim-lspconfig',
+		cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+		event = { 'BufReadPre', 'BufNewFile' },
+		dependencies = {
+			{ 'williamboman/mason-lspconfig.nvim' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ "aznhe21/actions-preview.nvim" },
+		},
+		config = function()
+			req('lspconfig')
+		end
+	},
+
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -38,14 +52,6 @@ return {
 		end,
 	},
 
-	{
-		"aznhe21/actions-preview.nvim",
-		event = { "LspAttach" },
-		config = function()
-			vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions,
-				{ desc = "code action menu", noremap = true, silent = true })
-		end,
-	},
 	{
 		'stevearc/conform.nvim',
 		event = { "BufWritePre" },
