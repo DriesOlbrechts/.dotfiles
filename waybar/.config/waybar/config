@@ -58,8 +58,8 @@
     },
     "network": {
         "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "format-linked": "",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "format-linked": "󰈀",
         "format-disconnected": "⚠",
         "format-alt": "{ipaddr}/{cidr}"
     },
