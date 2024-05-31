@@ -5,6 +5,26 @@ lsp_zero.extend_lspconfig()
 lsp_zero.on_attach(function(client, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 
+
+	vim.lsp.inlay_hint.enable(true)
+
+	vim.api.nvim_create_autocmd("InsertEnter", {
+		buffer = bufnr,
+		callback = function()
+			if vim.lsp.inlay_hint.is_enabled() then
+				-- disable the inlay hints
+				vim.lsp.inlay_hint.enable(false)
+				-- create a single use autocommand to turn the inlay hints back on
+				-- when leaving insert mode
+				vim.api.nvim_create_autocmd("InsertLeave", {
+					buffer = bufnr,
+					once = true,
+					callback = function() vim.lsp.inlay_hint.enable(true) end,
+				})
+			end
+		end
+	})
+
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts, {
 		desc = "LSP rename",
 	})
@@ -19,6 +39,7 @@ lsp_zero.on_attach(function(client, bufnr)
 		{ desc = "code action menu", noremap = true, silent = true })
 end
 )
+
 require('mason-lspconfig').setup({
 	ensure_installed = {},
 	handlers = {
@@ -26,6 +47,19 @@ require('mason-lspconfig').setup({
 		-- it applies to every language server without a "custom handler"
 		function(server_name)
 			require('lspconfig')[server_name].setup({})
+		end,
+
+		tsserver = function()
+			require('lspconfig').tsserver.setup({
+				init_options = {
+					preferences = {
+						includeInlayParameterNameHints = 'all',
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayEnumMemberValueHints = true,
+					}
+				}
+			})
 		end,
 	}
 })
