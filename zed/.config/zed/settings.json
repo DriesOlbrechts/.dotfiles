@@ -7,12 +7,46 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "vim": {
+    "use_system_clipboard": "never",
+    "use_multiline_find": false
+  },
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    },
+    "working_directory": "current_project_directory"
+  },
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
+    "light": "Catppuccin Latte",
+    "dark": "Catppuccin Mocha"
   },
-  "vim_mode": true
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "cursor_blink": false,
+  "scrollbar": {
+    "show": "never"
+  },
+  "vertical_scroll_margin": 0,
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": false
+  },
+  "languages": {
+    "TypeScript": {
+      "format_on_save": {
+        "external": {
+          "command": "npx",
+          "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
+        }
+      }
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
 }
