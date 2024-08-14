@@ -26,5 +26,9 @@ if status is-interactive
 	fish_ssh_agent
 end
 
-# Created by `pipx` on 2024-02-07 15:32:06
+# direnv
+direnv hook fish | source
+set -g direnv_fish_mode eval_on_arrow    # trigger direnv at prompt, and on every arrow-based directory change (default)
+
+
 set PATH $PATH /home/dries/.local/bin
