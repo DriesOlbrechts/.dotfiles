@@ -1,13 +1,14 @@
 return {
 	{
 		'lewis6991/gitsigns.nvim',
-		event = 'BufReadPre',
+		event = { 'BufReadPre', 'BufNewFile' },
 		config = function()
 			require('gitsigns').setup()
 		end
 	},
 	{
 		'sindrets/diffview.nvim',
+		event = 'VeryLazy',
 		keys = {
 			{
 				"<leader>dv",
@@ -25,9 +26,9 @@ return {
 				desc = "diffview"
 			}
 		},
-		config = function()
-			require('diffview').setup()
-		end
+		opts = {
+			enhanced_diff_hl = true
+		},
 	},
 	{
 		'f-person/git-blame.nvim',
