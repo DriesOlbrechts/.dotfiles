@@ -29,7 +29,7 @@ return {
 					ts_rainbow = false,
 					gitsigns = true,
 					telescope = true,
-					neotree = false,
+					neotree = true,
 					headlines = false,
 					markdown = false,
 					lsp_trouble = false,
