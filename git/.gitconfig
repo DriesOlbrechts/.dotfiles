@@ -8,12 +8,14 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[core]
+	editor = nvim
+[commit]
+	gpgsign = true
 [alias]
     lc = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
     lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(bold cyan)%aD%C(reset) %C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an (%ae)%C(reset)' --all
     idc = !git commit -am \"$(curl -s https://whatthecommit.com/index.txt)\"
     good = !tldr git
-[commit]
-	gpgsign = true
 [includeIf "gitdir:~/Documents/projects/yellow-jersey/"]
 	path = ~/.gitconfig-work
