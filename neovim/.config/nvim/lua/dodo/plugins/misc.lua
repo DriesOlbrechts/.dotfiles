@@ -38,8 +38,8 @@ return {
 	},
 	{
 		"Isrothy/neominimap.nvim",
-		enabled = true,
-		lazy = false,
+		enabled = false,
+		event = { "VimEnter" },
 		keys = {
 			{ "<leader>nt",  "<cmd>Neominimap toggle<cr>",      desc = "Toggle minimap" },
 			{ "<leader>ns",  "<cmd>Neominimap toggleFocus<cr>", desc = "Focus on minimap" },
@@ -59,22 +59,22 @@ return {
 				end,
 			}
 
-			-- only show in active window
 			local function update_minimap()
 				local current_win = vim.api.nvim_get_current_win()
 				local wins = vim.api.nvim_list_wins()
-
-
 				for _, win in ipairs(wins) do
-					local buf = vim.api.nvim_win_get_buf(win)
-					local bt = vim.bo[buf].buftype
-					local ft = vim.bo[buf].filetype
-
-					if bt == "" and ft ~= "" then -- Only consider normal buffers with a filetype
-						if win == current_win then
-							require('neominimap').winOn({ win })
-						else
-							require('neominimap').winOff({ win })
+					if vim.api.nvim_win_is_valid(win) then
+						local buf = vim.api.nvim_win_get_buf(win)
+						if vim.api.nvim_buf_is_valid(buf) then
+							local bt = vim.bo[buf].buftype
+							local ft = vim.bo[buf].filetype
+							if bt == "" and ft ~= "" then
+								if win == current_win then
+									pcall(require('neominimap').winOn, { win })
+								else
+									pcall(require('neominimap').winOff, { win })
+								end
+							end
 						end
 					end
 				end

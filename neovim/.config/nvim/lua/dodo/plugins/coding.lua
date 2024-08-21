@@ -29,14 +29,14 @@ return {
 			require('conform').setup({
 
 				formatters_by_ft = {
-					vue = { prettierConf },
-					javascript = { prettierConf },
-					typescript = { prettierConf },
-					typescriptreact = { prettierConf },
-					css = { prettierConf },
-					scss = { prettierConf },
-					html = { prettierConf },
-					json = { prettierConf },
+					vue = prettierConf,
+					javascript = prettierConf,
+					typescript = prettierConf,
+					typescriptreact = prettierConf,
+					css = prettierConf,
+					scss = prettierConf,
+					html = prettierConf,
+					json = prettierConf,
 					lua = { "luaformatter" }
 				},
 				format_on_save = {
