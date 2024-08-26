@@ -37,6 +37,7 @@ return {
 					scss = prettierConf,
 					html = prettierConf,
 					json = prettierConf,
+					markdown = prettierConf,
 					lua = { "stylua" },
 				},
 				format_on_save = {
