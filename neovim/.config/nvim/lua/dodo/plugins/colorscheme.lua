@@ -1,9 +1,9 @@
 return {
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		"catppuccin/nvim",
+		name = "catppuccin",
 		config = function()
-			require('catppuccin').setup({
+			require("catppuccin").setup({
 				flavour = "mocha",
 				background = {
 					light = "latte",
@@ -41,33 +41,34 @@ return {
 						enabled = true,
 						indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
 					},
-				}
+				},
 			})
-		end
+		end,
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
 		config = true,
 	},
 	{
-		'nvim-lualine/lualine.nvim',
-		event = 'VeryLazy',
+		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		dependencies = {
-			{ 'nvim-tree/nvim-web-devicons' },
-			{ 'catppuccin' },
+			{ "nvim-tree/nvim-web-devicons" },
+			{ "catppuccin" },
 		},
 		config = function()
-			require('lualine').setup {
+			require("lualine").setup({
 				options = {
-					theme = "catppuccin"
-				}
-			}
-		end
+					theme = "catppuccin",
+				},
+			})
+		end,
 	},
+
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
-		event = { 'BufReadPre', 'BufNewFile' },
+		event = { "BufReadPre", "BufNewFile" },
 		version = "*",
 		dependencies = {
 			{ "SmiteshP/nvim-navic" },
@@ -76,7 +77,8 @@ return {
 		},
 		config = function()
 			require("barbecue").setup({
-				theme = "catppuccin" })
-		end
+				theme = "catppuccin",
+			})
+		end,
 	},
 }

@@ -78,5 +78,17 @@ return {
 		keys = {
 			{ "<Leader>ft", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
 		},
+		opts = {
+			filesystem = {
+				follow_current_file = {
+					enabled = true,
+				},
+			},
+			buffer = {
+				follow_current_file = {
+					enabled = true,
+				},
+			},
+		},
 	},
 }
