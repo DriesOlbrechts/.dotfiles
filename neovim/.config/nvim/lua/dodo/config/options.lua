@@ -25,11 +25,6 @@ opt.smartcase = true
 opt.cursorline = true
 opt.guicursor = "a:block,i:ver20,v-r:hor20"
 opt.hlsearch = false
-opt.list = true
-opt.listchars = {
-	tab = "| ",
-	trail = ".",
-}
 opt.number = true
 opt.relativenumber = true
 opt.scrolloff = 8

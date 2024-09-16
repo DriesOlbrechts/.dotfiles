@@ -1,62 +1,4 @@
 return {
-	-- {
-	-- 	"stevearc/oil.nvim",
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	-- 	keys = {
-	-- 		{
-	-- 			"<leader>fe",
-	-- 			function()
-	-- 				require("oil").open_float(vim.fn.getcwd())
-	-- 			end,
-	-- 			{ desc = "open oil in floating window" },
-	-- 		},
-	-- 	},
-	-- 	config = function()
-	-- 		-- :help luaref-patterns
-	-- 		local hidden_list = { "node_modules", "dist", ".git" }
-	--
-	-- 		local function hide_file(name, bufnr)
-	-- 			for _, pattern in ipairs(hidden_list) do
-	-- 				if string.match(name, "^" .. pattern .. "$") ~= nil then
-	-- 					return true
-	-- 				end
-	-- 			end
-	-- 			return false
-	-- 		end
-	--
-	-- 		require("oil").setup({
-	-- 			columns = {
-	-- 				"icon",
-	-- 				"size",
-	-- 			},
-	-- 			win_options = {
-	-- 				wrap = false,
-	-- 				signcolumn = "no",
-	-- 				cursorcolumn = false,
-	-- 				foldcolumn = "0",
-	-- 			},
-	-- 			use_default_keymaps = false,
-	-- 			keymaps = {
-	-- 				["g?"] = "actions.show_help",
-	-- 				["<CR>"] = "actions.select",
-	-- 				["<C-s>"] = "actions.select_vsplit",
-	-- 				["<C-h>"] = "actions.select_split",
-	-- 				["<C-p>"] = "actions.preview",
-	-- 				["<C-c>"] = "actions.close",
-	-- 				["<C-l>"] = "actions.refresh",
-	-- 				["-"] = "actions.parent",
-	-- 				["_"] = "actions.open_cwd",
-	-- 				["`"] = "actions.cd",
-	-- 				["g."] = "actions.toggle_hidden",
-	-- 			},
-	-- 			view_options = {
-	-- 				is_hidden_file = function(name, bufnr)
-	-- 					return hide_file(name, bufnr)
-	-- 				end,
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"simonmclean/triptych.nvim",
 		keys = {
@@ -75,5 +17,32 @@ return {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 		opts = {},
+	},
+
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		cmd = { "Neotree" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		},
+		keys = {
+			{ "<Leader>ft", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+		},
+		opts = {
+			filesystem = {
+				follow_current_file = {
+					enabled = true,
+				},
+			},
+			buffer = {
+				follow_current_file = {
+					enabled = true,
+				},
+			},
+		},
 	},
 }

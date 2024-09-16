@@ -1,19 +1,19 @@
 return {
 	{
-		'lewis6991/gitsigns.nvim',
-		event = { 'BufReadPre', 'BufNewFile' },
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require('gitsigns').setup()
-		end
+			require("gitsigns").setup()
+		end,
 	},
 	{
-		'sindrets/diffview.nvim',
-		event = 'VeryLazy',
+		"sindrets/diffview.nvim",
+		event = "VeryLazy",
 		keys = {
 			{
 				"<leader>dv",
 				function()
-					local lib = require('diffview.lib')
+					local lib = require("diffview.lib")
 					local view = lib.get_current_view()
 					if view then
 						-- Current tabpage is a Diffview; close it
@@ -23,17 +23,36 @@ return {
 						vim.cmd.DiffviewOpen()
 					end
 				end,
-				desc = "diffview"
-			}
+				desc = "diffview",
+			},
 		},
 		opts = {
-			enhanced_diff_hl = true
+			enhanced_diff_hl = true,
 		},
 	},
 	{
-		'f-person/git-blame.nvim',
+		"f-person/git-blame.nvim",
 		keys = {
-			{ "<leader>gbt", "<cmd>GitBlameToggle<CR>", desc = "git blame" }
+			{ "<leader>gbt", "<cmd>GitBlameToggle<CR>", desc = "git blame" },
+		},
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		-- optional for floating window border decoration
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		-- setting the keybinding for LazyGit with 'keys' is recommended in
+		-- order to load the plugin when the command is run for the first time
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
 }

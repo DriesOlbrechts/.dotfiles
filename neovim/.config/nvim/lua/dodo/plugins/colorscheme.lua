@@ -34,12 +34,13 @@ return {
 					markdown = false,
 					lsp_trouble = false,
 					indent_blankline = {
-						enabled = false,
+						enabled = true,
+						scope_color = "lavender",
 						colored_indent_levels = false,
 					},
 					mini = {
 						enabled = true,
-						indentscope_color = "", -- catppuccin color (eg. `lavender`) Default: text
+						indentscope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
 					},
 				},
 			})
