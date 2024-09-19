@@ -28,6 +28,7 @@ opt.hlsearch = false
 opt.number = true
 opt.relativenumber = true
 opt.scrolloff = 8
+opt.cmdheight = 0
 
 opt.laststatus = 3
 opt.showmode = false

@@ -5,6 +5,13 @@ return {
 			{
 				"<leader><leader>",
 				function()
+					require("telescope.builtin").find_files({ hidden = false })
+				end,
+				desc = "find files, excluding hidden",
+			},
+			{
+				"<leader>fh",
+				function()
 					require("telescope.builtin").find_files({ hidden = true })
 				end,
 				desc = "find files, including hidden",
