@@ -80,10 +80,17 @@ return {
 		version = false,
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
+			local config = vim.fn["sonokai#get_configuration"]()
+			local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+
+			vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.bg_red[1] })
 			require("mini.indentscope").setup({
 				draw = {
 					delay = 100,
-					animation = require("mini.indentscope").gen_animation.linear(),
+					animation = require("mini.indentscope").gen_animation.linear({
+						duration = 100,
+						unit = "total",
+					}),
 					priority = 2,
 				},
 

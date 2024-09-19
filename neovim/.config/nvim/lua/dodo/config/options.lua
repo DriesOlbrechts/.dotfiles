@@ -1,7 +1,5 @@
 local opt = vim.opt
 
-vim.cmd.colorscheme("catppuccin")
-
 opt.termguicolors = true
 opt.compatible = false
 

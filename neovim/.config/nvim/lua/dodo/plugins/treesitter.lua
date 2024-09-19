@@ -1,32 +1,28 @@
 return {
 	{
-		'nvim-treesitter/nvim-treesitter',
-		event = { 'BufReadPost', 'BufNewFile' },
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("treesitter-context").setup()
 
-			require('nvim-treesitter.configs').setup(
-				{
-					auto_install = true,
-					highlight = {
-						enable = true,
-						additional_vim_regex_highlighting = false,
-					},
-					indent = {
-						enable = true,
-					},
-					context_commentstring = {
-						enable = true,
-						enable_autocmd = false,
-					},
-				}
-			)
+			require("nvim-treesitter.configs").setup({
+				auto_install = true,
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				indent = {
+					enable = true,
+				},
+				context_commentstring = {
+					enable = true,
+					enable_autocmd = false,
+				},
+			})
 		end,
-		build = ':TSUpdate',
+		build = ":TSUpdate",
 		dependencies = {
-			'nvim-treesitter/nvim-treesitter-context',
-
-
-		}
-	}
+			"nvim-treesitter/nvim-treesitter-context",
+		},
+	},
 }
