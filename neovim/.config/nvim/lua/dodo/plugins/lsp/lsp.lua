@@ -35,13 +35,12 @@ return {
 				local cmp_action = lsp_zero.cmp_action()
 				local lspkind = require("lspkind")
 
-				local config = vim.fn["sonokai#get_configuration"]()
-				local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+				local colors = require("dodo.utils").colors
 
 				require("luasnip.loaders.from_vscode").lazy_load()
 
-				vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = palette.blue[1] })
-				vim.api.nvim_set_hl(0, "PmenuSel", { bg = "NONE", fg = palette.grey[1], bg = palette.bg_green[1] })
+				vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = colors.blue })
+				vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.grey, bg = colors.bg_green })
 
 				cmp.setup({
 					formatting = {

@@ -48,7 +48,7 @@ return {
 			{ "<leader>nbt", "<cmd>Neominimap bufToggle<cr>", desc = "Toggle minimap for current buffer" },
 			{ "<leader>nbr", "<cmd>Neominimap bufRefresh<cr>", desc = "Refresh minimap for current buffer" },
 		},
-		init = function()
+		config = function()
 			vim.opt.wrap = false
 			vim.opt.sidescrolloff = 36
 			vim.g.neominimap = {
@@ -64,6 +64,9 @@ return {
 				},
 			}
 		end,
+		dependencies = {
+			{ "sonokai" },
+		},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -80,10 +83,9 @@ return {
 		version = false,
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			local config = vim.fn["sonokai#get_configuration"]()
-			local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+			local colors = require("dodo.utils").colors
 
-			vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = palette.bg_red[1] })
+			vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { fg = colors.bg_red })
 			require("mini.indentscope").setup({
 				draw = {
 					delay = 100,
@@ -124,5 +126,8 @@ return {
 				symbol = "│",
 			})
 		end,
+	},
+	dependencies = {
+		{ "sonokai" },
 	},
 }

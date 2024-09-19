@@ -3,6 +3,8 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.compatible = false
 
+vim.cmd.colorscheme("sonokai")
+
 opt.confirm = true
 
 opt.undofile = true
