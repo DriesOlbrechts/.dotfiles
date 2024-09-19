@@ -37,7 +37,6 @@ return {
 
 				local config = vim.fn["sonokai#get_configuration"]()
 				local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
-				print(vim.inspect(palette))
 
 				require("luasnip.loaders.from_vscode").lazy_load()
 

@@ -10,6 +10,10 @@ return {
 			vim.g.sonokai_dim_inactive_windows = 1
 
 			vim.cmd.colorscheme("sonokai")
+
+			local config = vim.fn["sonokai#get_configuration"]()
+			local palette = vim.fn["sonokai#get_palette"](config.style, config.colors_override)
+			vim.api.nvim_set_hl(0, "VertSplit", { bg = "NONE", fg = palette.fg[1] })
 		end,
 	},
 	{
