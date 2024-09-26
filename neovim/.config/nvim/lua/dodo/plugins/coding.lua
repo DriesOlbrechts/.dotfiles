@@ -89,4 +89,19 @@ return {
 			-- refer to the configuration section below
 		},
 	},
+	{
+		"ziontee113/color-picker.nvim",
+		keys = {
+			{
+				"<leader>cp",
+				"<cmd>PickColor<cr>",
+				desc = "Open color picker",
+				noremap = true,
+				silent = true,
+			},
+		},
+		opts = {
+			icons = { "", "" },
+		},
+	},
 }
