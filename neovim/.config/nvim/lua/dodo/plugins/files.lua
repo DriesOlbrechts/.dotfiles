@@ -2,7 +2,7 @@ return {
 
 	{
 		"stevearc/oil.nvim",
-		-- dir = "/home/dries/Documents/projects/personal/oil.nvim",
+		-- dir = "/home/dries/Documents/projects/neovim-plugins/oil.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{
@@ -16,7 +16,7 @@ return {
 					if oil.get_cursor_entry() then
 						oil.open_preview()
 					end
-					oil.open_parent_dir()
+					-- oil.open_parent_dir()
 				end,
 				{ desc = "open oil in floating window" },
 			},
