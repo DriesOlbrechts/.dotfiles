@@ -2,7 +2,7 @@ return {
 
 	{
 		"stevearc/oil.nvim",
-		-- dir = "/home/dries/Documents/projects/personal/oil.nvim",
+		-- dir = "/home/dries/Documents/projects/neovim-plugins/oil.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		keys = {
 			{
