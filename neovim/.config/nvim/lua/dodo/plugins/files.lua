@@ -16,7 +16,7 @@ return {
 					if oil.get_cursor_entry() then
 						oil.open_preview()
 					end
-					oil.open_parent_dir()
+					-- oil.open_parent_dir()
 				end,
 				{ desc = "open oil in floating window" },
 			},
