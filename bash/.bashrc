@@ -21,7 +21,7 @@ for rc in $BASH_CFG; do
     fi
 done
 
-PATH=$PATH:$HOME/.local/share/bob/nvim-bin
+PATH=$PATH:$HOME/.local/share/bob/nvim-bin:/usr/local/bin
 
 cowgreet tux
 
