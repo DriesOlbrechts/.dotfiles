@@ -18,7 +18,7 @@ if status is-interactive
     set -gx GPG_TTY (tty)
 
     ## Tux greets you
-    cowgreet tux
+    # cowgreet tux
 
     
     starship init fish | source
