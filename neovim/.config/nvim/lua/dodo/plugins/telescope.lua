@@ -31,8 +31,8 @@ return {
 				desc = "ripgrep over project",
 			},
 			{ "<leader>gbr", ":Telescope git_branches<CR>", desc = "show git branches" },
-			{ "<leader>gc", ":Telescope git_commits<CR>", desc = "show commits" },
-			{ "<leader>fk", ":Telescope keymaps<CR>", desc = "show keymaps" },
+			{ "<leader>gc",  ":Telescope git_commits<CR>",  desc = "show commits" },
+			{ "<leader>fk",  ":Telescope keymaps<CR>",      desc = "show keymaps" },
 		},
 		config = function()
 			local colors = require("dodo.utils").colors
