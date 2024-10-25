@@ -23,7 +23,7 @@ style = "Italic"
 family = "CaskaydiaCove Nerd Font Mono"
 style = "Regular"
 
-[shell]
+[terminal.shell]
 program = "/usr/bin/fish"
 
 [window]
