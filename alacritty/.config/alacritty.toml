@@ -24,7 +24,8 @@ family = "CaskaydiaCove Nerd Font Mono"
 style = "Regular"
 
 [terminal.shell]
-program = "/usr/bin/fish"
+# program = "/usr/bin/fish"
+program = "/usr/local/bin/fish"
 
 [window]
 class = "alacritty"
