@@ -1,4 +1,4 @@
-palette=catppuccin_macchiato
+palette= "catppuccin_macchiato"
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
