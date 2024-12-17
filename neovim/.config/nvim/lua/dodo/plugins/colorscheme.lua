@@ -1,21 +1,35 @@
 return {
 	{
-		"sainnhe/sonokai",
-		name = "sonokai",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
-		config = function()
-			local colors = require("dodo.utils").colors
-			vim.g.sonokai_better_performance = 1
-			vim.g.sonokai_transparent_background = 1
-			vim.g.sonokai_inlay_hints_background = "dimmed"
-			vim.g.sonokai_dim_inactive_windows = 1
-			vim.g.sonokai_diagnostic_virtual_text = "highlighted"
+		opts = {
+			flavour = "macchiato",
 
-			vim.api.nvim_set_hl(0, "VertSplit", { bg = "NONE", fg = colors.fg })
+			integrations = {
+				cmp = true,
+				gitsigns = true,
+				treesitter = true,
+				markdown = true,
+				mason = true,
+				neotree = true,
+				alpha = true,
+				diffview = true,
+				nvim_surround = true,
+				octo = true,
+				lsp_trouble = true,
+				mini = {
+					enabled = true,
+					indentscope_color = "maroon"
+				},
+				indent_blankline = {
+					enabled = true,
+					scope_color = "maroon",
+					colored_indent_levels = false,
+				},
 
-			-- call when colorscheme has been set up (uses colorscheme)
-			require("dodo.utils").setup()
-		end,
+			}
+		}
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
@@ -26,11 +40,11 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
-			{ "sonokai" },
+			{ "catppuccin" },
 		},
 		opts = {
 			options = {
-				theme = "sonokai",
+				theme = "catppuccin",
 			},
 		},
 	},

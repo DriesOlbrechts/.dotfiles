@@ -35,8 +35,6 @@ return {
 			{ "<leader>fk",  ":Telescope keymaps<CR>",      desc = "show keymaps" },
 		},
 		config = function()
-			local colors = require("dodo.utils").colors
-			vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = colors.bg_red, fg = colors.fg })
 			require("telescope").setup({
 				defaults = {
 					layout_strategy = "horizontal",
@@ -65,7 +63,7 @@ return {
 			})
 		end,
 		dependencies = {
-			{ "sonokai" },
+			{ "catppuccin" },
 			{ "nvim-lua/plenary.nvim" },
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",

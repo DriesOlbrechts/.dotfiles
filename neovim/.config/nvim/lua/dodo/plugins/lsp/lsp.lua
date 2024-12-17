@@ -35,12 +35,9 @@ return {
 				local cmp_action = lsp_zero.cmp_action()
 				local lspkind = require("lspkind")
 
-				local colors = require("dodo.utils").colors
 
 				require("luasnip.loaders.from_vscode").lazy_load()
 
-				vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { bg = "NONE", fg = colors.blue })
-				vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.grey, bg = colors.bg_green })
 
 				cmp.setup({
 					formatting = {

@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.compatible = false
 
-vim.cmd.colorscheme("sonokai")
+vim.cmd.colorscheme("catppuccin")
 
 opt.confirm = true
 
@@ -14,7 +14,7 @@ opt.undolevels = 10000
 opt.errorbells = false
 
 opt.title = true
-opt.titlestring = "%<%F%=%l/%L-%P"
+opt.titlestring = "%F"
 
 opt.swapfile = false
 opt.mouse = "a"

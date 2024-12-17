@@ -24,7 +24,7 @@ require("lazy").setup({
 	},
 	install = {
 		missing = true,
-		colorscheme = { "sonokai" },
+		colorscheme = { "catppuccin" },
 	},
 	performance = {
 		cache = {
