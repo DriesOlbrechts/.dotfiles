@@ -32,10 +32,6 @@ class = "alacritty"
 dynamic_title = true
 opacity = 0.95
 
-# Default colors
-[colors.primary]
-background = '#2D2A2E'
-foreground = '#fff1f3'
 
 [general]
 import = [
