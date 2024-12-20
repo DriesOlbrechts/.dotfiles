@@ -30,6 +30,13 @@ return {
 				end,
 				desc = "ripgrep over project",
 			},
+			{
+				"<leader>sh",
+				function()
+					require("telescope.builtin").live_grep({ cwd = vim.g.root_dir, additional_args = { '--hidden' } })
+				end,
+				desc = "ripgrep over project",
+			},
 			{ "<leader>gbr", ":Telescope git_branches<CR>", desc = "show git branches" },
 			{ "<leader>gc",  ":Telescope git_commits<CR>",  desc = "show commits" },
 			{ "<leader>fk",  ":Telescope keymaps<CR>",      desc = "show keymaps" },
@@ -51,7 +58,8 @@ return {
 						},
 					},
 				},
-				pickers = {},
+				pickers = {
+				},
 				extensions = {
 					fzf = {
 						fuzzy = true,

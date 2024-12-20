@@ -1,12 +1,5 @@
 return {
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
+	{ "jannis-baum/vivify.vim", ft = "markdown" },
 	{
 		"OXY2DEV/markview.nvim",
 		ft = "markdown", -- If you decide to lazy-load anyway
