@@ -17,4 +17,12 @@ alias school 'cd ~/Documents/Application-development/jaar3'
 alias dotfiles 'cd ~/.dotfiles'
 alias gcd 'cd "$(git rev-parse --show-toplevel)"'
 alias pacinstall 'yay -Slq | fzf --multi --preview "yay -Si {1}" | xargs -ro yay -S' 
-alias find 'gfind'
+set -l os (uname)
+if test "$os" = Darwin
+    # do things for macOS
+	alias find 'gfind'
+else if test "$os" = Linux
+    # do things for Linux
+else
+    # do things for other operating systems
+end
