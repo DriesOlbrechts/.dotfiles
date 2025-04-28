@@ -25,19 +25,26 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "ConformInfo" },
 		config = function()
-			local prettierConf = { "prettierd", "prettier", stop_after_first = true }
+			local formatterConf = { "biome-check", "prettierd", "prettier", stop_after_first = true }
+			local sassConf = { "prettierd", "prettier", stop_after_first = true }
 			require("conform").setup({
 
+				formatters = {
+					["biome-check"] = {
+						require_cwd = true,
+					}
+				},
+
 				formatters_by_ft = {
-					vue = prettierConf,
-					javascript = prettierConf,
-					typescript = prettierConf,
-					typescriptreact = prettierConf,
-					css = prettierConf,
-					scss = prettierConf,
-					html = prettierConf,
-					json = prettierConf,
-					markdown = prettierConf,
+					vue = formatterConf,
+					javascript = formatterConf,
+					typescript = formatterConf,
+					typescriptreact = formatterConf,
+					css = formatterConf,
+					scss = sassConf,
+					html = formatterConf,
+					json = formatterConf,
+					markdown = formatterConf,
 					lua = { "stylua" },
 				},
 				format_on_save = {
@@ -161,5 +168,53 @@ return {
 			-- Controls how environment variables are extracted from code and how cmp works
 			provider_patterns = true,     -- true by default, when false will not check provider patterns
 		},
+	},
+	{
+		"olimorris/codecompanion.nvim",
+		event = { 'BufReadPre', 'BufNewFile' },
+		keys = {
+			{ '<leader>ai', '<cmd>CodeCompanionActions<cr>', desc = "open CodeCompanion Actions menu" }
+		},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"zbirenbaum/copilot.lua"
+		},
+		init = function()
+			local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+			vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { fg = macchiato.base, bg = macchiato.blue })
+		end,
+		opts = {
+			adapters = {
+				copilot = function()
+					return require('codecompanion.adapters').extend('copilot', {
+						schema = {
+							model = {
+								default = "claude-3.7-sonnet"
+							}
+						}
+					})
+				end
+			},
+			strategies = {
+				chat = {
+					keymaps = {
+
+					}
+				}
+			}
+		}
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		opts = {
+			panel = {
+				enabled = false
+			},
+			suggestion = {
+				enabled = false
+			},
+		}
+
 	}
 }
