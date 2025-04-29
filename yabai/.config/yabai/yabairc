@@ -1,3 +1,7 @@
+# startup
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
 # Logging
 yabai -m config debug_output on
 
@@ -20,6 +24,14 @@ yabai -m config mouse_follows_focus on
 yabai -m config window_shadow float
 
 
-#borders 
-
+# borders 
 borders active_color=0xffee99a0 inactive_color=0xff363a4f width=5.0 &
+
+# rules
+yabai -m rule --add app="^Slack$" space=2
+yabai -m rule --add app="^Alacritty$" space=2
+yabai -m rule --add app="^Spotify$" space=3
+yabai -m rule --add app="^Zen$" space=4
+
+yabai -m rule --add app="^System Settings$" manage=off
+
