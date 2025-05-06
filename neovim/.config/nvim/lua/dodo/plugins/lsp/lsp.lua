@@ -35,9 +35,7 @@ return {
 				local cmp_action = lsp_zero.cmp_action()
 				local lspkind = require("lspkind")
 
-
 				require("luasnip.loaders.from_vscode").lazy_load()
-
 
 				cmp.setup({
 					formatting = {
@@ -66,7 +64,7 @@ return {
 						{ name = "nvim_lsp" },
 						{ name = "luasnip" },
 						{ name = "buffer" },
-						{ name = "ecolog" }
+						{ name = "ecolog" },
 					},
 				})
 			end,

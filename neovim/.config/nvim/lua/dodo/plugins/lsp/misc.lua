@@ -5,9 +5,6 @@ return {
 		opts = {
 			hint_enable = false,
 		},
-		config = function(_, opts)
-			require('lsp_signature').setup(opts)
-		end
 	},
 	{
 		url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
