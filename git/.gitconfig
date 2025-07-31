@@ -23,3 +23,5 @@
     good = !tldr git
 [includeIf "gitdir:~/Documents/projects/yellow-jersey/"]
 	path = ~/.gitconfig-work
+[gitbutler]
+	aiModelProvider = openai
