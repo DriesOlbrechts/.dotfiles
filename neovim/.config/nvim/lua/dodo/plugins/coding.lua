@@ -31,7 +31,7 @@ return {
 				formatters = {
 					["biome-check"] = {
 						require_cwd = true,
-					}
+					},
 				},
 				formatters_by_ft = {
 					vue = formatterConf,
@@ -169,50 +169,48 @@ return {
 	},
 	{
 		"olimorris/codecompanion.nvim",
-		event = { 'BufReadPre', 'BufNewFile' },
+		event = { "BufReadPre", "BufNewFile" },
 		keys = {
-			{ '<leader>ai', '<cmd>CodeCompanionActions<cr>', desc = "open CodeCompanion Actions menu" }
+			{ "<leader>ai", "<cmd>CodeCompanionActions<cr>", desc = "open CodeCompanion Actions menu" },
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"zbirenbaum/copilot.lua"
+			"zbirenbaum/copilot.lua",
 		},
 		init = function()
-			local macchiato = require('catppuccin.palettes').get_palette "macchiato"
+			local macchiato = require("catppuccin.palettes").get_palette("macchiato")
 			vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { fg = macchiato.base, bg = macchiato.blue })
 		end,
 		opts = {
 			adapters = {
 				copilot = function()
-					return require('codecompanion.adapters').extend('copilot', {
+					return require("codecompanion.adapters").extend("copilot", {
 						schema = {
 							model = {
-								default = "claude-3.7-sonnet"
-							}
-						}
+								default = "claude-3.7-sonnet",
+							},
+						},
 					})
-				end
+				end,
 			},
 			strategies = {
 				chat = {
-					keymaps = {
-
-					}
-				}
-			}
-		}
+					keymaps = {},
+				},
+			},
+		},
 	},
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = false,
 		opts = {
 			panel = {
-				enabled = false
+				enabled = false,
 			},
 			suggestion = {
-				enabled = false
+				enabled = false,
 			},
-		}
-
-	}
+		},
+	},
 }
