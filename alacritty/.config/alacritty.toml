@@ -8,7 +8,7 @@ WINIT_X11_SCALE_FACTOR = "1"
 
 [font]
 builtin_box_drawing = true
-size = 12
+size = 14
 
 [font.bold]
 style = "Bold"
@@ -20,7 +20,7 @@ style = "Bold Italic"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "ComicShanns Nerd Font"
 style = "Regular"
 
 [terminal.shell]
