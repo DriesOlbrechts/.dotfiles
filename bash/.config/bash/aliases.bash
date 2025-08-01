@@ -32,7 +32,7 @@ fkill() {
 
 cowgreet() {
     TIME=$(date +"%k")
-    USER=$(whoami | sed 's/./\U&/')
+    USER=$(whoami | sed -e "s/\b\(.\)/\u\1/g")
 
     if ((TIME >= 12 && TIME < 18)); then
         MSG="Good afternoon, $USER"
