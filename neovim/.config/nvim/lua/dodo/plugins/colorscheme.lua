@@ -21,16 +21,15 @@ return {
 				lsp_trouble = true,
 				mini = {
 					enabled = true,
-					indentscope_color = "maroon"
+					indentscope_color = "maroon",
 				},
 				indent_blankline = {
 					enabled = true,
 					scope_color = "maroon",
 					colored_indent_levels = false,
 				},
-
-			}
-		}
+			},
+		},
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
