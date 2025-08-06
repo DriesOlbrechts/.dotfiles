@@ -11,4 +11,9 @@ return {
 		"selene.yml",
 		".git",
 	},
+	settings = {
+		diagnostics = {
+			globals = { "vim" },
+		},
+	},
 }

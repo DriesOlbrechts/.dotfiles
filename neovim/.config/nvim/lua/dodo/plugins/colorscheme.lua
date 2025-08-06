@@ -13,16 +13,11 @@ return {
 				treesitter = true,
 				markdown = true,
 				mason = true,
-				neotree = true,
 				alpha = true,
 				diffview = true,
 				nvim_surround = true,
 				octo = true,
 				lsp_trouble = true,
-				mini = {
-					enabled = true,
-					indentscope_color = "maroon",
-				},
 				indent_blankline = {
 					enabled = true,
 					scope_color = "maroon",

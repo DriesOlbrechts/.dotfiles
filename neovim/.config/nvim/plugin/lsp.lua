@@ -36,6 +36,7 @@ local servers_to_enable = vim.iter(get_configured_servers())
 		return vim.fn.executable(config.cmd[1]) == 1
 	end)
 	:totable()
+
 vim.lsp.enable(servers_to_enable)
 
 vim.fn.sign_define("DiagnosticSignError", { text = "✘ ", texthl = "DiagnosticSignError" })

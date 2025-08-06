@@ -1,4 +1,4 @@
-local config = require('dodo.config.snacks')
+local config = require("dodo.config.snacks")
 
 local function mergeTables(...)
 	local merged = {}
@@ -10,16 +10,12 @@ local function mergeTables(...)
 	return merged
 end
 
-
 return {
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		keys = mergeTables(
-			config.pickers.keys,
-			config.git.keys
-		),
+		keys = mergeTables(config.pickers.keys, config.git.keys),
 		---@type snacks.Config
 		opts = {
 			-- your configuration comes here
