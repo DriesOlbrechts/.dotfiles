@@ -15,7 +15,7 @@ return {
 					"onsails/lspkind.nvim",
 					"rafamadriz/friendly-snippets",
 					"saadparwaiz1/cmp_luasnip",
-					{ "hrsh7th/cmp-nvim-lsp" },
+					"hrsh7th/cmp-nvim-lsp",
 				},
 			},
 			config = function()

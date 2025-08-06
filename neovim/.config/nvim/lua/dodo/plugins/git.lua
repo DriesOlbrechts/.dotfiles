@@ -32,23 +32,9 @@ return {
 	},
 	{
 		"f-person/git-blame.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		keys = {
 			{ "<leader>gbt", "<cmd>GitBlameToggle<CR>", desc = "git blame" },
 		},
-	},
-	{
-		"pwntester/octo.nvim",
-		event = "VeryLazy",
-		requires = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-			-- OR 'ibhagwan/fzf-lua',
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("octo").setup({
-				picker = "snacks",
-			})
-		end,
 	},
 }

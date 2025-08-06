@@ -16,7 +16,6 @@ return {
 				alpha = true,
 				diffview = true,
 				nvim_surround = true,
-				octo = true,
 				lsp_trouble = true,
 				indent_blankline = {
 					enabled = true,

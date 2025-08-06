@@ -10,6 +10,10 @@ local function mergeTables(...)
 	return merged
 end
 
+vim.api.nvim_create_user_command("Scratch", function()
+	Snacks.scratch()
+end, { desc = "open a scratch buffer" })
+
 return {
 	{
 		"folke/snacks.nvim",
@@ -31,6 +35,22 @@ return {
 			scroll = { enabled = true },
 			picker = { enabled = true },
 			notifier = { enabled = true },
+			scratch = {
+				win_by_ft = {
+					typescript = {
+						keys = {
+							["source"] = {
+								"<cr>",
+								function(self)
+									vim.cmd("w !node")
+								end,
+								desc = "Source buffer",
+								mode = { "n", "x" },
+							},
+						},
+					},
+				},
+			},
 		},
 	},
 }

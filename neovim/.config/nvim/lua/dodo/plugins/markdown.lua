@@ -11,16 +11,18 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 		opts = {
-			modes = { "n", "i", "no", "c" }, -- Change these modes
-			-- to what you need
-			hybrid_modes = { "i" }, -- Uses this feature on
-			-- normal mode
-			-- This is nice to have
-			callbacks = {
-				on_enable = function(_, win)
-					vim.wo[win].conceallevel = 2
-					vim.wo[win].conecalcursor = "c"
-				end,
+			preview = {
+				modes = { "n", "i", "no", "c" }, -- Change these modes
+				-- to what you need
+				hybrid_modes = { "i" }, -- Uses this feature on
+				-- normal mode
+				-- This is nice to have
+				callbacks = {
+					on_enable = function(_, win)
+						vim.wo[win].conceallevel = 2
+						vim.wo[win].conecalcursor = "c"
+					end,
+				},
 			},
 		},
 	},

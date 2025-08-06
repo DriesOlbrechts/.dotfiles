@@ -50,8 +50,30 @@ local M = {
 			end,
 			desc = "file tree snacks",
 		},
-	}
-}
 
+		-- GIT pickers
+		{
+			"<leader>gl",
+			function()
+				Snacks.picker.git_log()
+			end,
+			desc = "Git Log",
+		},
+		{
+			"<leader>gf",
+			function()
+				Snacks.picker.git_log_file()
+			end,
+			desc = "Git Log File",
+		},
+		{
+			"<leader>gs",
+			function()
+				Snacks.picker.git_status()
+			end,
+			desc = "Git Status",
+		},
+	},
+}
 
 return M
