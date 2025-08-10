@@ -1,6 +1,6 @@
 return {
 	{
-		'goolord/alpha-nvim',
+		"goolord/alpha-nvim",
 		event = "VimEnter",
 		config = function()
 			local alpha = require("alpha")
@@ -8,31 +8,31 @@ return {
 
 			-- Set header
 			dashboard.section.header.val = {
-				'                                  ████████                                ',
-				'                              ████▒▒▒▒▒▒▒▒████                            ',
-				'                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                          ',
-				'                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ',
-				'                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ',
-				'                        ██      ▒▒▒▒▒▒▒▒▒▒▒▒      ██                      ',
-				'                        ██        ████████        ██                      ',
-				'                        ██    ██  ████████  ██    ██                      ',
-				'                        ██▒▒      ████████      ▒▒██                      ',
-				'                          ██▒▒▒▒  ████████  ▒▒▒▒██                        ',
-				'                          ██▒▒▒▒▒▒████████▒▒▒▒▒▒██                        ',
-				'                            ██▒▒▒▒▒▒████▒▒▒▒▒▒██                          ',
-				'                          ██  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ██                        ',
-				'                        ██▓▓  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▓▓                        ',
-				'                        ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██                      ',
-				'                        ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██                      ',
-				'                        ██▓▓██▒▒▒▒▒▒████▒▒▒▒▒▒██▓▓██                      ',
-				'                      ▓▓▓▓██▓▓██████▓▓▓▓██████▓▓██▓▓▓▓                    ',
-				'                      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                    ',
-				'                      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                    ',
-				'                                ██▒▒▒▒▒▒▒▒██                              ',
-				'                                  ██▒▒▒▒██                                ',
-				'                                    ████                                  ',
-				'                                                                          ',
-				'                                *Chirp Chirp*                             ',
+				"                                  ████████                                ",
+				"                              ████▒▒▒▒▒▒▒▒████                            ",
+				"                            ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                          ",
+				"                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ",
+				"                          ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██                        ",
+				"                        ██      ▒▒▒▒▒▒▒▒▒▒▒▒      ██                      ",
+				"                        ██        ████████        ██                      ",
+				"                        ██    ██  ████████  ██    ██                      ",
+				"                        ██▒▒      ████████      ▒▒██                      ",
+				"                          ██▒▒▒▒  ████████  ▒▒▒▒██                        ",
+				"                          ██▒▒▒▒▒▒████████▒▒▒▒▒▒██                        ",
+				"                            ██▒▒▒▒▒▒████▒▒▒▒▒▒██                          ",
+				"                          ██  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ██                        ",
+				"                        ██▓▓  ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  ▓▓                        ",
+				"                        ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██                      ",
+				"                        ██▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓██                      ",
+				"                        ██▓▓██▒▒▒▒▒▒████▒▒▒▒▒▒██▓▓██                      ",
+				"                      ▓▓▓▓██▓▓██████▓▓▓▓██████▓▓██▓▓▓▓                    ",
+				"                      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                    ",
+				"                      ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓                    ",
+				"                                ██▒▒▒▒▒▒▒▒██                              ",
+				"                                  ██▒▒▒▒██                                ",
+				"                                    ████                                  ",
+				"                                                                          ",
+				"                                *Chirp Chirp*                             ",
 			}
 
 			-- Set menu
@@ -48,18 +48,26 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "",
 				callback = function()
-					local stats = require('lazy').stats()
+					local stats = require("lazy").stats()
 					local startup = stats.startuptime
 					local plugins = stats.count
 					local loaded = stats.loaded
 					local v = vim.version()
-					local datetime = os.date " %d-%m-%Y   %H:%M:%S"
-					local platform = vim.fn.has "win32" == 1 and "" or ""
-					dashboard.section.footer.val = string.format("⚡ %d 󰂕 %d/%d   v%d.%d.%d %s  %s", startup,
-						loaded, plugins, v.major, v.minor, v.patch, platform,
-						datetime)
+					local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
+					local platform = vim.fn.has("win32") == 1 and "" or ""
+					dashboard.section.footer.val = string.format(
+						"⚡ %d 󰂕 %d/%d   v%d.%d.%d %s  %s",
+						startup,
+						loaded,
+						plugins,
+						v.major,
+						v.minor,
+						v.patch,
+						platform,
+						datetime
+					)
 					pcall(vim.cmd.AlphaRedraw)
-				end
+				end,
 			})
 
 			-- Send config to alpha
@@ -68,6 +76,6 @@ return {
 
 			-- Disable folding on alpha buffer
 			vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
-		end
+		end,
 	},
 }

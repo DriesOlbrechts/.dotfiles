@@ -6,6 +6,22 @@ return {
 			config = true,
 		},
 		{
+			"rachartier/tiny-code-action.nvim",
+			dependencies = {
+				{ "nvim-lua/plenary.nvim" },
+				{
+					"folke/snacks.nvim",
+					opts = {
+						terminal = {},
+					},
+				},
+			},
+			event = "LspAttach",
+			opts = {
+				picker = "snacks",
+			},
+		},
+		{
 			"hrsh7th/nvim-cmp",
 			event = "InsertEnter",
 			dependencies = {
@@ -15,7 +31,7 @@ return {
 					"onsails/lspkind.nvim",
 					"rafamadriz/friendly-snippets",
 					"saadparwaiz1/cmp_luasnip",
-					"hrsh7th/cmp-nvim-lsp",
+					{ "hrsh7th/cmp-nvim-lsp" },
 				},
 			},
 			config = function()

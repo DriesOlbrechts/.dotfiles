@@ -36,5 +36,8 @@ return {
 		keys = {
 			{ "<leader>gbt", "<cmd>GitBlameToggle<CR>", desc = "git blame" },
 		},
+		opts = {
+			enabled = false,
+		},
 	},
 }

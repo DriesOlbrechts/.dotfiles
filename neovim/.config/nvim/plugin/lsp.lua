@@ -83,19 +83,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 		vim.lsp.inlay_hint.enable(true)
 
-		vim.keymap.set("n", "<leader>rn", function()
-			vim.ui.input({ prompt = "New Name: " }, function(input)
-				if input and #input > 0 then
-					vim.lsp.buf.rename(input, {
-						bufnr = buffer,
-						filter = function(c)
-							return c.id == client.id
-						end,
-					})
-				end
-			end)
-		end, { buffer = buffer })
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts, {
+			desc = "LSP rename",
+		})
 
 		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+
+		vim.keymap.set(
+			{ "v", "n" },
+			"<leader>ca",
+			require("tiny-code-action").code_action,
+			{ desc = "code action menu", noremap = true, silent = true }
+		)
 	end,
 })
