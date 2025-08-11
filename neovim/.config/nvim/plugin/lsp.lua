@@ -69,6 +69,7 @@ vim.diagnostic.config({
 	},
 })
 
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("dodo.lsp.on_attach", { clear = true }),
 	callback = function(event)
@@ -82,12 +83,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end
 		vim.lsp.inlay_hint.enable(true)
+		local bufopts = { noremap = true, silent = true, buffer = buffer }
 
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts, {
 			desc = "LSP rename",
 		})
 
-		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts, { desc = "show diagnostics popup window" })
 
 		vim.keymap.set(
 			{ "v", "n" },
@@ -95,5 +97,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			require("tiny-code-action").code_action,
 			{ desc = "code action menu", noremap = true, silent = true }
 		)
+
+		vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, bufopts, { desc = "jump to definition" })
+		vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, bufopts, { desc = "list references" })
 	end,
 })
