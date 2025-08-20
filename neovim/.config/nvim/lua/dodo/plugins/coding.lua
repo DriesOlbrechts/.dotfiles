@@ -118,9 +118,9 @@ return {
 		-- Optional: you can add some keybindings
 		-- (I personally use lspsaga so check out lspsaga integration or lsp integration for a smoother experience without separate keybindings)
 		keys = {
-			{ "<leader>ge", "<cmd>EcologGoto<cr>",            desc = "Go to env file" },
+			{ "<leader>ge", "<cmd>EcologGoto<cr>", desc = "Go to env file" },
 			{ "<leader>ep", "<cmd>EcologShelterLinePeek<cr>", desc = "Ecolog peek variable" },
-			{ "<leader>es", "<cmd>EcologSelect<cr>",          desc = "Switch env file" },
+			{ "<leader>es", "<cmd>EcologSelect<cr>", desc = "Switch env file" },
 		},
 		-- Lazy loading is done internally
 		lazy = false,
@@ -148,12 +148,12 @@ return {
 					mask_char = "*", -- Character used for masking
 				},
 				modules = {
-					cmp = false,  -- Enabled to mask values in completion
+					cmp = false, -- Enabled to mask values in completion
 					peek = false, -- Enable to mask values in peek view
 					files = false, -- Enabled to mask values in file buffers
 					telescope = false, -- Enable to mask values in telescope integration
 					telescope_previewer = false, -- Enable to mask values in telescope preview buffers
-					fzf = false,  -- Enable to mask values in fzf picker
+					fzf = false, -- Enable to mask values in fzf picker
 					fzf_previewer = false, -- Enable to mask values in fzf preview buffers
 					snacks_previewer = false, -- Enable to mask values in snacks previewer
 					snacks = false, -- Enable to mask values in snacks picker
@@ -161,10 +161,10 @@ return {
 			},
 			-- true by default, enables built-in types (database_url, url, etc.)
 			types = true,
-			path = vim.fn.getcwd(),       -- Path to search for .env files
+			path = vim.fn.getcwd(), -- Path to search for .env files
 			preferred_environment = "development", -- Optional: prioritize specific env files
 			-- Controls how environment variables are extracted from code and how cmp works
-			provider_patterns = true,     -- true by default, when false will not check provider patterns
+			provider_patterns = true, -- true by default, when false will not check provider patterns
 		},
 	},
 	{
@@ -179,8 +179,8 @@ return {
 			"zbirenbaum/copilot.lua",
 		},
 		init = function()
-			local macchiato = require("catppuccin.palettes").get_palette("macchiato")
-			vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { fg = macchiato.base, bg = macchiato.blue })
+			-- local macchiato = require("catppuccin.palettes").get_palette("macchiato")
+			-- vim.api.nvim_set_hl(0, "CodeCompanionChatVariable", { fg = macchiato.base, bg = macchiato.blue })
 		end,
 		opts = {
 			adapters = {

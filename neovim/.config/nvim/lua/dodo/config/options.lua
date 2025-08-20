@@ -3,8 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.compatible = false
 
-vim.cmd.colorscheme("catppuccin")
-
+vim.cmd.colorscheme("accent")
 opt.confirm = true
 
 opt.undofile = true

@@ -1,29 +1,11 @@
 return {
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"alligator/accent.vim",
+		name = "accent",
 		priority = 1000,
-		opts = {
-			flavour = "macchiato",
-			transparent_background = true,
-
-			integrations = {
-				cmp = true,
-				gitsigns = true,
-				treesitter = true,
-				markdown = true,
-				mason = true,
-				alpha = true,
-				diffview = true,
-				nvim_surround = true,
-				lsp_trouble = true,
-				indent_blankline = {
-					enabled = true,
-					scope_color = "maroon",
-					colored_indent_levels = false,
-				},
-			},
-		},
+		config = function()
+			vim.g.accent_auto_cwd_colour = 1
+		end,
 	},
 	{
 		"nvim-tree/nvim-web-devicons",
@@ -34,11 +16,10 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
-			{ "catppuccin" },
 		},
 		opts = {
 			options = {
-				theme = "catppuccin",
+				theme = "auto",
 			},
 		},
 	},
