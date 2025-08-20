@@ -30,7 +30,7 @@ program = "/usr/local/bin/fish"
 [window]
 class = "alacritty"
 dynamic_title = true
-opacity = 0.95
+opacity = 1
 
 
 [general]
@@ -38,6 +38,6 @@ import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
-  "~/.config/catppuccin-macchiato.toml"
+  "~/.config/alacritty/.config/colors.toml"
   # "~/.config/alacritty/catppuccin-mocha.toml"
 ]
