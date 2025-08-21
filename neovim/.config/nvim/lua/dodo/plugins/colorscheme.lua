@@ -1,13 +1,5 @@
 return {
 	{
-		"alligator/accent.vim",
-		name = "accent",
-		priority = 1000,
-		config = function()
-			vim.g.accent_auto_cwd_colour = 1
-		end,
-	},
-	{
 		"nvim-tree/nvim-web-devicons",
 		config = true,
 	},

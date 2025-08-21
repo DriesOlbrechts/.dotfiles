@@ -57,9 +57,6 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.HINT] = " ",
 			[vim.diagnostic.severity.INFO] = "󰌵 ",
 		},
-		linehl = {
-			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
-		},
 		numhl = {
 			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
 			[vim.diagnostic.severity.WARN] = "WarningMsg",
@@ -68,7 +65,6 @@ vim.diagnostic.config({
 		},
 	},
 })
-
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("dodo.lsp.on_attach", { clear = true }),
