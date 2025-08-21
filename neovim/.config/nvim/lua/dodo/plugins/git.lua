@@ -40,4 +40,8 @@ return {
 			enabled = false,
 		},
 	},
+	{
+		"tpope/vim-fugitive",
+		event = "VeryLazy"
+	}
 }
