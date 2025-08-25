@@ -29,7 +29,7 @@ yabai -m config normal_window_opacity 0.8
 
 
 # borders 
-borders active_color=0xffee99a0 inactive_color=0xff363a4f width=5.0 &
+borders active_color=0xffc688cd inactive_color=0xff6e3973 width=5.0 &
 
 # rules
 yabai -m rule --add app="^Slack$" space=1
