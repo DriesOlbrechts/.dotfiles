@@ -11,65 +11,94 @@ end
 vim.g.colors_name = "accent"
 
 local accent_colours = {
-	red = {
-		fg = "#e06c75",
-		bg = "#b04c55",
-		ctermfg = "167",
-		ctermbg = "131",
-		keywordfg = "#ffb3b3",
-		keywordctermfg = "217",
+	magenta = {
+		primary = "#c688cd",
+		secondary = "#965498",
+		highlight = "#f3b3ff",
+		muted = "#6e3973",
+		contrast = "#ff79c6",
+		cterm_primary = "176",
+		cterm_secondary = "133",
+		cterm_highlight = "219",
+		cterm_muted = "96",
+		cterm_contrast = "212",
 	},
 	orange = {
-		fg = "#ee9360",
-		bg = "#b66930",
-		ctermfg = "173",
-		ctermbg = "166",
-		keywordfg = "#ffd6a0",
-		keywordctermfg = "223",
+		primary = "#ee9360",
+		secondary = "#b66930",
+		highlight = "#ffd6a0",
+		muted = "#a05a2c",
+		contrast = "#ffb86c",
+		cterm_primary = "173",
+		cterm_secondary = "166",
+		cterm_highlight = "223",
+		cterm_muted = "130",
+		cterm_contrast = "215",
 	},
 	green = {
-		fg = "#98c379",
-		bg = "#689349",
-		ctermfg = "149",
-		ctermbg = "107",
-		keywordfg = "#c3f7b6",
-		keywordctermfg = "157",
+		primary = "#98c379",
+		secondary = "#689349",
+		highlight = "#c3f7b6",
+		muted = "#4e6e3a",
+		contrast = "#b8e994",
+		cterm_primary = "149",
+		cterm_secondary = "107",
+		cterm_highlight = "157",
+		cterm_muted = "65",
+		cterm_contrast = "151",
 	},
 	yellow = {
-		fg = "#e5c07b",
-		bg = "#a5803b",
-		ctermfg = "179",
-		ctermbg = "136",
-		keywordfg = "#fff5b1",
-		keywordctermfg = "229",
+		primary = "#e5c07b",
+		secondary = "#a5803b",
+		highlight = "#fff5b1",
+		muted = "#7a5c1e",
+		contrast = "#ffe066",
+		cterm_primary = "179",
+		cterm_secondary = "136",
+		cterm_highlight = "229",
+		cterm_muted = "94",
+		cterm_contrast = "228",
 	},
 	blue = {
-		fg = "#61afe7",
-		bg = "#3876af",
-		ctermfg = "74",
-		ctermbg = "67",
-		keywordfg = "#b3d8ff",
-		keywordctermfg = "153",
+		primary = "#61afe7",
+		secondary = "#3876af",
+		highlight = "#b3d8ff",
+		muted = "#274472",
+		contrast = "#82aaff",
+		cterm_primary = "74",
+		cterm_secondary = "67",
+		cterm_highlight = "153",
+		cterm_muted = "24",
+		cterm_contrast = "111",
 	},
-	magenta = {
-		fg = "#c688cd",
-		bg = "#965498",
-		ctermfg = "176",
-		ctermbg = "133",
-		keywordfg = "#f3b3ff",
-		keywordctermfg = "219",
+
+	red = {
+		primary = "#e06c75",
+		secondary = "#b04c55",
+		highlight = "#ffb3b3",
+		muted = "#7c3f4a",
+		contrast = "#ff5c57",
+		cterm_primary = "167",
+		cterm_secondary = "131",
+		cterm_highlight = "217",
+		cterm_muted = "95",
+		cterm_contrast = "203",
 	},
 	cyan = {
-		fg = "#56b6c2",
-		bg = "#3696a2",
-		ctermfg = "73",
-		ctermbg = "30",
-		keywordfg = "#a8f0ff",
-		keywordctermfg = "159",
+		primary = "#56b6c2",
+		secondary = "#3696a2",
+		highlight = "#a8f0ff",
+		muted = "#2b6f77",
+		contrast = "#8be9fd",
+		cterm_primary = "73",
+		cterm_secondary = "30",
+		cterm_highlight = "159",
+		cterm_muted = "23",
+		cterm_contrast = "123",
 	},
 }
 
-local accent_order = { "red", "orange", "green", "yellow", "blue", "magenta", "cyan" }
+local accent_order = { "magenta", "orange", "green", "yellow", "blue", "red", "cyan" }
 
 local accent_auto_color = vim.g.accent_auto_color or 0
 local accent = vim.g.accent_colour or "red"
@@ -95,8 +124,12 @@ local fg_d1 = " guifg=#999999 ctermfg=246"
 local fg_d2 = " guifg=#777777 ctermfg=244"
 local fg_inv = " guifg=#282c34 ctermfg=236"
 local fg_invd = " guifg=#181c24 ctermfg=234"
-local fg_c = " guifg=" .. accent_colours[accent].fg .. " ctermfg=" .. accent_colours[accent].ctermfg
-local fg_keyword = " guifg=" .. accent_colours[accent].keywordfg .. " ctermfg=" .. accent_colours[accent].keywordctermfg
+local fg_c = " guifg=" .. accent_colours[accent].primary .. " ctermfg=" .. accent_colours[accent].cterm_primary
+local fg_special = " guifg="
+	.. accent_colours[accent].highlight
+	.. " ctermfg="
+	.. accent_colours[accent].cterm_highlight
+local fg_keyword = " guifg=" .. accent_colours[accent].contrast .. " ctermfg=" .. accent_colours[accent].cterm_contrast
 
 -- background
 local bg = " guibg=#282c34 ctermbg=236"
@@ -104,14 +137,14 @@ local bg_b1 = " guibg=#383c44 ctermbg=237"
 local bg_b2 = " guibg=#484c54 ctermbg=238"
 local bg_none = " guibg=NONE"
 local bg_inv = " guibg=#cccfd4 ctermbg=188"
-local bg_red = " guibg=" .. accent_colours.red.bg .. " ctermbg=" .. accent_colours.red.ctermbg
-local bg_c = " guibg=" .. accent_colours[accent].bg .. " ctermbg=" .. accent_colours[accent].ctermbg
+local bg_red = " guibg=" .. accent_colours.red.secondary .. " ctermbg=" .. accent_colours.red.cterm_secondary
+local bg_c = " guibg=" .. accent_colours[accent].secondary .. " ctermbg=" .. accent_colours[accent].cterm_secondary
 
 -- special
-local sp_red = " guisp=" .. accent_colours.red.fg .. " ctermfg=" .. accent_colours.red.ctermfg
-local sp_magenta = " guisp=" .. accent_colours.magenta.fg .. " ctermfg=" .. accent_colours.magenta.ctermfg
-local sp_blue = " guisp=" .. accent_colours.blue.fg .. " ctermfg=" .. accent_colours.blue.ctermfg
-local sp_cyan = " guisp=" .. accent_colours.cyan.fg .. " ctermfg=" .. accent_colours.cyan.ctermfg
+local sp_red = " guisp=" .. accent_colours.red.primary .. " ctermfg=" .. accent_colours.red.cterm_primary
+local sp_magenta = " guisp=" .. accent_colours.magenta.primary .. " ctermfg=" .. accent_colours.magenta.cterm_primary
+local sp_blue = " guisp=" .. accent_colours.blue.primary .. " ctermfg=" .. accent_colours.blue.cterm_primary
+local sp_cyan = " guisp=" .. accent_colours.cyan.primary .. " ctermfg=" .. accent_colours.cyan.cterm_primary
 
 -- modifiers
 local bold = " gui=bold"
@@ -167,12 +200,11 @@ else
 end
 vim.cmd("hi Comment" .. fg_d2 .. bg_none .. none)
 vim.cmd("hi String" .. fg_c .. bg_none .. none)
-vim.cmd("hi Type" .. fg_keyword .. bg_none .. none)
+vim.cmd("hi Type" .. fg_special .. bg_none .. none)
 vim.cmd("hi PreProc" .. fg_d1 .. bg_none .. none)
 vim.cmd("hi Underlined" .. fg .. bg_none .. underline)
 vim.cmd("hi Special" .. fg_c .. bg_none .. none)
 vim.cmd("hi Error" .. fg_b1 .. bg_red .. none)
-vim.cmd("hi @variable" .. fg .. bg_none .. none)
 
 vim.cmd("hi! link Operator     Normal")
 vim.cmd("hi! link Identifier   Normal")
@@ -191,6 +223,11 @@ vim.cmd("hi! link ErrorMsg     Error")
 -- special stuff
 vim.cmd("hi! link xmlAttrib    Normal")
 vim.cmd("hi! link sqlKeyword   Type")
+
+-- language stuff
+vim.cmd("hi @variable" .. fg .. bg_none .. none)
+vim.cmd("hi @tag.attribute" .. fg .. bg_none .. none)
+vim.cmd("hi Keyword" .. fg_keyword .. bg_none .. none)
 
 -- diff
 local diff_red = " guifg=#e06c75 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE"
