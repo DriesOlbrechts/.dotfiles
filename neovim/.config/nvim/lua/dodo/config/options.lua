@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.compatible = false
 
--- vim.g.accent_auto_color = 1
+vim.g.accent_auto_color = 1
 
 vim.cmd.colorscheme("accent")
 opt.confirm = true

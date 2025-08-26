@@ -1,5 +1,7 @@
 -- accent.lua
 -- a simple Neovim colorscheme with a configurable accent color.
+-- fork of accent.vim converted to lua
+-- https://github.com/Alligator/accent.vim
 
 vim.opt.background = "dark"
 vim.cmd("hi clear")
