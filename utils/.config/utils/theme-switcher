@@ -14,19 +14,33 @@ declare -A ACCENT_COLOURS=(
   [cyan]="#56b6c2"
 )
 
+ACCENT_KEYS=(magenta orange green yellow blue red cyan)
 
-if [[ -z "$1" || "$2" ]]; then
-  echo "Usage: source ${BASH_SOURCE[0]} <theme>"
-  return 1
-fi
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --tmux)
+      tmux_flag=true
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      echo "Unknown option: $1"
+      usage
+      return 1
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+
 
 theme="$1"
 
-# Allow letters, numbers, underscore, dash
-if [[ ! "$theme" =~ ^[A-Za-z0-9_-]+$ ]]; then
-  echo "Invalid theme name: '$theme'"
-  return 1
-fi
 
 
 case "$(uname -s)" in
@@ -34,6 +48,20 @@ case "$(uname -s)" in
   Darwin)  THEME_OS=mac ;;
   *)       THEME_OS=other ;;
 esac
+
+if [[ $tmux_flag == true ]]; then
+  current_tmux_session=$(tmux list-sessions 2>/dev/null | awk '/\(attached\)/{print NR; exit}')
+  if [[ -z $current_tmux_session ]]; then
+    echo "No attached tmux session found" >&2
+  else
+    key_index=$(( (current_tmux_session - 1) % ${#ACCENT_KEYS[@]} ))
+    selected_key=${ACCENT_KEYS[key_index]}
+    # Example: set theme to that key if not explicitly provided
+    if [[ -z $theme ]]; then
+      theme=$selected_key
+    fi
+  fi
+fi
 
 
 export THEME="$theme"
@@ -47,18 +75,15 @@ if tmux info &>/dev/null; then
 fi
 
 
-ENV_FILE="${XDG_RUNTIME_DIR:-/tmp}/current-theme.env"
-cat >"$ENV_FILE" <<EOF
-THEME=$THEME
-THEME_PRIMARY_COLOR=$THEME_PRIMARY_COLOR
-EOF
 
 if [[ "$THEME_OS" == linux ]] && command -v hyprctl >/dev/null 2>&1; then
   hyprctl keyword general:col.active_border "rgb(${THEME_PRIMARY_COLOR#\#})" >/dev/null 2>&1
 fi
 
 if [[ "$THEME_OS" == mac ]]; then
+	echo "mac"
 fi
 
 
 echo "THEME set to '$THEME' "
+
