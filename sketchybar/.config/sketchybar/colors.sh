@@ -1,6 +1,6 @@
 export BAR_COLOR=0xff363a4f
 export FONT_COLOR=0xffcad3f5
-export BORDER_COLOR=0xffee99a0
+export BORDER_COLOR=0xffc688cd
 
 export POPUP_BACKGROUND_COLOR=0xa0494d64
 export POPUP_BORDER_COLOR=0xffee99a0
