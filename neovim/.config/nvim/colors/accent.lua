@@ -95,147 +95,156 @@ local accent_colours = {
 		cterm_contrast = "123",
 	},
 }
-
 local accent_order = { "magenta", "orange", "green", "yellow", "blue", "red", "cyan" }
 
-local accent_auto_color = vim.g.accent_auto_color or 0
-local accent = vim.g.accent_colour or "red"
-accent = vim.g.accent_color or accent
-local invert_status = vim.g.accent_invert_status or 0
-local no_bg = vim.g.accent_no_bg or 0
+local function setTheme(setAccent)
+	local accent_auto_color = vim.g.accent_auto_color or 0
+	local accent = vim.g.accent_colour or "red"
+	accent = setAccent or vim.g.accent_color or accent
+	local invert_status = vim.g.accent_invert_status or 0
+	local no_bg = vim.g.accent_no_bg or 0
 
--- 32 bit Fowler–Noll–Vo hash
---
+	-- 32 bit Fowler–Noll–Vo hash
+	--
 
-if accent_auto_color == 1 then
-	local current_tmux_session =
-		vim.trim(vim.system({ "sh", "-c", "tmux list-sessions | grep -n '(attached)' | cut -c1" }):wait().stdout)
-	local session = tonumber(current_tmux_session)
-	local key_index = ((session - 1) % #accent_order) + 1
-	accent = accent_order[key_index]
+	-- if accent_auto_color == 1 then
+	-- 	local current_tmux_session =
+	-- 		vim.trim(vim.system({ "sh", "-c", "tmux list-sessions | grep -n '(attached)' | cut -c1" }):wait().stdout)
+	-- 	local session = tonumber(current_tmux_session)
+	-- 	local key_index = ((session - 1) % #accent_order) + 1
+	-- 	accent = accent_order[key_index]
+	-- end
+
+	-- foreground
+	local fg = " guifg=#bcbfc4 ctermfg=250"
+	local fg_b1 = " guifg=#efefff ctermfg=255"
+	local fg_d1 = " guifg=#999999 ctermfg=246"
+	local fg_d2 = " guifg=#777777 ctermfg=244"
+	local fg_inv = " guifg=#282c34 ctermfg=236"
+	local fg_invd = " guifg=#181c24 ctermfg=234"
+	local fg_c = " guifg=" .. accent_colours[accent].primary .. " ctermfg=" .. accent_colours[accent].cterm_primary
+	local fg_special = " guifg="
+		.. accent_colours[accent].highlight
+		.. " ctermfg="
+		.. accent_colours[accent].cterm_highlight
+	local fg_keyword = " guifg="
+		.. accent_colours[accent].contrast
+		.. " ctermfg="
+		.. accent_colours[accent].cterm_contrast
+
+	-- background
+	local bg = " guibg=#282c34 ctermbg=236"
+	local bg_b1 = " guibg=#383c44 ctermbg=237"
+	local bg_b2 = " guibg=#484c54 ctermbg=238"
+	local bg_none = " guibg=NONE"
+	local bg_inv = " guibg=#cccfd4 ctermbg=188"
+	local bg_red = " guibg=" .. accent_colours.red.secondary .. " ctermbg=" .. accent_colours.red.cterm_secondary
+	local bg_c = " guibg=" .. accent_colours[accent].secondary .. " ctermbg=" .. accent_colours[accent].cterm_secondary
+
+	-- special
+	local sp_red = " guisp=" .. accent_colours.red.primary .. " ctermfg=" .. accent_colours.red.cterm_primary
+	local sp_magenta = " guisp="
+		.. accent_colours.magenta.primary
+		.. " ctermfg="
+		.. accent_colours.magenta.cterm_primary
+	local sp_blue = " guisp=" .. accent_colours.blue.primary .. " ctermfg=" .. accent_colours.blue.cterm_primary
+	local sp_cyan = " guisp=" .. accent_colours.cyan.primary .. " ctermfg=" .. accent_colours.cyan.cterm_primary
+
+	-- modifiers
+	local bold = " gui=bold"
+	local none = " gui=none cterm=none"
+	local underline = " gui=underline"
+	local undercurl = " gui=undercurl"
+
+	-- general
+	if no_bg == 1 then
+		vim.cmd("hi Normal" .. fg .. bg_none)
+	else
+		vim.cmd("hi Normal" .. fg .. bg)
+	end
+	if invert_status == 1 then
+		vim.cmd("hi StatusLine" .. fg_invd .. bg_c .. none)
+	else
+		vim.cmd("hi StatusLine" .. fg_b1 .. bg_c .. none)
+	end
+	vim.cmd("hi StatusLineNC" .. fg_d1 .. bg_b2 .. none)
+	vim.cmd("hi VertSplit" .. fg_c .. bg_b1 .. none)
+	vim.cmd("hi LineNr" .. fg_d2 .. bg_none .. none)
+	vim.cmd("hi CursorLineNr" .. fg_b1 .. bg_none .. none)
+	vim.cmd("hi CursorLine" .. bg_b1 .. none)
+	vim.cmd("hi MatchParen" .. fg_b1 .. bg_b1 .. bold)
+	vim.cmd("hi NonText" .. fg_d2 .. bg_none .. none)
+	vim.cmd("hi WildMenu" .. fg_inv .. bg_inv .. none)
+	vim.cmd("hi Search" .. fg_inv .. bg_c .. none)
+	vim.cmd("hi Folded" .. fg_b1 .. bg_b1 .. none)
+	vim.cmd("hi Visual" .. bg_b2)
+	vim.cmd("hi Pmenu" .. fg_d1 .. bg_b1 .. none)
+	vim.cmd("hi PmenuSel" .. fg_c .. bg_b2 .. none)
+	vim.cmd("hi TabLine" .. fg_d1 .. bg_b1 .. none)
+	vim.cmd("hi TabLineFill" .. fg_d1 .. bg_b2 .. none)
+
+	vim.cmd("hi! link StatusLineTerm StatusLine")
+	vim.cmd("hi! link StatusLineTermNC StatusLineNC")
+
+	vim.cmd("hi Question" .. fg_c)
+	vim.cmd("hi! link MoreMsg Question")
+	vim.cmd("hi! link FoldColumn Folded")
+
+	-- spellchecking
+	vim.cmd("hi SpellBad" .. " ctermbg=NONE" .. undercurl .. sp_red)
+	vim.cmd("hi SpellRare" .. " ctermbg=NONE" .. undercurl .. sp_magenta)
+	vim.cmd("hi SpellCap" .. " ctermbg=NONE" .. undercurl .. sp_blue)
+	vim.cmd("hi SpellLocal" .. " ctermbg=NONE" .. undercurl .. sp_cyan)
+
+	-- syntax
+	if no_bg == 1 then
+		vim.cmd("hi Normal" .. fg .. bg_none)
+	else
+		vim.cmd("hi Normal" .. fg .. bg)
+	end
+	vim.cmd("hi Comment" .. fg_d2 .. bg_none .. none)
+	vim.cmd("hi String" .. fg_c .. bg_none .. none)
+	vim.cmd("hi Type" .. fg_special .. bg_none .. none)
+	vim.cmd("hi PreProc" .. fg_d1 .. bg_none .. none)
+	vim.cmd("hi Underlined" .. fg .. bg_none .. underline)
+	vim.cmd("hi Special" .. fg_c .. bg_none .. none)
+	vim.cmd("hi Error" .. fg_b1 .. bg_red .. none)
+
+	vim.cmd("hi! link Operator     Normal")
+	vim.cmd("hi! link Identifier   Normal")
+	vim.cmd("hi! link Todo         Normal")
+	vim.cmd("hi! link Macro        PreProc")
+	vim.cmd("hi! link Statement    Type")
+	vim.cmd("hi! link Constant     Type")
+	vim.cmd("hi! link SpecialKey   Comment")
+	vim.cmd("hi! link Title        Type")
+	vim.cmd("hi! link Directory    Type")
+	vim.cmd("hi! link Function     Type")
+	vim.cmd("hi! link Number       String")
+	vim.cmd("hi! link Character    String")
+	vim.cmd("hi! link ErrorMsg     Error")
+
+	-- special stuff
+	vim.cmd("hi! link xmlAttrib    Normal")
+	vim.cmd("hi! link sqlKeyword   Type")
+
+	-- language stuff
+	vim.cmd("hi @variable" .. fg .. bg_none .. none)
+	vim.cmd("hi @tag.attribute" .. fg .. bg_none .. none)
+	vim.cmd("hi Keyword" .. fg_keyword .. bg_none .. none)
+
+	-- diff
+	local diff_red = " guifg=#e06c75 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE"
+	local diff_green = " guifg=#98c379 guibg=NONE ctermfg=149 ctermbg=NONE"
+	local diff_purple = " guifg=#c688cd guibg=NONE ctermfg=176 ctermbg=NONE"
+
+	vim.cmd("hi DiffAdd" .. diff_green)
+	vim.cmd("hi DiffDelete" .. diff_red)
+	vim.cmd("hi DiffChange" .. bg_b1)
+	vim.cmd("hi DiffText" .. fg_b1 .. bg_red .. none)
+
+	vim.cmd("hi! link diffAdded    DiffAdd")
+	vim.cmd("hi! link diffRemoved  DiffDelete")
 end
 
--- foreground
-local fg = " guifg=#bcbfc4 ctermfg=250"
-local fg_b1 = " guifg=#efefff ctermfg=255"
-local fg_d1 = " guifg=#999999 ctermfg=246"
-local fg_d2 = " guifg=#777777 ctermfg=244"
-local fg_inv = " guifg=#282c34 ctermfg=236"
-local fg_invd = " guifg=#181c24 ctermfg=234"
-local fg_c = " guifg=" .. accent_colours[accent].primary .. " ctermfg=" .. accent_colours[accent].cterm_primary
-local fg_special = " guifg="
-	.. accent_colours[accent].highlight
-	.. " ctermfg="
-	.. accent_colours[accent].cterm_highlight
-local fg_keyword = " guifg=" .. accent_colours[accent].contrast .. " ctermfg=" .. accent_colours[accent].cterm_contrast
-
--- background
-local bg = " guibg=#282c34 ctermbg=236"
-local bg_b1 = " guibg=#383c44 ctermbg=237"
-local bg_b2 = " guibg=#484c54 ctermbg=238"
-local bg_none = " guibg=NONE"
-local bg_inv = " guibg=#cccfd4 ctermbg=188"
-local bg_red = " guibg=" .. accent_colours.red.secondary .. " ctermbg=" .. accent_colours.red.cterm_secondary
-local bg_c = " guibg=" .. accent_colours[accent].secondary .. " ctermbg=" .. accent_colours[accent].cterm_secondary
-
--- special
-local sp_red = " guisp=" .. accent_colours.red.primary .. " ctermfg=" .. accent_colours.red.cterm_primary
-local sp_magenta = " guisp=" .. accent_colours.magenta.primary .. " ctermfg=" .. accent_colours.magenta.cterm_primary
-local sp_blue = " guisp=" .. accent_colours.blue.primary .. " ctermfg=" .. accent_colours.blue.cterm_primary
-local sp_cyan = " guisp=" .. accent_colours.cyan.primary .. " ctermfg=" .. accent_colours.cyan.cterm_primary
-
--- modifiers
-local bold = " gui=bold"
-local none = " gui=none cterm=none"
-local underline = " gui=underline"
-local undercurl = " gui=undercurl"
-
--- general
-if no_bg == 1 then
-	vim.cmd("hi Normal" .. fg .. bg_none)
-else
-	vim.cmd("hi Normal" .. fg .. bg)
-end
-if invert_status == 1 then
-	vim.cmd("hi StatusLine" .. fg_invd .. bg_c .. none)
-else
-	vim.cmd("hi StatusLine" .. fg_b1 .. bg_c .. none)
-end
-vim.cmd("hi StatusLineNC" .. fg_d1 .. bg_b2 .. none)
-vim.cmd("hi VertSplit" .. fg_c .. bg_b1 .. none)
-vim.cmd("hi LineNr" .. fg_d2 .. bg_none .. none)
-vim.cmd("hi CursorLineNr" .. fg_b1 .. bg_none .. none)
-vim.cmd("hi CursorLine" .. bg_b1 .. none)
-vim.cmd("hi MatchParen" .. fg_b1 .. bg_b1 .. bold)
-vim.cmd("hi NonText" .. fg_d2 .. bg_none .. none)
-vim.cmd("hi WildMenu" .. fg_inv .. bg_inv .. none)
-vim.cmd("hi Search" .. fg_inv .. bg_c .. none)
-vim.cmd("hi Folded" .. fg_b1 .. bg_b1 .. none)
-vim.cmd("hi Visual" .. bg_b2)
-vim.cmd("hi Pmenu" .. fg_d1 .. bg_b1 .. none)
-vim.cmd("hi PmenuSel" .. fg_c .. bg_b2 .. none)
-vim.cmd("hi TabLine" .. fg_d1 .. bg_b1 .. none)
-vim.cmd("hi TabLineFill" .. fg_d1 .. bg_b2 .. none)
-
-vim.cmd("hi! link StatusLineTerm StatusLine")
-vim.cmd("hi! link StatusLineTermNC StatusLineNC")
-
-vim.cmd("hi Question" .. fg_c)
-vim.cmd("hi! link MoreMsg Question")
-vim.cmd("hi! link FoldColumn Folded")
-
--- spellchecking
-vim.cmd("hi SpellBad" .. " ctermbg=NONE" .. undercurl .. sp_red)
-vim.cmd("hi SpellRare" .. " ctermbg=NONE" .. undercurl .. sp_magenta)
-vim.cmd("hi SpellCap" .. " ctermbg=NONE" .. undercurl .. sp_blue)
-vim.cmd("hi SpellLocal" .. " ctermbg=NONE" .. undercurl .. sp_cyan)
-
--- syntax
-if no_bg == 1 then
-	vim.cmd("hi Normal" .. fg .. bg_none)
-else
-	vim.cmd("hi Normal" .. fg .. bg)
-end
-vim.cmd("hi Comment" .. fg_d2 .. bg_none .. none)
-vim.cmd("hi String" .. fg_c .. bg_none .. none)
-vim.cmd("hi Type" .. fg_special .. bg_none .. none)
-vim.cmd("hi PreProc" .. fg_d1 .. bg_none .. none)
-vim.cmd("hi Underlined" .. fg .. bg_none .. underline)
-vim.cmd("hi Special" .. fg_c .. bg_none .. none)
-vim.cmd("hi Error" .. fg_b1 .. bg_red .. none)
-
-vim.cmd("hi! link Operator     Normal")
-vim.cmd("hi! link Identifier   Normal")
-vim.cmd("hi! link Todo         Normal")
-vim.cmd("hi! link Macro        PreProc")
-vim.cmd("hi! link Statement    Type")
-vim.cmd("hi! link Constant     Type")
-vim.cmd("hi! link SpecialKey   Comment")
-vim.cmd("hi! link Title        Type")
-vim.cmd("hi! link Directory    Type")
-vim.cmd("hi! link Function     Type")
-vim.cmd("hi! link Number       String")
-vim.cmd("hi! link Character    String")
-vim.cmd("hi! link ErrorMsg     Error")
-
--- special stuff
-vim.cmd("hi! link xmlAttrib    Normal")
-vim.cmd("hi! link sqlKeyword   Type")
-
--- language stuff
-vim.cmd("hi @variable" .. fg .. bg_none .. none)
-vim.cmd("hi @tag.attribute" .. fg .. bg_none .. none)
-vim.cmd("hi Keyword" .. fg_keyword .. bg_none .. none)
-
--- diff
-local diff_red = " guifg=#e06c75 guibg=NONE gui=NONE ctermfg=167 ctermbg=NONE"
-local diff_green = " guifg=#98c379 guibg=NONE ctermfg=149 ctermbg=NONE"
-local diff_purple = " guifg=#c688cd guibg=NONE ctermfg=176 ctermbg=NONE"
-
-vim.cmd("hi DiffAdd" .. diff_green)
-vim.cmd("hi DiffDelete" .. diff_red)
-vim.cmd("hi DiffChange" .. bg_b1)
-vim.cmd("hi DiffText" .. fg_b1 .. bg_red .. none)
-
-vim.cmd("hi! link diffAdded    DiffAdd")
-vim.cmd("hi! link diffRemoved  DiffDelete")
+setTheme(os.getenv("THEME") or "magenta")
