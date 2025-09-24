@@ -97,29 +97,12 @@ local accent_colours = {
 		cterm_contrast = "123",
 	},
 }
-local accent_order = { "magenta", "orange", "green", "yellow", "blue", "red", "cyan" }
 
 local function setTheme(setAccent)
-	local accent_auto_color = vim.g.accent_auto_color or 0
 	local accent = vim.g.accent_colour or "red"
 	accent = setAccent or vim.g.accent_color or accent
 	local invert_status = vim.g.accent_invert_status or 0
 	local no_bg = vim.g.accent_no_bg or 0
-
-	-- 32 bit Fowler–Noll–Vo hash
-	--
-
-	if accent_auto_color == 1 then
-		local res = vim.system({ "tmux", "display-message", "-p", "#{session_id}" }):wait()
-		if res.code == 0 and type(res.stdout) == "string" then
-			local num = res.stdout:match("%d+")
-			local sid = tonumber(num)
-			if sid then
-				local key_index = (sid % #accent_order) + 1
-				accent = accent_order[key_index]
-			end
-		end
-	end
 
 	-- foreground
 	local fg = " guifg=#bcbfc4 ctermfg=250"
@@ -130,13 +113,13 @@ local function setTheme(setAccent)
 	local fg_invd = " guifg=#181c24 ctermfg=234"
 	local fg_c = " guifg=" .. accent_colours[accent].primary .. " ctermfg=" .. accent_colours[accent].cterm_primary
 	local fg_special = " guifg="
-	    .. accent_colours[accent].highlight
-	    .. " ctermfg="
-	    .. accent_colours[accent].cterm_highlight
+		.. accent_colours[accent].highlight
+		.. " ctermfg="
+		.. accent_colours[accent].cterm_highlight
 	local fg_keyword = " guifg="
-	    .. accent_colours[accent].contrast
-	    .. " ctermfg="
-	    .. accent_colours[accent].cterm_contrast
+		.. accent_colours[accent].contrast
+		.. " ctermfg="
+		.. accent_colours[accent].cterm_contrast
 
 	-- background
 	local bg = " guibg=#282c34 ctermbg=236"
@@ -146,14 +129,14 @@ local function setTheme(setAccent)
 	local bg_inv = " guibg=#cccfd4 ctermbg=188"
 	local bg_red = " guibg=" .. accent_colours.red.secondary .. " ctermbg=" .. accent_colours.red.cterm_secondary
 	local bg_c = " guibg=" ..
-	    accent_colours[accent].secondary .. " ctermbg=" .. accent_colours[accent].cterm_secondary
+		accent_colours[accent].secondary .. " ctermbg=" .. accent_colours[accent].cterm_secondary
 
 	-- special
 	local sp_red = " guisp=" .. accent_colours.red.primary .. " ctermfg=" .. accent_colours.red.cterm_primary
 	local sp_magenta = " guisp="
-	    .. accent_colours.magenta.primary
-	    .. " ctermfg="
-	    .. accent_colours.magenta.cterm_primary
+		.. accent_colours.magenta.primary
+		.. " ctermfg="
+		.. accent_colours.magenta.cterm_primary
 	local sp_blue = " guisp=" .. accent_colours.blue.primary .. " ctermfg=" .. accent_colours.blue.cterm_primary
 	local sp_cyan = " guisp=" .. accent_colours.cyan.primary .. " ctermfg=" .. accent_colours.cyan.cterm_primary
 
@@ -254,4 +237,25 @@ local function setTheme(setAccent)
 	vim.cmd("hi! link diffRemoved  DiffDelete")
 end
 
-setTheme(os.getenv("THEME") or "magenta")
+local function get_theme()
+	local trim = vim.trim or function(s) return (s:gsub("^%s+", ""):gsub("%s+$", "")) end
+
+	if not os.getenv("TMUX") or vim.fn.executable("tmux") == 0 then
+		return os.getenv("THEME")
+	end
+
+
+	--tmux environment variable: set-environment -g THEME magenta
+	local ok_env, env_line = pcall(vim.fn.system, { "tmux", "show-environment", "-g", "THEME" })
+	if ok_env and env_line and env_line:match("^THEME=") then
+		local val = env_line:match("^THEME=(.*)")
+		if val then
+			val = trim(val)
+			if #val > 0 then return val end
+		end
+	end
+
+	return os.getenv("THEME")
+end
+
+setTheme(get_theme() or "magenta")
