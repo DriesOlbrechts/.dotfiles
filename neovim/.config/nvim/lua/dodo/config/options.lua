@@ -52,8 +52,6 @@ opt.tildeop = true
 opt.foldenable = false
 opt.foldlevel = 999
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.smoothscroll = true
 
 vim.g.netrw_liststyle = 1

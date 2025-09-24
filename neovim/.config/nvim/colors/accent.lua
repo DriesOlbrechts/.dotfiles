@@ -110,11 +110,15 @@ local no_bg = vim.g.accent_no_bg or 0
 --
 
 if accent_auto_color == 1 then
-	local current_tmux_session =
-		vim.trim(vim.system({ "sh", "-c", "tmux list-sessions | grep -n '(attached)' | cut -c1" }):wait().stdout)
-	local session = tonumber(current_tmux_session)
-	local key_index = ((session - 1) % #accent_order) + 1
-	accent = accent_order[key_index]
+	local res = vim.system({ "tmux", "display-message", "-p", "#{session_id}" }):wait()
+	if res.code == 0 and type(res.stdout) == "string" then
+		local num = res.stdout:match("%d+")
+		local sid = tonumber(num)
+		if sid then
+			local key_index = (sid % #accent_order) + 1
+			accent = accent_order[key_index]
+		end
+	end
 end
 
 -- foreground
