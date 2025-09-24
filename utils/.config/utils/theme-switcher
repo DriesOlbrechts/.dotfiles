@@ -1,0 +1,89 @@
+
+#!/usr/bin/env bash
+# Usage:
+#   source theme-switcher.sh <theme>
+# After sourcing, $THEME is exported in current shell.
+#
+declare -A ACCENT_COLOURS=(
+  [magenta]="#c688cd"
+  [orange]="#ee9360"
+  [green]="#98c379"
+  [yellow]="#e5c07b"
+  [blue]="#61afe7"
+  [red]="#e06c75"
+  [cyan]="#56b6c2"
+)
+
+ACCENT_KEYS=(magenta orange green yellow blue red cyan)
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --tmux)
+      tmux_flag=true
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    -*)
+      echo "Unknown option: $1"
+      usage
+      return 1
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+
+
+theme="$1"
+
+
+
+case "$(uname -s)" in
+  Linux)   THEME_OS=linux ;;
+  Darwin)  THEME_OS=mac ;;
+  *)       THEME_OS=other ;;
+esac
+
+if [[ $tmux_flag == true ]]; then
+  current_tmux_session=$(tmux list-sessions 2>/dev/null | awk '/\(attached\)/{print NR; exit}')
+  if [[ -z $current_tmux_session ]]; then
+    echo "No attached tmux session found" >&2
+  else
+    key_index=$(( (current_tmux_session - 1) % ${#ACCENT_KEYS[@]} ))
+    selected_key=${ACCENT_KEYS[key_index]}
+    # Example: set theme to that key if not explicitly provided
+    if [[ -z $theme ]]; then
+      theme=$selected_key
+    fi
+  fi
+fi
+
+
+export THEME="$theme"
+export THEME_PRIMARY_COLOR="${ACCENT_COLOURS[$theme]}"
+
+
+if tmux info &>/dev/null; then
+  tmux set-environment -g THEME "$THEME"
+  tmux set-environment -g THEME_PRIMARY_COLOR "$THEME_PRIMARY_COLOR"
+  tmux source-file ~/.config/tmux/tmux.conf
+fi
+
+
+
+if [[ "$THEME_OS" == linux ]] && command -v hyprctl >/dev/null 2>&1; then
+  hyprctl keyword general:col.active_border "rgb(${THEME_PRIMARY_COLOR#\#})" >/dev/null 2>&1
+fi
+
+if [[ "$THEME_OS" == mac ]]; then
+	echo "mac"
+fi
+
+
+echo "THEME set to '$THEME' "
+
