@@ -1,15 +1,3 @@
-update() {
-  case "$NAME" in
-    "hour")
-      sketchybar --set $NAME label="$(date +%H)"
-      ;;
-    "minutes")
-      sketchybar --set $NAME label="$(date +%M)"
-      ;;
-  esac
-}
+#!/usr/bin/env zsh
 
-case "$SENDER" in
-  "routine") update 
-;;
-esac
+sketchybar --set $NAME label="$(date '+%a %b %-d %-H:%M')"

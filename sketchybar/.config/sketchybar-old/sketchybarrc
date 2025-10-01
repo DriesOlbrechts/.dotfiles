@@ -1,0 +1,74 @@
+#!/bin/bash
+
+source "$HOME/.config/sketchybar/colors.sh" # Loads all defined colors
+source "$HOME/.config/sketchybar/icons.sh" # Loads all defined icons
+
+ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+
+FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+PADDINGS=4
+PADDINGS_RIGHT=16
+
+# Setting up the general bar appearance of the bar
+bar=(
+  height=38
+  color=$BAR_COLOR
+  border_color=$BORDER_COLOR
+  border_width=2.5
+  shadow=on
+  position=top
+  sticky=on
+  padding_right=10
+  padding_left=10
+  corner_radius=9
+  y_offset=10
+  margin=16
+  blur_radius=20
+  notch_width=0
+)
+
+sketchybar --bar "${bar[@]}"
+
+# Setting up default values
+# Setting up default values
+defaults=(
+  updates=when_shown
+  icon.font="$FONT:$FONT_COLOR:30.0"
+  icon.color=$FONT_COLOR
+  icon.padding_left=$PADDINGS
+  icon.padding_right=$PADDINGS
+  label.font="$FONT:Semibold:16.0"
+  label.color=$FONT_COLOR
+  label.padding_left=$PADDINGS
+  label.padding_right=$PADDINGS_RIGHT
+  padding_right=$PADDINGS
+  padding_left=$PADDINGS
+  background.height=30
+  background.corner_radius=9
+  popup.background.border_width=2
+  popup.background.corner_radius=9
+  popup.background.border_color=$POPUP_BORDER_COLOR
+  popup.background.color=$POPUP_BACKGROUND_COLOR
+  popup.blur_radius=20
+  popup.background.shadow.drawing=on
+)
+
+
+sketchybar --default "${defaults[@]}"
+
+#left
+source "$ITEM_DIR/spaces.sh"
+
+
+#middle
+
+#right
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/clock.sh"
+source "$ITEM_DIR/calendar.sh"
+
+# Forcing all item scripts to run (never do this outside of sketchybarrc)
+sketchybar --update
+
+echo "sketchybar configuration loaded.."

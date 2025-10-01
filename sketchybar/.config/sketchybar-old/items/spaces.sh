@@ -6,7 +6,7 @@ space=(
 	label.align=center
 	label.padding_right=12
 )
-  sketchybar --add item space_item right \
+  sketchybar --add item space_item left \
 	  		 --set space_item "${space[@]}" \
 			 --subscribe space_item space_change \
 			 --subscribe space_item display_change

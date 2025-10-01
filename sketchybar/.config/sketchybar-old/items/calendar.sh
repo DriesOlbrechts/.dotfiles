@@ -13,14 +13,13 @@ date=(
 )
 month=(
 	label="$(date +%b)"
-	label.padding_right=16
 	update_freq=60
 	script="$PLUGIN_DIR/calendar.sh"
 )
 
-sketchybar --add item day left \
-		   --set day "${day[@]}" \
-		   --add item date left \
-		   --set date "${date[@]}" \
-		   --add item month left \
-		   --set month "${month[@]}"
+sketchybar --add item month right \
+			--set month "${month[@]}" \
+			--add item date right \
+			--set date "${date[@]}" \
+			--add item day right \
+			--set day "${day[@]}" \
