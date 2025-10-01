@@ -67,6 +67,8 @@ fi
 
 if [[ "$THEME_OS" == mac ]] && command -v sketchybar >/dev/null 2>&1; then
 	color="0xff${ACCENT_COLOURS[$theme]}"
-	sketchybar --bar border_color=$color	
+	sketchybar --set current_space background.color=$color	
+	sketchybar --set front_app background.color=$color	
+	sketchybar --set 'front_app.separator' icon.color=$color	
 	borders active_color=$color
 fi

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-FONT_FACE="JetBrainsMono Nerd Font"
+FONT_FACE="ComicShanns Nerd Font"
 
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins-laptop"
 PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
@@ -25,10 +25,10 @@ sketchybar --default \
     background.corner_radius=5 \
     background.padding_right=5 \
     background.height=26 \
-    icon.font="$FONT_FACE:Medium:15.0" \
+    icon.font="$FONT_FACE:Regular:15.0" \
     icon.padding_left=5 \
     icon.padding_right=5 \
-    label.font="$FONT_FACE:Medium:12.0" \
+    label.font="$FONT_FACE:Regular:12.0" \
     label.color=0xffcad3f5 \
     label.y_offset=0 \
     label.padding_left=0 \
@@ -39,7 +39,7 @@ sketchybar --add event spotify_change $SPOTIFY_EVENT \
     --set spotify \
     icon= \
     icon.y_offset=1 \
-    icon.font="$FONT_FACE:Bold:20.0" \
+    icon.font="$FONT_FACE:Regular:20.0" \
     label.drawing=off \
     label.padding_left=3 \
     script="$PLUGIN_DIR/spotify.sh" \
@@ -68,7 +68,7 @@ sketchybar --add item front_app left \
     background.padding_left=-3 \
     icon= \
     icon.color=0xffa6da95 \
-    icon.font="$FONT_FACE:Bold:20.0" \
+    icon.font="$FONT_FACE:Regular:20.0" \
     icon.padding_left=0 \
     icon.padding_right=0 \
     icon.y_offset=1 \
@@ -78,7 +78,7 @@ sketchybar --add item front_app left \
     background.color=0x00000000 \
     background.padding_right=0 \
     icon.drawing=off \
-    label.font="$FONT_FACE:Bold:12.0" \
+    label.font="$FONT_FACE:Regular:12.0" \
     label.drawing=yes
 
 sketchybar --add item weather.moon q \
@@ -86,7 +86,7 @@ sketchybar --add item weather.moon q \
     background.color=0x667dc4e4 \
     background.padding_right=-1 \
     icon.color=0xff181926 \
-    icon.font="$FONT_FACE:Bold:22.0" \
+    icon.font="$FONT_FACE:Regular:22.0" \
     icon.padding_left=4 \
     icon.padding_right=3 \
     label.drawing=off \
@@ -96,7 +96,7 @@ sketchybar --add item weather q \
     --set weather \
     icon= \
     icon.color=0xfff5bde6 \
-    icon.font="$FONT_FACE:Bold:15.0" \
+    icon.font="$FONT_FACE:Regular:15.0" \
     update_freq=1800 \
     script="$PLUGIN_SHARED_DIR/weather.sh" \
     --subscribe weather system_woke

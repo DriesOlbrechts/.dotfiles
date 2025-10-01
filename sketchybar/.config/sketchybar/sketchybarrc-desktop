@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-FONT_FACE="JetBrainsMono Nerd Font"
+FONT_FACE="ComicShanns Nerd Font"
 PLUGIN_DIR="$HOME/.config/sketchybar/plugins-desktop"
 PLUGIN_SHARED_DIR="$HOME/.config/sketchybar/plugins"
 
@@ -19,11 +19,11 @@ sketchybar --bar \
 sketchybar --default \
     background.height=32 \
     icon.color=0xff24273a \
-    icon.font="$FONT_FACE:Medium:20.0" \
+    icon.font="$FONT_FACE:Regular:20.0" \
     icon.padding_left=5 \
     icon.padding_right=5 \
     label.color=0xff24273a \
-    label.font="$FONT_FACE:Bold:14.0" \
+    label.font="$FONT_FACE:Regular:14.0" \
     label.y_offset=1 \
     label.padding_left=0 \
     label.padding_right=5
@@ -48,7 +48,7 @@ sketchybar --add item front_app left \
     background.color=0x00000000 \
     icon= \
     icon.color=0xffa6da95 \
-    icon.font="$FONT_FACE:Bold:23.0" \
+    icon.font="$FONT_FACE:Regular:23.0" \
     icon.padding_left=0 \
     icon.padding_right=0 \
     icon.y_offset=1 \
@@ -57,7 +57,7 @@ sketchybar --add item front_app left \
     --set front_app.name \
     background.color=0x00000000 \
     icon.drawing=off \
-    label.font="$FONT_FACE:Bold:16.0" \
+    label.font="$FONT_FACE:Regular:16.0" \
     label.color=0xffcad3f5 \
     label.padding_left=5
 
