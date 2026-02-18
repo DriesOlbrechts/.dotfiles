@@ -15,7 +15,7 @@ WEATHER_JSON=$(curl -s "https://wttr.in/$LOCATION_ESCAPED?format=j1")
 if [ -z $WEATHER_JSON ]; then
 
     sketchybar --set $NAME label=$LOCATION
-    sketchybar --set $NAME.moon icon=
+    sketchybar --set $NAME.moon icon=
 
     return
 fi
@@ -26,30 +26,29 @@ MOON_PHASE=$(echo $WEATHER_JSON | jq '.weather[0].astronomy[0].moon_phase' | tr 
 
 case ${MOON_PHASE} in
 "New Moon")
-    ICON=
+    ICON=
     ;;
 "Waxing Crescent")
-    ICON=
+    ICON=
     ;;
 "First Quarter")
-    ICON=
+    ICON=
     ;;
 "Waxing Gibbous")
     ICON=
     ;;
 "Full Moon")
-    ICON=
+    ICON=
     ;;
 "Waning Gibbous")
-    ICON=
+    ICON=
     ;;
 "Last Quarter")
-    ICON=
+    ICON=
     ;;
 "Waning Crescent")
-    ICON=
+    ICON=
     ;;
 esac
 
-sketchybar --set $NAME label="$LOCATION  $TEMPERATURE℃ $WEATHER_DESCRIPTION"
-sketchybar --set $NAME.moon icon=$ICON
+sketchybar --set moon icon=$ICON

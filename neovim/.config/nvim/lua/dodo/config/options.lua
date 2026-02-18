@@ -3,7 +3,7 @@ local opt = vim.opt
 opt.termguicolors = true
 opt.compatible = false
 
-vim.cmd.colorscheme("accent")
+vim.cmd.colorscheme("rose-pine")
 opt.confirm = true
 
 opt.undofile = true

@@ -1,6 +1,6 @@
 function cowgreet 
     set -l TIME (date +"%H")
-    set -l USER (whoami | sed 's/./\U&/')
+    set -l USER (whoami)
 
     if test $TIME -ge 12 && test $TIME -lt 18;
         set MSG "Good afternoon, $USER"
@@ -12,5 +12,5 @@ function cowgreet
         set MSG "Good morning, $USER"
     end
 
-    cowsay -f $argv[1] $MSG | lolcat
+    cowsay -f $argv[1] $MSG 
 end

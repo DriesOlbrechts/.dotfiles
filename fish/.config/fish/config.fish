@@ -23,12 +23,11 @@ if status is-interactive
     
     starship init fish | source
 
+	fish_config theme choose "Rosé Pine Dawn"
+
 	fish_ssh_agent
 end
 
 # direnv
 direnv hook fish | source
 set -g direnv_fish_mode eval_on_arrow    # trigger direnv at prompt, and on every arrow-based directory change (default)
-
-
-set PATH $PATH /home/dries/.local/bin

@@ -1,29 +1,181 @@
-palette= "catppuccin_macchiato"
+"$schema" = 'https://starship.rs/config-schema.json'
 
-[palettes.catppuccin_macchiato]
-rosewater = "#f4dbd6"
-flamingo = "#f0c6c6"
-pink = "#f5bde6"
-mauve = "#c6a0f6"
-red = "#ed8796"
-maroon = "#ee99a0"
-peach = "#f5a97f"
-yellow = "#eed49f"
-green = "#a6da95"
-teal = "#8bd5ca"
-sky = "#91d7e3"
-sapphire = "#7dc4e4"
-blue = "#8aadf4"
-lavender = "#b7bdf8"
-text = "#cad3f5"
-subtext1 = "#b8c0e0"
-subtext0 = "#a5adcb"
-overlay2 = "#939ab7"
-overlay1 = "#8087a2"
-overlay0 = "#6e738d"
-surface2 = "#5b6078"
-surface1 = "#494d64"
-surface0 = "#363a4f"
-base = "#24273a"
-mantle = "#1e2030"
-crust = "#181926"
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$cmd_duration\
+$aws\
+$fill\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+$conda\
+$python\
+$time\n  \
+[󱞪](fg:iris) \
+"""
+
+palette = "rose-pine-dawn"
+
+[palettes.rose-pine-dawn]
+overlay = '#f2e9e1'
+love = '#b4637a'
+gold = '#ea9d34'
+rose = '#d7827e'
+pine = '#286983'
+foam = '#56949f'
+iris = '#907aa9'
+
+[directory]
+format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
+style = "bg:overlay fg:pine"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[aws]
+format = '[](fg:overlay)[ $symbol $profile ]($style)[](fg:overlay) '
+style = 'bg:overlay fg:gold'
+symbol = ' '
+[aws.profile_aliases]
+Enterprise_Naming_Scheme-voidstars = 'void**'
+
+[directory.substitutions]
+Documents = "󰈙"
+Downloads = " "
+Music = " "
+Pictures = " "
+
+[fill]
+style = "fg:overlay"
+symbol = " "
+
+[git_branch]
+format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay) "
+style = "bg:overlay fg:pine"
+symbol = ""
+
+
+[git_status]
+disabled = false
+style = "bg:overlay fg:love"
+format = '[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) '
+up_to_date = '[ ✓ ](bg:overlay fg:iris)'
+untracked = '[?\($count\)](bg:overlay fg:gold)'
+stashed = '[\$](bg:overlay fg:iris)'
+modified = '[!\($count\)](bg:overlay fg:gold)'
+renamed = '[»\($count\)](bg:overlay fg:iris)'
+deleted = '[✘\($count\)](style)'
+staged = '[++\($count\)](bg:overlay fg:gold)'
+ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
+diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
+behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+
+[cmd_duration]
+disabled = false
+min_time = 1
+style = "bg:overlay fg:pine"
+format = "[](fg:overlay)[ took $duration ]($style)[](fg:overlay) "
+
+[time]
+disabled = false
+format = " [](fg:overlay)[$time ]($style)[](fg:overlay)"
+style = "bg:overlay fg:rose"
+time_format = "%I:%M%P"
+use_12hr = true
+
+[username]
+disabled = false
+format = "[](fg:overlay)[ 󰧱 $user ]($style)[](fg:overlay) "
+show_always = true
+style_root = "bg:overlay fg:iris"
+style_user = "bg:overlay fg:iris"
+
+# Languages
+
+[c]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[elixir]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[elm]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[golang]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[haskell]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[java]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[julia]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[nodejs]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = "󰎙 "
+
+[nim]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = "󰆥 "
+
+[rust]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[scala]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = " "
+
+[python]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
+disabled = false
+symbol = ' '
+
+[conda]
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
+disabled = false
+symbol = '🅒 '

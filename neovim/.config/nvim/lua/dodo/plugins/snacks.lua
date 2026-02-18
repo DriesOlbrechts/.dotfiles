@@ -34,7 +34,7 @@ return {
 			input = { enabled = true },
 			scroll = { enabled = true },
 			picker = { enabled = true },
-			notifier = { enabled = true },
+			notifier = { enabled = false },
 			scratch = {
 				win_by_ft = {
 					typescript = {

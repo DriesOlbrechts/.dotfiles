@@ -184,15 +184,17 @@ return {
 		end,
 		opts = {
 			adapters = {
-				copilot = function()
-					return require("codecompanion.adapters").extend("copilot", {
-						schema = {
-							model = {
-								default = "gpt-5",
+				http = {
+					copilot = function()
+						return require("codecompanion.adapters").extend("copilot", {
+							schema = {
+								model = {
+									default = "gpt-5",
+								},
 							},
-						},
-					})
-				end,
+						})
+					end,
+				}
 			},
 			strategies = {
 				chat = {
@@ -215,6 +217,7 @@ return {
 	},
 	{
 		"chrisgrieser/nvim-origami",
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			require('origami').setup {

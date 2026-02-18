@@ -38,6 +38,7 @@ import = [
   # uncomment the flavour you want below:
   # "~/.config/alacritty/catppuccin-latte.toml"
   # "~/.config/alacritty/catppuccin-frappe.toml"
-  "~/.config/alacritty/colors.toml"
+  # "~/.config/alacritty/colors.toml"
   # "~/.config/alacritty/catppuccin-mocha.toml"
+	"~/.config/alacritty/rose-pine-dawn.toml"
 ]
