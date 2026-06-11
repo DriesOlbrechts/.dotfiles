@@ -3,7 +3,8 @@ local req = function(file)
 end
 local M = {
 	pickers = req('pickers'),
-	git = req('git')
+	git = req('git'),
+	gh = req('gh')
 }
 
 return M

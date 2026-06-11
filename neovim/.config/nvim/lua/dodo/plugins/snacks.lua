@@ -19,7 +19,7 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		keys = mergeTables(config.pickers.keys, config.git.keys),
+		keys = mergeTables(config.pickers.keys, config.git.keys, config.gh.keys),
 		---@type snacks.Config
 		opts = {
 			-- your configuration comes here
@@ -33,8 +33,21 @@ return {
 			indent = { enabled = true },
 			input = { enabled = true },
 			scroll = { enabled = true },
-			picker = { enabled = true },
-			notifier = { enabled = false },
+			picker = {
+				enabled = true,
+				sources = {
+					gh_diff = {
+						auto_close = false,
+						layout = {
+							preset = "right",
+							hidden = { "preview" },
+						},
+					},
+				}
+			},
+			notifier = { enabled = true },
+			gh = { enabled = true },
+			git = { enabled = true },
 			scratch = {
 				win_by_ft = {
 					typescript = {

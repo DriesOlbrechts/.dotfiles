@@ -25,13 +25,16 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		cmd = { "ConformInfo" },
 		config = function()
-			local formatterConf = { "biome-check", "prettierd", "prettier", stop_after_first = true }
-			local sassConf = { "prettierd", "prettier", stop_after_first = true }
+			local formatterConf = { "oxfmt", "biome-check", "prettierd", "prettier", stop_after_first = true }
+			local sassConf = { "oxfmt", "prettierd", "prettier", stop_after_first = true }
 			require("conform").setup({
 				formatters = {
 					["biome-check"] = {
 						require_cwd = true,
 					},
+					["oxfmt"] = {
+						require_cwd = true,
+					}
 				},
 				formatters_by_ft = {
 					vue = formatterConf,
@@ -122,8 +125,8 @@ return {
 			{ "<leader>ep", "<cmd>EcologShelterLinePeek<cr>", desc = "Ecolog peek variable" },
 			{ "<leader>es", "<cmd>EcologSelect<cr>",          desc = "Switch env file" },
 		},
+		event = { "BufReadPre", "BufNewFile" },
 		-- Lazy loading is done internally
-		lazy = false,
 		opts = {
 			integrations = {
 				-- WARNING: for both cmp integrations see readme section below

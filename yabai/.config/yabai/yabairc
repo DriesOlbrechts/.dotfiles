@@ -2,6 +2,51 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+#
+# setup spaces
+#
+for idx in $(yabai -m query --spaces | jq -r '.[].index | select(. > 10)'); do
+  yabai -m space --destroy "$idx"
+done
+
+function setup_space {
+  local idx="$1"
+  local name="$2"
+  local space=
+  echo "setup space $idx : $name"
+
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
+  fi
+
+  yabai -m space "$idx" --label "$name"
+}
+
+num_displays=$(yabai -m query --displays | jq -r 'length')
+if [ "$num_displays" -ge 2 ]; then
+  for idx in $(yabai -m query --spaces | jq -r '.[].index'); do
+    if [ "$idx" -eq 1 ]; then
+      yabai -m space "$idx" --display 1
+    else
+      yabai -m space "$idx" --display 2
+    fi
+  done
+else
+  echo "only $num_displays display(s) detected — skipping display-specific space moves"
+fi
+
+setup_space 1 slack
+setup_space 2 code
+setup_space 3 mail
+setup_space 4 web
+setup_space 5 figma
+setup_space 6 teams
+setup_space 7 other
+setup_space 8 other
+setup_space 9 other
+setup_space 10 other
+
 # Logging
 yabai -m config debug_output on
 
@@ -33,7 +78,7 @@ borders active_color=0xffc688cd inactive_color=0xff6e3973 width=5.0 &
 
 # rules
 yabai -m rule --add app="^Slack$" space=1
-yabai -m rule --add app="^Spotify$" space=3
+yabai -m rule --add app="^Alacritty$" space=2
 yabai -m rule --add app="^Zen$" space=4
 
 yabai -m rule --add app="^System Settings$" manage=off
