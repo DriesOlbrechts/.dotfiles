@@ -1,5 +1,6 @@
 #ALIAS
 alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 alias pacinstall='yay -Slq | fzf --multi --preview "yay -Si {1}" | xargs -ro yay -S'
 alias cat='bat -p'
 alias exa='eza --color=auto --color-scale --group-directories-first'    #'ls --color=auto --group-directories-first'    # Add --icons once it is supported

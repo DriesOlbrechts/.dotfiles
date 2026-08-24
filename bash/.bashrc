@@ -1,19 +1,12 @@
 #
 # ~/.bashrc
 #
-#
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1='[\u@\h \W]\$ '
+eval "$(starship init bash)"
 
-
-#fzf
-# source /usr/share/fzf/key-bindings.bash
-# source /usr/share/fzf/completion.bash
-
-# Source all cfgs
 BASH_CFG=~/.config/bash/*
 for rc in $BASH_CFG; do
     if [ -f "$rc" ]; then
@@ -21,22 +14,12 @@ for rc in $BASH_CFG; do
     fi
 done
 
-PATH=$PATH:$HOME/.local/share/bob/nvim-bin:/usr/local/bin
+PS1='[\u@\h \W]\$ '
 
-cowgreet tux
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+export PATH="$PATH:/home/dries/.local/share/bob/nvim-bin"
 
-eval "$(starship init bash)"
-
-AFTER_CFG=~/.config/bash/after/* 
-for f in $AFTER_CFG; do
-	if [ -f "$f" ]; then
-		. "$f"
-	fi
-done
-export PATH=$PATH:/home/dries/.spicetify
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH=$BUN_INSTALL/bin:$PATH
-. "/home/dries/.deno/env"
