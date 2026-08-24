@@ -80,6 +80,7 @@ borders active_color=0xffc688cd inactive_color=0xff6e3973 width=5.0 &
 yabai -m rule --add app="^Slack$" space=1
 yabai -m rule --add app="^Alacritty$" space=2
 yabai -m rule --add app="^Zen$" space=4
+yabai -m rule --add app="^DBeaver Community$" title!="^DBeaver" manage=off
 
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add title="^ovim[- ]edit.*$" manage=off

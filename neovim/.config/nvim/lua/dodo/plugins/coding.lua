@@ -29,12 +29,12 @@ return {
 			local sassConf = { "oxfmt", "prettierd", "prettier", stop_after_first = true }
 			require("conform").setup({
 				formatters = {
+					["oxfmt"] = {
+						require_cwd = true,
+					},
 					["biome-check"] = {
 						require_cwd = true,
 					},
-					["oxfmt"] = {
-						require_cwd = true,
-					}
 				},
 				formatters_by_ft = {
 					vue = formatterConf,
