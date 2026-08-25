@@ -1,23 +1,159 @@
-/*
-* Variant: Rosé Pine Dawn
-* Maintainer: DankChoir
-*/
+@import "./rose-pine-dawn.css";
 
-@define-color base            #faf4ed;
-@define-color surface         #fffaf3;
-@define-color overlay         #f2e9e1;
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "FiraCode Nerd Font Mono";
+  font-weight: bold;
+  font-size: 16px;
+  min-height: 0;
+}
 
-@define-color muted           #9893a5;
-@define-color subtle          #797593;
-@define-color text            #575279;
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  color: @text;
+}
 
-@define-color love            #b4637a;
-@define-color gold            #ea9d34;
-@define-color rose            #d7827e;
-@define-color pine            #286983;
-@define-color foam            #56949f;
-@define-color iris            #907aa9;
+menu {
+  background: @base;
+  color: @text;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @overlay;
+}
 
-@define-color highlightLow    #f4ede8;
-@define-color highlightMed    #dfdad9;
-@define-color highlightHigh   #cecacd;
+#workspaces button {
+  padding: 5px;
+  color: @highlightMed;
+  margin-right: 5px;
+}
+
+#workspaces button.active {
+  color: @text;
+}
+
+#workspaces button.focused {
+  color: @subtle;
+  background: @love;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: @base;
+  background: @pine;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: @highlightLow;
+  color: @text;
+  border-radius: 10px;
+}
+
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#temperature,
+#workspaces,
+#tray,
+#memory,
+#backlight {
+  background: @base;
+  opacity: 0.9;
+  padding: 0px 10px;
+  margin: 3px 0px;
+  margin-top: 10px;
+  border: 1px solid @overlay;
+}
+
+#memory {
+  color: @foam;
+}
+
+#temperature {
+  color: @rose;
+  border-radius: 0px 0px 0px 0px;
+  border-right: 0px;
+}
+
+#temperature.critical {
+  color: @love;
+}
+
+#backlight {
+  color: @text;
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 10px;
+}
+
+#tray {
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+#workspaces {
+  background: @base;
+  border-radius: 10px;
+  margin-left: 10px;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+#custom-power_profile {
+  color: @foam;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#window {
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+#clock {
+  color: @gold;
+  border-radius: 10px 10px 10px 10px;
+  margin-left: 10px;
+  border-right: 0px;
+}
+
+#network {
+  color: @love;
+  border-radius: 10px 0px 0px 10px;
+  /* border-left: 0px; */
+  border-right: 0px;
+}
+
+#bluetooth {
+  color: @gold;
+  border-radius: 0px 0px 0px 0px;
+  border-right: 0px;
+  /* margin-right: 10px; */
+}
+
+#pulseaudio {
+  color: @iris;
+  border-radius: 10px 0px 0px 10px;
+  /* border-left: 0px; */
+  border-right: 0px;
+}
+
+#pulseaudio.microphone {
+  color: #c4a7e7;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 10px;
+}
+
+#battery {
+  color: @foam;
+  border-radius: 0 10px 10px 0;
+  margin-right: 10px;
+  border-left: 0px;
+}
+
