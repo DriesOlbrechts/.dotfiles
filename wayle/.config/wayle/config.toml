@@ -1,3 +1,44 @@
 # Wayle configuration file
+
+[osd]
+position = "top"
+
+[wallpaper]
+cycling-directory = "~/Images/wallpapers"
+
 [bar]
+background-opacity = 0
 scale = 1
+
+[[bar.layout]]
+monitor = "*"
+left = ["hyprland-workspaces", "window-title"]
+center = ["media"]
+right = ["systray", "battery", "volume", "microphone", "bluetooth", "network", "notifications", "dashboard"]
+
+[styling.palette]
+bg = "#faf4ed"
+surface = "#fffaf3"
+elevated = "#f2e9e1"
+fg = "#464261"
+fg-muted = "#9893a5"
+primary = "#e0947a"
+red = "#d7827e"
+green = "#286983"
+blue = "#56949f"
+yellow = "#ea9d34"
+
+[modules.window-title]
+format = "{{app}}"
+
+[modules.network]
+label-show = false
+
+[modules.bluetooth]
+label-show = false
+
+[modules.microphone]
+label-show = false
+
+[modules.notifications]
+label-show = false
