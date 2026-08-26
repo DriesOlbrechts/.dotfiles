@@ -51,7 +51,7 @@ local menu = "hyprlauncher"
 --
 hl.on("hyprland.start", function () 
   hl.exec_cmd("nm-applet")
-  hl.exec_cmd("waybar & hyprpaper")
+  hl.exec_cmd("wayle panel start")
 end)
 
 
@@ -92,7 +92,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.config({
     general = {
         gaps_in  = 5,
-        gaps_out = 20,
+        gaps_out = 10,
 
         border_size = 2,
 
@@ -169,19 +169,19 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
--- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
--- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+-- hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 10, gaps_in = 0 })
+-- hl.workspace_rule({ workspace = "f[1]",   gaps_out = 10, gaps_in = 0 })
 -- hl.window_rule({
 --     name  = "no-gaps-wtv1",
 --     match = { float = false, workspace = "w[tv1]" },
 --     border_size = 0,
---     rounding    = 0,
+--     rounding    = 10,
 -- })
 -- hl.window_rule({
 --     name  = "no-gaps-f1",
 --     match = { float = false, workspace = "f[1]" },
 --     border_size = 0,
---     rounding    = 0,
+--     rounding    = 10,
 -- })
 
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more

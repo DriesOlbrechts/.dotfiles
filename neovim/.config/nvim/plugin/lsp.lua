@@ -24,10 +24,6 @@ end
 
 local servers_to_enable = vim.iter(get_configured_servers())
 	:filter(function(server_name)
-		-- TODO: remove testing early return
-		if server_name == 'ts_ls' then
-			return false
-		end
 		local config = vim.lsp.config[server_name]
 		if not config then
 			vim.notify('no LSP configuration found for "' .. server_name .. '"', vim.log.levels.WARN)
