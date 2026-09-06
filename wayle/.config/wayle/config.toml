@@ -4,7 +4,9 @@
 position = "top"
 
 [wallpaper]
-cycling-directory = "~/Images/wallpapers"
+engine-enabled = true
+cycling-directory = "~/Images/wallpapers/"
+cycling-enabled = true
 
 [bar]
 background-opacity = 0
@@ -12,7 +14,7 @@ scale = 1
 
 [[bar.layout]]
 monitor = "*"
-left = ["hyprland-workspaces", "window-title"]
+left = ["clock", "hyprland-workspaces", "window-title"]
 center = ["media"]
 right = ["systray", "battery", "volume", "microphone", "bluetooth", "network", "notifications", "dashboard"]
 
@@ -42,3 +44,7 @@ label-show = false
 
 [modules.notifications]
 label-show = false
+
+[modules.media]
+players-ignored = ["firefox.instance_1_132"]
+format = "{{title}} - {{artist}}"
