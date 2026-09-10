@@ -21,5 +21,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
-export PATH="$PATH:/home/dries/.local/share/bob/nvim-bin"
+export PATH="$PATH:/home/dries/.local/share/bob/nvim-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin"
 export EDITOR=nvim

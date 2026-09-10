@@ -1,0 +1,3 @@
+[user]
+    email = dries.olbrechts@tomorrowland.com 
+	signingkey = ~/.ssh/enterprise.pub

@@ -24,7 +24,7 @@ family = "FiraCode Nerd Font Mono"
 style = "Regular"
 
 [terminal.shell]
-program = "/usr/bin/bash"
+program = "/usr/local/bin/bash"
 
 [window]
 class = "alacritty"
