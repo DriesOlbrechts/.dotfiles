@@ -1,3 +1,6 @@
 [user]
     email = dries.olbrechts@tomorrowland.com 
 	signingkey = ~/.ssh/enterprise.pub
+
+[url "git@github.com-waow:"]
+	insteadOf = git@github.com:
