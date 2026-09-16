@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
 
 BASH_CFG=~/.config/bash/*
 for rc in $BASH_CFG; do
@@ -16,10 +17,11 @@ done
 
 PS1='[\u@\h \W]\$ '
 
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
-export PATH="$PATH:/home/dries/.local/share/bob/nvim-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:$HOME/.cargo/bin/bob"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.local/share/bob/nvim-bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin"
 export EDITOR=nvim
