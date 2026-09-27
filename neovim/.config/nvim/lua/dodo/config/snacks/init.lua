@@ -4,7 +4,8 @@ end
 local M = {
 	pickers = req('pickers'),
 	git = req('git'),
-	gh = req('gh')
+	gh = req('gh'),
+	monorepo = req('monorepo')
 }
 
 return M

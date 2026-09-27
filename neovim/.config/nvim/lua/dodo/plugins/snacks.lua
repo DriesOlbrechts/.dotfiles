@@ -19,7 +19,7 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		keys = mergeTables(config.pickers.keys, config.git.keys, config.gh.keys),
+		keys = mergeTables(config.pickers.keys, config.git.keys, config.gh.keys, config.monorepo.keys),
 		---@type snacks.Config
 		opts = {
 			-- your configuration comes here
@@ -43,6 +43,7 @@ return {
 							hidden = { "preview" },
 						},
 					},
+					monorepo = config.monorepo.source,
 				}
 			},
 			notifier = { enabled = true },
