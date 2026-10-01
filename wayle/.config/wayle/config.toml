@@ -46,5 +46,7 @@ label-show = false
 label-show = false
 
 [modules.media]
-players-ignored = ["firefox.instance_1_132"]
 format = "{{title}} - {{artist}}"
+
+[modules.clock]
+format = "%a %b %H:%M"
